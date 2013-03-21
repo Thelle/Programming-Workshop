@@ -10,7 +10,9 @@ import javax.swing.JOptionPane;
  * @author stcl
  */
 public class BlackJack {
-    static String playedCards ="";
+    static String allPlayedCards = "";
+    static String playerPlayedCards = "";
+    static String dealerPlayedCards = "";
     static int pointsPlayed;
     static int numberOfAces = 0;
     static int numberOfAcesWorth11 = 0;
@@ -26,9 +28,10 @@ public class BlackJack {
         String drawnCard;
         do{ //A card is drawn until the number of points is equal to or higher than 17
                 //or total points played is equal to or higher than 21
-            drawnCard = playOneTurn();
-       } while (!dealerStops(drawnCard));
-        System.out.println(playedCards);
+            drawnCard = playOneTurn("Dealer");
+       } while (!dealerStops());
+        System.out.println("Dealer played: "+dealerPlayedCards);
+        System.out.println("All played cards are: "+allPlayedCards);
     }   
     
     private static void resetGlobalVariables(){
@@ -41,17 +44,25 @@ public class BlackJack {
         int intContinue = 0;
         String drawnCard;
         do{ //A card is drawn until the player holds, or total points played is equal to or higher than 21
-            drawnCard = playOneTurn();
+            drawnCard = playOneTurn("Player");
        } while (!playerStops(drawnCard));
-        System.out.println(playedCards);
+        System.out.println("You played: "+allPlayedCards);
     }
     
-    private static String playOneTurn(){
+    private static String playOneTurn(String playerType){
         String drawnCard;
         do{ //A unique card is drawn
                 drawnCard = drawCard();
             } while (isAlreadyDrawn(drawnCard) == true);
-            playedCards = playedCards + drawnCard;
+            allPlayedCards = allPlayedCards + drawnCard;
+            switch (playerType){
+            	case "Player":
+            		playerPlayedCards = playerPlayedCards + drawnCard;
+            		break;
+            	case "Dealer":
+            		dealerPlayedCards = dealerPlayedCards + drawnCard;
+            		break;
+            }
             addPoints(drawnCard);
             return drawnCard;
     }
@@ -82,9 +93,9 @@ public class BlackJack {
         
 }
     
-    private static boolean dealerStops(String drawnCard){
+    private static boolean dealerStops(){
         int intContinue = 0;
-        switch (checkPoints("Player")){
+        switch (checkPoints("Dealer")){
             case "More than 21":
                 intContinue = 1;
                 System.out.println("Dealer got more than 21 points - you win");
@@ -95,6 +106,10 @@ public class BlackJack {
                 break;
             case "Less than max":
                 intContinue = 0;
+                break;
+            case "More than or equal to max":
+            	intContinue = 1;
+            	System.out.println("Dealer stops");
          }
          if (intContinue == 1) {
              return true;
@@ -108,12 +123,11 @@ public class BlackJack {
     private static String checkPoints (String playerType ){
         int maxNumber = 0;
         if (playerType.equals("Dealer")){
-            maxNumber = 17; //Dealer does only continues if it has less than 17 points.
+            maxNumber = 17; //Dealer does only continue if it has less than 17 points.
         }
         if (playerType.equals("Player")){
             maxNumber = 21; //Player may continue until s/he has more than 21 points
-        }
-               
+        } 
         if (pointsPlayed > 21 && numberOfAcesWorth11 > 0){
             pointsPlayed = pointsPlayed-10;
             numberOfAcesWorth11--;
@@ -126,6 +140,9 @@ public class BlackJack {
         }
         else if (pointsPlayed < maxNumber){
             return "Less than max";
+        }
+        else if  (pointsPlayed >= maxNumber){
+        	return "More than or equal to max";
         }
         else{
             return null;
@@ -159,7 +176,7 @@ public class BlackJack {
     }
     
     private static boolean isAlreadyDrawn (String drawnCard) {
-        int subStringIndex = playedCards.lastIndexOf(drawnCard);
+        int subStringIndex = allPlayedCards.lastIndexOf(drawnCard);
         if (subStringIndex == -1){ //Card is not already drawn
             return false;
         }
