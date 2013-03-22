@@ -5,129 +5,136 @@
 package dk.itu.KF13.TheSim.Game.Minigames;
 import java.util.Random;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author stcl
  */
 public class BlackJack {
-    static String allPlayedCards = "";
-    static String playerPlayedCards = "";
-    static String dealerPlayedCards = "";
+    static String playedCards ="";
+    static String playedCardsPlayer ="";
+    static String playedCardsDealer ="";
     static int pointsPlayed;
+    static int playerPoints;
+    static int dealerPoints;
     static int numberOfAces = 0;
     static int numberOfAcesWorth11 = 0;
     
     public void playBlackJack(){
-        playerPlays();
+        
+    	switch (playRound("Player")){
+        	case 0:
+        		System.out.println("You chose to hold. Let's see how the dealer plays.");
+        		break;
+        	case 1:
+        		System.out.println("You got more than 21 points. You lost. \nYou played: " + playedCards);
+        		return;
+        	case 2:
+        		System.out.println("Great! You got exactly 21 points. Let's see how the dealer plays.");
+        }    	
+        playerPoints = pointsPlayed;
+        playedCardsPlayer=playedCards;
+        System.out.println("You played: " + playedCardsPlayer);
+        
         resetGlobalVariables();
-        dealerPlays();
+        
+        playRound("Dealer");
+        
+        dealerPoints = pointsPlayed;
+        playedCardsDealer = playedCards.replace(playedCardsPlayer,"");
+        System.out.println("Dealer played: " + playedCardsDealer);
+        
+                
+        if(playerPoints > dealerPoints || dealerPoints > 21){
+        	System.out.println("Congratulations. You won with " + playerPoints + " points against the dealer's " + dealerPoints + " points.");
+        }
+        else {
+        	System.out.println("Loser! You lost with with " + playerPoints + " points against the dealer's " + dealerPoints + " points.");
+        }
         
     }
-    private static void dealerPlays() {
-        int intContinue = 0;
-        String drawnCard;
-        do{ //A card is drawn until the number of points is equal to or higher than 17
-                //or total points played is equal to or higher than 21
-            drawnCard = playOneTurn("Dealer");
-       } while (!dealerStops());
-        System.out.println("Dealer played: "+dealerPlayedCards);
-        System.out.println("All played cards are: "+allPlayedCards);
-    }   
-    
+       
     private static void resetGlobalVariables(){
         pointsPlayed = 0;
         numberOfAces = 0;
         numberOfAcesWorth11 = 0;
     }
     
-    private static void playerPlays(){
-        int intContinue = 0;
+    /**
+     * playRound until the player/dealer holds, has exactly 21 points or has more than 21 points
+     * @param playerType the type of player. Only accepts "Dealer" and "Player"
+     * @return 0 if playertype chooses to hold. 1 if playertype gets more than 21 points. 
+     * 		   2 if playertype gets exactly 21 points
+     */
+    
+    private static int playRound(String playerType){
+        boolean boContinue = true;
+        int outcomeOfTurn;
         String drawnCard;
         do{ //A card is drawn until the player holds, or total points played is equal to or higher than 21
-            drawnCard = playOneTurn("Player");
-       } while (!playerStops(drawnCard));
-        System.out.println("You played: "+allPlayedCards);
+            drawnCard = playOneTurn();
+            outcomeOfTurn = turnOutcome(playerType);
+            if (outcomeOfTurn == 0 && playerType.equalsIgnoreCase("Player")){
+            	boContinue = doesPlayerWantToContinue(drawnCard);
+            }
+            else if(outcomeOfTurn == 0 && playerType.equalsIgnoreCase("Dealer")){
+            	boContinue = true;
+            }
+            else{
+            	boContinue = false;
+            }
+       } while (boContinue);
+
+        return outcomeOfTurn;
     }
     
-    private static String playOneTurn(String playerType){
+    private static boolean doesPlayerWantToContinue(String drawnCard) {
+    	int intContinue = JOptionPane.showConfirmDialog(null, "You have drawn this card: " + 
+                drawnCard + "\nYou currently have " + pointsPlayed + " points" + 
+                "\nDo you want to continue?", "Draw another card?", JOptionPane.YES_NO_OPTION);
+                //JOptionPane returns 1 for no and 0 for yes.
+    	if (intContinue == 1){
+    		return false;
+    	}
+    	else{
+    		return true;
+    	}
+	}
+    
+	private static String playOneTurn(){
         String drawnCard;
         do{ //A unique card is drawn
                 drawnCard = drawCard();
             } while (isAlreadyDrawn(drawnCard) == true);
-            allPlayedCards = allPlayedCards + drawnCard;
-            switch (playerType){
-            	case "Player":
-            		playerPlayedCards = playerPlayedCards + drawnCard;
-            		break;
-            	case "Dealer":
-            		dealerPlayedCards = dealerPlayedCards + drawnCard;
-            		break;
-            }
+            playedCards = playedCards + drawnCard;
             addPoints(drawnCard);
             return drawnCard;
     }
     
-    private static boolean playerStops(String drawnCard){
-        int intContinue = 0;
-        switch (checkPoints("Player")){
+    private static int turnOutcome(String playerType){
+        switch (checkPoints(playerType)){
             case "More than 21":
-                intContinue = 1;
-                System.out.println("You got more than 21 points - you lost");
-                break;
+                return 1;
             case "Exactly 21":
-                intContinue = 1;
-                System.out.println("You got 21 - nice going!");
-                break;
+                return 2;
             case "Less than max":
-                intContinue = JOptionPane.showConfirmDialog(null, "You have drawn this card: " + 
-                    drawnCard + "\nYou currently have " + pointsPlayed + " points" + 
-                    "\nDo you want to continue?", "Draw another card?", JOptionPane.YES_NO_OPTION);
-                    //JOptionPane returns 0 for no and 1 for yes.
+            	return 0;
+            case "Between max and 21":
+            	return 3;
+            default: return 99;
          }
-         if (intContinue == 1) {
-             return true;
-         }
-         else {
-             return false;
-         }   
-        
-}
-    
-    private static boolean dealerStops(){
-        int intContinue = 0;
-        switch (checkPoints("Dealer")){
-            case "More than 21":
-                intContinue = 1;
-                System.out.println("Dealer got more than 21 points - you win");
-                break;
-            case "Exactly 21":
-                intContinue = 1;
-                System.out.println("Dealer got 21 points - you loose");
-                break;
-            case "Less than max":
-                intContinue = 0;
-                break;
-            case "More than or equal to max":
-            	intContinue = 1;
-            	System.out.println("Dealer stops");
-         }
-         if (intContinue == 1) {
-             return true;
-         }
-         else {
-             return false;
-         }   
         
 }
     
     private static String checkPoints (String playerType ){
         int maxNumber = 0;
         if (playerType.equals("Dealer")){
-            maxNumber = 17; //Dealer does only continue if it has less than 17 points.
+            maxNumber = 17; //Dealer does only continues if it has less than 17 points.
         }
         if (playerType.equals("Player")){
             maxNumber = 21; //Player may continue until s/he has more than 21 points
-        } 
+        }
+               
         if (pointsPlayed > 21 && numberOfAcesWorth11 > 0){
             pointsPlayed = pointsPlayed-10;
             numberOfAcesWorth11--;
@@ -141,11 +148,9 @@ public class BlackJack {
         else if (pointsPlayed < maxNumber){
             return "Less than max";
         }
-        else if  (pointsPlayed >= maxNumber){
-        	return "More than or equal to max";
-        }
         else{
-            return null;
+            //pointsPlayed is greater than maxNumber, but less than 21
+        	return "Between max and 21";
         }
     }
     
@@ -176,7 +181,7 @@ public class BlackJack {
     }
     
     private static boolean isAlreadyDrawn (String drawnCard) {
-        int subStringIndex = allPlayedCards.lastIndexOf(drawnCard);
+        int subStringIndex = playedCards.lastIndexOf(drawnCard);
         if (subStringIndex == -1){ //Card is not already drawn
             return false;
         }
