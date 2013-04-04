@@ -9,7 +9,7 @@ public class WorldCopenhagen implements World {
 	public WorldCopenhagen() {
 		worldLocations.add(new LocPoliceStation());
 		worldLocations.add(new LocCityHall());
-		worldLocations.add(new LocBrewery("Carslberg"));
+		worldLocations.add(new LocBrewery("Carlsberg"));
 	}
 
 	@Override

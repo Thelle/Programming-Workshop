@@ -10,16 +10,16 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		/*WorldCopenhagen copenhagen = new WorldCopenhagen();
+/*		WorldCopenhagen copenhagen = new WorldCopenhagen();
 		
 		List<Location> worldLocations = copenhagen.getLocations();
 		
 		for (Location locationToBePrinted : worldLocations) {
 			System.out.println(locationToBePrinted.getDescription());
-                        * }
-                */
-                BlackJack blackJack = new BlackJack();
-                blackJack.playBlackJack();
+                        } */
+		
+        //        BlackJack blackJack = new BlackJack();
+      //          blackJack.playBlackJack();
 
 		
 	}
