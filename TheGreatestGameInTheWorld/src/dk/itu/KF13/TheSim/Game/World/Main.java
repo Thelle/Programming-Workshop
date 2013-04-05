@@ -10,18 +10,20 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-/*		WorldCopenhagen copenhagen = new WorldCopenhagen();
+		WorldCopenhagen copenhagen = new WorldCopenhagen();
 		
-		List<Location> worldLocations = copenhagen.getLocations();
+		Location[][] worldLocations = copenhagen.getLocations();
 		
-		for (Location locationToBePrinted : worldLocations) {
-			System.out.println(locationToBePrinted.getDescription());
-                        } */
+		for(int x = 0; x < 3; x++){
+			for(int y = 0; y < 3; y++){
+				System.out.print("x: "+x+" y: "+y+" ");
+				System.out.println(worldLocations[x][y]);
+			}
+		}
+     }
 		
         //        BlackJack blackJack = new BlackJack();
       //          blackJack.playBlackJack();
 
-		
-	}
 
 }

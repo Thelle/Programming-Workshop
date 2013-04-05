@@ -4,10 +4,14 @@ import java.util.List;
 
 public class LocBrewery implements Location {
 	String breweryName;
+	int xPos, yPos;
 	
-	public LocBrewery (String name){
+	public LocBrewery (String name, int xInput, int yInput){
 		breweryName = name;
+		xPos = xInput;
+		yPos = yInput;
 	}
+
 	
 	@Override
 	public List<Location> getExits(Direction direction) {

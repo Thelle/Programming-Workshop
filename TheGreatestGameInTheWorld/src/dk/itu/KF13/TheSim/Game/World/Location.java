@@ -9,4 +9,6 @@ public interface Location {
 	List<Location> getExits(Direction direction);
 	
 	String getDescription();
+	
+
 }
