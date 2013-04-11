@@ -1,6 +1,8 @@
 package dk.itu.KF13.TheSim.Game.World;
 
 import dk.itu.KF13.TheSim.Game.Minigames.BlackJack;
+import dk.itu.KF13.TheSim.Game.Physical.HumanPlayer;
+
 import java.util.List;
 
 public class Main {
@@ -20,7 +22,10 @@ public class Main {
 				System.out.println(worldLocations[x][y]);
 			}
 		}
-     }
+		HumanPlayer john = new HumanPlayer();
+		john.setLocation(worldLocations[1][0]);
+		System.out.println("location for john is:"+john.getLocation());
+	}
 		
         //        BlackJack blackJack = new BlackJack();
       //          blackJack.playBlackJack();

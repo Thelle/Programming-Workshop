@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface Location {
 	
-	public enum Direction  {EAST, NORTH, WEST, SOUTH, UP, DOWN };
+	public enum Direction  {EAST, NORTH, WEST, SOUTH};
 	
 	List<Location> getExits(Direction direction);
 	
