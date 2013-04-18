@@ -1,24 +1,52 @@
 package dk.itu.KF13.TheSim.Game.World;
 
-import java.util.List;
-
 public abstract class MasterLocation implements Location {
 	int xPos, yPos;
+	private Location[][] tempMap;
 	
 	@Override
-	public List<Location> getExits(Direction direction) {
+	public Location getExits(Direction direction) {
 		int testXPos, testYPos;
-		
+		getMap();
 		switch(direction){
-		case NORTH: testXPos = xPos; testYPos = yPos+1;
-		case EAST: testXPos = xPos+1; testYPos = yPos;
-		case SOUTH: testXPos = xPos; testYPos = yPos-1;
-		case WEST: testXPos = xPos-1; testYPos = yPos;
+		case NORTH: testXPos = xPos; testYPos = yPos+1; break;
+		case EAST: testXPos = xPos+1; testYPos = yPos; break;
+		case SOUTH: testXPos = xPos; testYPos = yPos-1; break;
+		case WEST: testXPos = xPos-1; testYPos = yPos; break;
+		default: testXPos = -1; testYPos = -1;
 		}
 		
+		if (outOfBounds(testXPos, testYPos)){
+			return null;
+		}
+		else{
+			return tempMap[testXPos][testYPos];
+		}
 		
+	}
+	
+	private void getMap(){
+		WorldCopenhagen copenhagen = Main.returnWorld();
+		tempMap = copenhagen.getLocations();
+	}
+	
+	/**
+	 * outOfBounds tests if the tested position is within the bounds of the map (array) of WorldCopenhagen.
+	 * @param testXPos
+	 * @param testYPos
+	 * @return true if out of bounds.
+	 */
+	private boolean outOfBounds (int testXPos, int testYPos){
+		int xUpperBound, yUpperBound;
+		xUpperBound = tempMap.length;
+		yUpperBound = tempMap[1].length;
 		
-		return null;
+		if (testXPos >=0 && testXPos < xUpperBound && testYPos >=0 && testYPos < yUpperBound){
+			return false;
+		}
+		else{
+			return true;
+		}
 	}
 	
 	public MasterLocation (int xInput, int yInput){

@@ -20,8 +20,14 @@ public class HumanPlayer implements Player {
 
 	@Override
 	public boolean move(Direction direction) {
-		// TODO Auto-generated method stub
-		return false;
+		Location requestedLocation = myLocation.getExits(direction);
+		if (requestedLocation == null){
+			return false;
+		}
+		else{
+			myLocation = requestedLocation;
+			return true;
+			}
 	}
 
 	@Override

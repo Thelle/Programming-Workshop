@@ -1,19 +1,10 @@
 package dk.itu.KF13.TheSim.Game.World;
 
-import java.util.List;
+public class LocPoliceStation extends MasterLocation {
 
-public class LocPoliceStation implements Location {
-	int xPos, yPos;
-	
-	public LocPoliceStation (int xInput, int yInput){
-		xPos = xInput;
-		yPos = yInput;
-	}
-	
-	@Override
-	public List<Location> getExits(Direction direction) {
-		// TODO Auto-generated method stub
-		return null;
+	public LocPoliceStation(int xInput, int yInput) {
+		super(xInput, yInput);
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
