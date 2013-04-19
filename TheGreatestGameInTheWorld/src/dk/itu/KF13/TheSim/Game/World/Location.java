@@ -9,5 +9,6 @@ public interface Location {
 	
 	String getDescription();
 	
+	void playerHasArrived();
 
 }

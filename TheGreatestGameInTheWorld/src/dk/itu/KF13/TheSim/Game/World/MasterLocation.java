@@ -1,8 +1,15 @@
 package dk.itu.KF13.TheSim.Game.World;
 
+import dk.itu.KF13.TheSim.Game.Controller.GameController;
+
 public abstract class MasterLocation implements Location {
 	int xPos, yPos;
 	private Location[][] tempMap;
+	
+	public MasterLocation (int xInput, int yInput){
+		xPos = xInput;
+		yPos = yInput;
+	}
 	
 	@Override
 	public Location getExits(Direction direction) {
@@ -26,7 +33,7 @@ public abstract class MasterLocation implements Location {
 	}
 	
 	private void getMap(){
-		WorldCopenhagen copenhagen = Main.returnWorld();
+		WorldCopenhagen copenhagen = GameController.returnWorld();
 		tempMap = copenhagen.getLocations();
 	}
 	
@@ -49,11 +56,14 @@ public abstract class MasterLocation implements Location {
 		}
 	}
 	
-	public MasterLocation (int xInput, int yInput){
-		xPos = xInput;
-		yPos = yInput;
+	public void playerHasArrived(){
+		String description = this.getDescription();
+		System.out.println(description);
+		this.locationSpecificAction();
 	}
-
+	
+	public abstract void locationSpecificAction();
+	
 	@Override
 	public abstract String getDescription();
 }

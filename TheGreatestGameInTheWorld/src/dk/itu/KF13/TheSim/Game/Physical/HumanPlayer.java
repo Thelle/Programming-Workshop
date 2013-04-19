@@ -26,8 +26,9 @@ public class HumanPlayer implements Player {
 		}
 		else{
 			myLocation = requestedLocation;
+			myLocation.playerHasArrived();
 			return true;
-			}
+		}
 	}
 
 	@Override
