@@ -3,6 +3,7 @@ package dk.itu.KF13.TheSim.Game.World;
 import dk.itu.KF13.TheSim.Game.Controller.GameController;
 
 public abstract class MasterLocation implements Location {
+	
 	int xPos, yPos;
 	private Location[][] tempMap;
 	
@@ -22,15 +23,17 @@ public abstract class MasterLocation implements Location {
 		case WEST: testXPos = xPos-1; testYPos = yPos; break;
 		default: testXPos = -1; testYPos = -1;
 		}
-		
+		return newLocation(testXPos, testYPos);				
+	}
+	
+	private Location newLocation(int testXPos, int testYPos){
 		if (outOfBounds(testXPos, testYPos)){
 			return null;
 		}
 		else{
 			return tempMap[testXPos][testYPos];
 		}
-		
-	}
+	}	
 	
 	private void getMap(){
 		WorldCopenhagen copenhagen = GameController.returnWorld();
