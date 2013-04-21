@@ -1,11 +1,16 @@
 package dk.itu.KF13.TheSim.Game.World;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import dk.itu.KF13.TheSim.Game.Controller.GameController;
+import dk.itu.KF13.TheSim.Game.Physical.GameObject;
 
 public abstract class MasterLocation implements Location {
 	
 	int xPos, yPos;
 	private Location[][] tempMap;
+	List<GameObject> objectsAtLocation = new ArrayList<GameObject>();
 	
 	public MasterLocation (int xInput, int yInput){
 		xPos = xInput;
@@ -63,6 +68,23 @@ public abstract class MasterLocation implements Location {
 		String description = this.getDescription();
 		System.out.println(description);
 		this.locationSpecificAction();
+	}
+	
+	/**
+	 * placeObject adds the given object to the list of objects at the location
+	 * @param object an object extending the interface GameObject
+	 */
+	public boolean placeObject(GameObject object){
+		objectsAtLocation.add(object);
+		return true;
+	}
+	
+	/**
+	 * removeObject removes the first occurrence of the given object from list of objects at the location
+	 * @param object an object extending the interface GameObject
+	 */
+	public void removeObject(GameObject object){
+		objectsAtLocation.remove(object);
 	}
 	
 	public abstract void locationSpecificAction();

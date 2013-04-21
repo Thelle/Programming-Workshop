@@ -6,6 +6,13 @@ import dk.itu.KF13.TheSim.Game.World.Location.Direction;
 public class HumanPlayer implements Player {
 
 	Location myLocation;
+	Backpack myBackpack;
+	int alcoholLevel;
+	
+	public HumanPlayer(){
+		myBackpack = new Backpack();
+		alcoholLevel = 4;
+	}
 	
 	@Override
 	public Location getLocation() {
@@ -33,26 +40,42 @@ public class HumanPlayer implements Player {
 
 	@Override
 	public boolean take(GameObject object) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean status;
+		status = object.putInBackpack(myBackpack);
+		if (status){
+			myLocation.removeObject(object);
+			return true;
+		}else{
+			return false;
+		}		
 	}
 
 	@Override
 	public boolean drop(GameObject object) {
-		// TODO Auto-generated method stub
-		return false;
+		myBackpack.removeFromBackpack(object);
+		return true;
 	}
 
 	@Override
-	public int getEnergyLevel() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getAlcoholLevel() {
+		return alcoholLevel;
 	}
 
 	@Override
-	public void changeEnergyLevel(int diff) {
-		// TODO Auto-generated method stub
-
+	public void changeAlcoholLevel(int diff) {
+		alcoholLevel = alcoholLevel + diff;
+	}
+	
+	/**
+	 * use calls the use method of the object, and changes the
+	 * players alcohol level with the amount returned from the GameObject.
+	 * @param object
+	 */
+	public void use(GameObject object){
+		//The returned value is subtracted from the alcohol level because
+		//the use method returns the price of the action
+		int diff = -object.use();
+		this.changeAlcoholLevel(diff);
 	}
 
 }

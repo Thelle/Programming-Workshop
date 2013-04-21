@@ -24,11 +24,11 @@ public interface Player extends Localizable {
 	 * Returns the energy level of the player
 	 * @return
 	 */
-	int getEnergyLevel();
+	int getAlcoholLevel();
 	
 	/**
 	 * Changes the energy level of the player as specified by the diff
 	 * @param diff change in energy level
 	 */
-	void changeEnergyLevel(int diff);
+	void changeAlcoholLevel(int diff);
 }

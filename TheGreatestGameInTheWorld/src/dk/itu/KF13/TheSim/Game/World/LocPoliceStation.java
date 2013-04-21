@@ -1,5 +1,7 @@
 package dk.itu.KF13.TheSim.Game.World;
 
+import dk.itu.KF13.TheSim.Game.Physical.GameObject;
+
 public class LocPoliceStation extends MasterLocation {
 
 	public LocPoliceStation(int xInput, int yInput) {

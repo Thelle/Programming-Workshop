@@ -17,6 +17,7 @@ public class GameController {
 	public static WorldCopenhagen copenhagen;	
 	Location[][] worldLocations;
 	public HumanPlayer player;
+	private static boolean stopGame = false;
 	
 	/**
 	 * GameController is the constructor.
@@ -54,8 +55,12 @@ public class GameController {
 		boolean boContinue = true;
 		do {
 			boContinue = getCommand();			
-		}while(boContinue);
+		}while(boContinue && !stopGame);
 		
+	}
+	
+	static public void stopGame(){
+		stopGame=true;
 	}
 	
 	private boolean getCommand(){

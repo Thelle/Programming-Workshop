@@ -8,7 +8,7 @@ public class LocBrewery extends MasterLocation {
 
 	public LocBrewery(int xInput, int yInput) {
 		super(xInput, yInput);
-
+		
 	}
 
 	@Override
