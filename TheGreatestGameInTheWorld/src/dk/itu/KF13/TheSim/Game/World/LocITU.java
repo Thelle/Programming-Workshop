@@ -2,13 +2,15 @@ package dk.itu.KF13.TheSim.Game.World;
 
 public class LocITU extends MasterLocation {
 
-	public LocITU(int xInput, int yInput) {
-		super(xInput, yInput);
+	public LocITU(int xInput, int yInput, String name) {
+		super(xInput, yInput, name);
 	}
 
 	@Override
 	public String getDescription() {
-		return "You are at ITU!";
+		String returnString =  "You are at ITU!";
+		returnString += "\n" + getObjectDescriptions();
+		return returnString;
 	}
 
 	@Override

@@ -10,7 +10,7 @@ public class LocCityHallTest {
 	LocCityHall instance;
 	@Before
 	public void testSetup(){
-		instance = new LocCityHall(0, 0);
+		instance = new LocCityHall(0, 0,"blob");
 	}
 
 	@Test

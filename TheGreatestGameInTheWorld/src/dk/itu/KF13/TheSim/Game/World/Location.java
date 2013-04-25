@@ -10,9 +10,12 @@ public interface Location {
 	Location getExits(Direction direction);
 	
 	String getDescription();
+	String getName();
+	String getObjectDescriptions();
 	
 	void playerHasArrived();
 	
 	public void removeObject(GameObject object);
 	public boolean placeObject(GameObject object);
+
 }

@@ -17,9 +17,9 @@ public class WorldCopenhagen implements World {
 	 */
 	public WorldCopenhagen() {
 		// The population of the locationMap is implemented with 2D arrays for a better overview of the world.
-		Location[][] tempMap = 	{{new LocPoliceStation(0,0), new LocEmpty(0,1), new LocEmpty(0,2)},
-								{new LocITU(1,0), new LocCityHall(1,1), new LocEmpty(1,2)},
-								{new LocEmpty(2,0), new LocBrewery(2,1), new LocEmpty(2,2)}};
+		Location[][] tempMap = 	{{new LocPoliceStation(0,0, "Police station"), new LocEmpty(0,1,"Amager"), new LocEmpty(0,2,"Nørrebro")},
+								{new LocITU(1,0,"ITU"), new LocCityHall(1,1,"City hall"), new LocEmpty(1,2,"Vesterbro")},
+								{new LocEmpty(2,0,"Østerbro"), new LocBrewery(2,1,"Carlsberg brewery"), new LocEmpty(2,2,"Sydhavnen")}};
 		locationMap = tempMap;
 	}
 

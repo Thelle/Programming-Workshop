@@ -9,7 +9,7 @@ public class LocPoliceStationTest {
 	LocPoliceStation instance;
 	@Before
 	public void testSetup(){
-		instance = new LocPoliceStation(0, 0);
+		instance = new LocPoliceStation(0, 0, "blob");
 	}
 
 	@Test

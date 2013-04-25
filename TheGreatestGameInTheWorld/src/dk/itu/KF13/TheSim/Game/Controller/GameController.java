@@ -68,13 +68,35 @@ public class GameController {
 		System.out.println("What do you want to do?");
 		String input = sc.nextLine();
 		input = input.toLowerCase();
+		if (input.matches("go [a-z]*")){
+			return testMovement(input);
+		}
+		else if (input.matches("take [a-z]*")){
+			System.out.println("You take something");
+			return true;
+		} 
+		else if (input.matches("use [a-z]*")){
+			System.out.println("You use something");
+			return true;
+		} 
+		else if (input.matches("exit game")){
+			return false;
+		} 
+		else {
+			System.out.println("I did not understand the input.");
+			return true;
+		}
+		
+		
+	}
+	
+	private boolean testMovement(String input){
 		switch (input){
 		case "go north": movePlayer(Direction.NORTH);return true;
 		case "go south": movePlayer(Direction.SOUTH);return true;
 		case "go west": movePlayer(Direction.WEST);return true;
 		case "go east": movePlayer(Direction.EAST);return true;
-		case "exit game":return false;
-		default:System.out.println("I did not understand the input.");return true;
+		default:System.out.println("I did not understand the direction.");return true;
 		}
 	}
 	/**

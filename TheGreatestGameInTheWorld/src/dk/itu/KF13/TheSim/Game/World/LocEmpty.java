@@ -2,13 +2,15 @@ package dk.itu.KF13.TheSim.Game.World;
 
 public class LocEmpty extends MasterLocation {
 
-	public LocEmpty(int xInput, int yInput) {
-		super(xInput, yInput);
+	public LocEmpty(int xInput, int yInput, String name) {
+		super(xInput, yInput, name);
 	}
 
 	@Override
 	public String getDescription() {
-		return "Here is empty.";
+		String returnString =  "Here is empty.";
+		returnString += "\n" + getObjectDescriptions();
+		return returnString;
 	}
 
 	@Override

@@ -10,7 +10,7 @@ public class LocEmptyTest {
 	LocEmpty instance;
 	@Before
 	public void testSetup(){
-		instance = new LocEmpty(0, 0);
+		instance = new LocEmpty(0, 0,"blob");
 	}
 
 	@Test

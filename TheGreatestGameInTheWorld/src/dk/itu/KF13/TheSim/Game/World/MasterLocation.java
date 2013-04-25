@@ -3,18 +3,22 @@ package dk.itu.KF13.TheSim.Game.World;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hamcrest.core.IsNull;
+
 import dk.itu.KF13.TheSim.Game.Controller.GameController;
 import dk.itu.KF13.TheSim.Game.Physical.GameObject;
 
 public abstract class MasterLocation implements Location {
 	
 	int xPos, yPos;
+	String name;
 	private Location[][] tempMap;
 	List<GameObject> objectsAtLocation = new ArrayList<GameObject>();
 	
-	public MasterLocation (int xInput, int yInput){
+	public MasterLocation (int xInput, int yInput, String locationName){
 		xPos = xInput;
 		yPos = yInput;
+		name = locationName;
 	}
 	
 	@Override
@@ -68,6 +72,18 @@ public abstract class MasterLocation implements Location {
 		String description = this.getDescription();
 		System.out.println(description);
 		this.locationSpecificAction();
+		printExits();
+		
+	}
+	
+	public void printExits(){
+		for (Direction dir : Direction.values()){
+			if (getExits(dir) == null){
+				System.out.println(dir + ": nothing");
+			} else {
+				System.out.println(dir + ": " +  getExits(dir).getName());
+			}
+		}
 	}
 	
 	/**
@@ -86,6 +102,24 @@ public abstract class MasterLocation implements Location {
 	public void removeObject(GameObject object){
 		objectsAtLocation.remove(object);
 	}
+	
+	public String getObjectDescriptions(){
+		String returnString = "";
+		if (objectsAtLocation.isEmpty()){
+			return "No objects to be found at this location";
+		}else {
+			for (int i = 0; i < objectsAtLocation.size(); i++){
+				returnString += objectsAtLocation.get(i).getDescription() + "\n";
+			}
+		}
+		return returnString;
+	}
+	
+	public String getName(){
+		return name;
+	}
+	
+	
 	
 	public abstract void locationSpecificAction();
 	
