@@ -1,5 +1,7 @@
 package dk.itu.KF13.TheSim.Game.World;
 
+import java.util.List;
+
 import dk.itu.KF13.TheSim.Game.Physical.GameObject;
 
 
@@ -12,6 +14,7 @@ public interface Location {
 	String getDescription();
 	String getName();
 	String getObjectDescriptions();
+	List<GameObject> getObjects();
 	
 	void playerHasArrived();
 	

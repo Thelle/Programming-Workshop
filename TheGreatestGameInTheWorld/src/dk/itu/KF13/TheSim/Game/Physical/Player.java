@@ -1,5 +1,7 @@
 package dk.itu.KF13.TheSim.Game.Physical;
 
+import java.util.List;
+
 import dk.itu.KF13.TheSim.Game.World.Location.Direction;
 
 public interface Player extends Localizable {
@@ -19,6 +21,7 @@ public interface Player extends Localizable {
 	 */
 	boolean take(GameObject object);
 	boolean drop(GameObject object);
+	List<GameObject> returnContentOfBackpack();
 	
 	/**
 	 * Returns the energy level of the player
@@ -31,4 +34,6 @@ public interface Player extends Localizable {
 	 * @param diff change in energy level
 	 */
 	void changeAlcoholLevel(int diff);
+	
+	void removeFromBackPack(GameObject object);
 }

@@ -20,7 +20,7 @@ public class BlackJack {
     static int numberOfAces = 0;
     static int numberOfAcesWorth11 = 0;
     
-    public void playBlackJack(){
+    public boolean playBlackJack(){
         
     	switch (playRound("Player")){
         	case 0:
@@ -28,7 +28,7 @@ public class BlackJack {
         		break;
         	case 1:
         		System.out.println("You got more than 21 points. You lost. \nYou played: " + playedCards);
-        		return;
+        		return false;
         	case 2:
         		System.out.println("Great! You got exactly 21 points. Let's see how the dealer plays.");
         }    	
@@ -37,7 +37,6 @@ public class BlackJack {
         System.out.println("You played: " + playedCardsPlayer);
         
         resetGlobalVariables();
-        
         playRound("Dealer");
         
         dealerPoints = pointsPlayed;
@@ -47,11 +46,12 @@ public class BlackJack {
                 
         if(playerPoints > dealerPoints || dealerPoints > 21){
         	System.out.println("Congratulations. You won with " + playerPoints + " points against the dealer's " + dealerPoints + " points.");
+        	return true;
         }
         else {
         	System.out.println("Loser! You lost with with " + playerPoints + " points against the dealer's " + dealerPoints + " points.");
+        	return false;
         }
-        
     }
        
     private static void resetGlobalVariables(){

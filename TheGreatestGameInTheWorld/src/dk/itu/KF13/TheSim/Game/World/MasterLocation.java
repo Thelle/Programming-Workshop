@@ -115,6 +115,10 @@ public abstract class MasterLocation implements Location {
 		return returnString;
 	}
 	
+	public List<GameObject> getObjects(){
+		return objectsAtLocation;
+	}
+	
 	public String getName(){
 		return name;
 	}

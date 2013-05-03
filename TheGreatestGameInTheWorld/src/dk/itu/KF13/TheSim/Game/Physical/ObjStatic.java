@@ -13,8 +13,8 @@ public class ObjStatic extends MasterGameObject {
 	@Override
 	public String getDescription() {
 		switch(typeOfObject){
-		case STATUE: return "This is a statue";
-		case BARREL: return "This is a barrel";
+		case STATUE: return "a statue";
+		case BARREL: return "a barrel";
 		default: return null;
 		}
 	}

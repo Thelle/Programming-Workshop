@@ -21,8 +21,8 @@ public class ObjBottle extends MasterGameObject {
 	 */
 	public String getDescription() {
 		switch(typeOfBottle){
-		case MASTERBREW: return "This is a masterbrew";
-		case WATER: return "This is water";	
+		case MASTERBREW: return "a Masterbrew";
+		case WATER: return "a bottle of water";	
 		default:return null;
 		}
 	}

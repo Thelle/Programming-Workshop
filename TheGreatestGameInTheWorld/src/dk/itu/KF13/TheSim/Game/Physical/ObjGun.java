@@ -10,7 +10,7 @@ public class ObjGun extends MasterGameObject {
 
 	@Override
 	public String getDescription() {
-		return "This is a gun. Don't touch it";
+		return "a gun";
 	}
 	
 	/**

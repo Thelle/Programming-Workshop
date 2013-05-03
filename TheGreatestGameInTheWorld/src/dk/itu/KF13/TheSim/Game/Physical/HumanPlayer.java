@@ -1,5 +1,7 @@
 package dk.itu.KF13.TheSim.Game.Physical;
 
+import java.util.List;
+
 import dk.itu.KF13.TheSim.Game.World.Location;
 import dk.itu.KF13.TheSim.Game.World.Location.Direction;
 
@@ -14,18 +16,15 @@ public class HumanPlayer implements Player {
 		alcoholLevel = 4;
 	}
 	
-	@Override
 	public Location getLocation() {
 		return myLocation;
 	}
 
-	@Override
 	public boolean setLocation(Location location) {
 		myLocation = location;
 		return true;
 	}
 
-	@Override
 	public boolean move(Direction direction) {
 		Location requestedLocation = myLocation.getExits(direction);
 		if (requestedLocation == null){
@@ -33,12 +32,12 @@ public class HumanPlayer implements Player {
 		}
 		else{
 			myLocation = requestedLocation;
+			this.changeAlcoholLevel(-1);
 			myLocation.playerHasArrived();
 			return true;
 		}
 	}
 
-	@Override
 	public boolean take(GameObject object) {
 		boolean status;
 		status = object.putInBackpack(myBackpack);
@@ -50,18 +49,15 @@ public class HumanPlayer implements Player {
 		}		
 	}
 
-	@Override
 	public boolean drop(GameObject object) {
 		myBackpack.removeFromBackpack(object);
 		return true;
 	}
 
-	@Override
 	public int getAlcoholLevel() {
 		return alcoholLevel;
 	}
 
-	@Override
 	public void changeAlcoholLevel(int diff) {
 		alcoholLevel = alcoholLevel + diff;
 	}
@@ -76,6 +72,14 @@ public class HumanPlayer implements Player {
 		//the use method returns the price of the action
 		int diff = -object.use();
 		this.changeAlcoholLevel(diff);
+		myBackpack.removeFromBackpack(object);
 	}
 
+	public List<GameObject> returnContentOfBackpack() {
+		return myBackpack.getContent();
+	}
+
+	public void removeFromBackPack(GameObject object) {
+		myBackpack.removeFromBackpack(object);
+	}
 }

@@ -17,36 +17,13 @@ public class LocBrewery extends MasterLocation {
 		
 	}
 
-	@Override
 	public String getDescription() {
 		String returnString =  "You are standing at the Carlsberg Brewery. People are working hard.";
 		returnString += "\n" + getObjectDescriptions();
 		return returnString;
 	}
 
-	@Override
 	public void locationSpecificAction() {
-		System.out.println("Playing Black Jack is not implemented yet");
-		/*
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Do you want to play Black Jack?");
-		boolean doLoop = true;
-		do{
-			String input = sc.nextLine();
-			input = input.toLowerCase();
-			switch(input){
-			case "yes": playBlackJack();doLoop = false;break;
-			case "no": doLoop = false; break;
-			default: 
-				System.out.println("I don't understand. Input 'yes' or 'no'.");
-				doLoop= true;
-			}
-		} while(doLoop);
-		*/
+			System.out.println("You can play blackjack here");
 	}
-	private void playBlackJack(){
-		BlackJack blackJack = new BlackJack();
-	    blackJack.playBlackJack();
-	}
-
 }
