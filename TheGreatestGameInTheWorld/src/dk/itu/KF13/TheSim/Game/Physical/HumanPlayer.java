@@ -2,6 +2,7 @@ package dk.itu.KF13.TheSim.Game.Physical;
 
 import java.util.List;
 
+import dk.itu.KF13.TheSim.Game.Physical.ObjBottle.BottleType;
 import dk.itu.KF13.TheSim.Game.World.Location;
 import dk.itu.KF13.TheSim.Game.World.Location.Direction;
 
@@ -81,5 +82,34 @@ public class HumanPlayer implements Player {
 
 	public void removeFromBackPack(GameObject object) {
 		myBackpack.removeFromBackpack(object);
+	}
+	
+	/**
+	 * Adds beers to the player backpack
+	 * @param numberOfBeers - number of beers to be added
+	 */
+	public void addBeersToBackpack(int numberOfBeers){
+		for ( int i = 0; i < numberOfBeers; i++){
+			ObjBottle beer = new ObjBottle(true, BottleType.MASTERBREW);
+			beer.putInBackpack(myBackpack);
+		}
+	}
+	/**
+	 * removeBeersFromBackpack loops through the contents of the backpack 
+	 * and removes the numbers of beers specified in numberOfBeers
+	 * @param numberOfBeers - the number of beers to be removed
+	 */
+	public void removeBeersFromBackpack(int numberOfBeers){
+		List<GameObject> objectsInBackpack = returnContentOfBackpack();
+		int beersRemoved = 0;
+		for(int i = 0; i < objectsInBackpack.size() && beersRemoved < numberOfBeers;i++){
+			String description = objectsInBackpack.get(i).getDescription();
+			if(description.equalsIgnoreCase("a masterbrew")){
+				removeFromBackPack(objectsInBackpack.get(i));
+				beersRemoved++;
+				i--; //Subtracting one from i, because the size of the list 
+					//is one less after deleting an element
+			}
+		}
 	}
 }

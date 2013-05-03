@@ -1,26 +1,30 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package dk.itu.KF13.TheSim.Game.Minigames;
 import java.util.Random;
+
 import javax.swing.JOptionPane;
 
+import dk.itu.KF13.TheSim.Game.Physical.HumanPlayer;
+
 /**
- *
- * @author stcl
+ * BlackJack is responisble for running the game Black jack
+ * @author Simon & Thelle
  */
 public class BlackJack {
-    static String playedCards ="";
-    static String playedCardsPlayer ="";
-    static String playedCardsDealer ="";
-    static int pointsPlayed;
-    static int playerPoints;
-    static int dealerPoints;
-    static int numberOfAces = 0;
-    static int numberOfAcesWorth11 = 0;
+    String playedCards ="";
+    String playedCardsPlayer ="";
+    String playedCardsDealer ="";
+    int pointsPlayed;
+    int playerPoints;
+    int dealerPoints;
+    int numberOfAces = 0;
+    int numberOfAcesWorth11 = 0;
     
-    public boolean playBlackJack(){
+    /**
+     * playBlackJack runs the game.
+     * 
+     * @return
+     */
+    public void playBlackJack(HumanPlayer player){
         
     	switch (playRound("Player")){
         	case 0:
@@ -28,7 +32,7 @@ public class BlackJack {
         		break;
         	case 1:
         		System.out.println("You got more than 21 points. You lost. \nYou played: " + playedCards);
-        		return false;
+        		player.removeBeersFromBackpack(2);
         	case 2:
         		System.out.println("Great! You got exactly 21 points. Let's see how the dealer plays.");
         }    	
@@ -46,15 +50,15 @@ public class BlackJack {
                 
         if(playerPoints > dealerPoints || dealerPoints > 21){
         	System.out.println("Congratulations. You won with " + playerPoints + " points against the dealer's " + dealerPoints + " points.");
-        	return true;
+        	player.addBeersToBackpack(2);
         }
         else {
         	System.out.println("Loser! You lost with with " + playerPoints + " points against the dealer's " + dealerPoints + " points.");
-        	return false;
+        	player.removeBeersFromBackpack(2);
         }
     }
        
-    private static void resetGlobalVariables(){
+    private void resetGlobalVariables(){
         pointsPlayed = 0;
         numberOfAces = 0;
         numberOfAcesWorth11 = 0;
@@ -67,7 +71,7 @@ public class BlackJack {
      * 		   2 if playertype gets exactly 21 points
      */
     
-    private static int playRound(String playerType){
+    private int playRound(String playerType){
         boolean boContinue = true;
         int outcomeOfTurn;
         String drawnCard;
@@ -88,7 +92,7 @@ public class BlackJack {
         return outcomeOfTurn;
     }
     
-    private static boolean doesPlayerWantToContinue(String drawnCard) {
+    private boolean doesPlayerWantToContinue(String drawnCard) {
     	int intContinue = JOptionPane.showConfirmDialog(null, "You have drawn this card: " + 
                 drawnCard + "\nYou currently have " + pointsPlayed + " points" + 
                 "\nDo you want to continue?", "Draw another card?", JOptionPane.YES_NO_OPTION);
@@ -101,7 +105,7 @@ public class BlackJack {
     	}
 	}
     
-	private static String playOneTurn(){
+	private String playOneTurn(){
         String drawnCard;
         do{ //A unique card is drawn
                 drawnCard = drawCard();
@@ -111,7 +115,7 @@ public class BlackJack {
             return drawnCard;
     }
     
-    private static int turnOutcome(String playerType){
+    private int turnOutcome(String playerType){
         switch (checkPoints(playerType)){
             case "More than 21":
                 return 1;
@@ -126,7 +130,7 @@ public class BlackJack {
         
 }
     
-    private static String checkPoints (String playerType ){
+    private String checkPoints (String playerType ){
         int maxNumber = 0;
         if (playerType.equals("Dealer")){
             maxNumber = 17; //Dealer does only continues if it has less than 17 points.
@@ -154,9 +158,9 @@ public class BlackJack {
         }
     }
     
-    private static void addPoints(String drawnCard){
+    private void addPoints(String drawnCard){
         String numbersOnly = drawnCard.replaceAll("[()]","");
-        numbersOnly = numbersOnly.replaceFirst("[1-4] ","");
+        numbersOnly = numbersOnly.replaceFirst("[a-zA-Z]* ","");
         int cardNumber = Integer.parseInt(numbersOnly);
         int cardPoints = 0;
         if (cardNumber >1 && cardNumber <10) {
@@ -173,14 +177,25 @@ public class BlackJack {
         pointsPlayed = pointsPlayed + cardPoints;
     }
 
-    private static String drawCard(){
+    private String drawCard(){
         Random rand = new Random();
-        int cardSuit = rand.nextInt(3) + 1; //Adding 1 to match values in a card deck
+        int cardSuitNumber = rand.nextInt(3) + 1; //Adding 1 to match values in a card deck
         int cardNumber = rand.nextInt(13) + 1;
-        return "(" + cardSuit + " " + cardNumber + ")";
+        String suitName = changeSuitNumberIntoText(cardSuitNumber);
+        return "(" + suitName + " " + cardNumber + ")";
     }
     
-    private static boolean isAlreadyDrawn (String drawnCard) {
+    private String changeSuitNumberIntoText(int suitNumber){
+    	switch (suitNumber){
+    	case 1: return "Hearts";
+    	case 2: return "Spades";
+    	case 3: return "Diamonds";
+    	case 4: return "Clubs";
+    	default: return null;
+    	}
+    }
+    
+    private boolean isAlreadyDrawn (String drawnCard) {
         int subStringIndex = playedCards.lastIndexOf(drawnCard);
         if (subStringIndex == -1){ //Card is not already drawn
             return false;

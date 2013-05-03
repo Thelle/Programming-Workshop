@@ -25,7 +25,7 @@ public class Backpack {
 	 * @return false if there is no room for more objects
 	 */
 	public boolean roomForMore(){
-		if (content.size() < 2){
+		if (content.size() < 30){
 			return true;
 		}else{
 			return false;

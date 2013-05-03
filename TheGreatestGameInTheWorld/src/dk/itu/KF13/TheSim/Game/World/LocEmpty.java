@@ -1,5 +1,8 @@
 package dk.itu.KF13.TheSim.Game.World;
 
+import dk.itu.KF13.TheSim.Game.Physical.ObjBottle;
+import dk.itu.KF13.TheSim.Game.Physical.ObjBottle.BottleType;
+
 public class LocEmpty extends MasterLocation {
 
 	public LocEmpty(int xInput, int yInput, String name) {
@@ -15,7 +18,10 @@ public class LocEmpty extends MasterLocation {
 
 	@Override
 	public void locationSpecificAction() {
-		// TODO Auto-generated method stub
+		ObjBottle beer1 = new ObjBottle(true, BottleType.MASTERBREW);
+		ObjBottle beer2 = new ObjBottle(true, BottleType.MASTERBREW);
+		this.placeObject(beer1);
+		this.placeObject(beer2);
 		
 	}
 
