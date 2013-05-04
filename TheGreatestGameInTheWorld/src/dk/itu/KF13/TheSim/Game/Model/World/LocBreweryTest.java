@@ -10,7 +10,7 @@ public class LocBreweryTest {
 	LocBrewery instance;
 	@Before
 	public void testSetup(){
-		instance = new LocBrewery(0, 0,"blob");
+		instance = new LocBrewery(0, 0,"blob", null, null);
 	}
 
 	@Test

@@ -1,12 +1,15 @@
 package dk.itu.KF13.TheSim.Game.Model.World;
 
+import dk.itu.KF13.TheSim.Game.Controller.GameController;
 import dk.itu.KF13.TheSim.Game.Model.Physical.ObjBottle;
 import dk.itu.KF13.TheSim.Game.Model.Physical.ObjBottle.BottleType;
+import dk.itu.KF13.TheSim.Game.View.GameView;
 
 public class LocEmpty extends MasterLocation {
 
-	public LocEmpty(int xInput, int yInput, String name) {
-		super(xInput, yInput, name);
+	public LocEmpty(int xInput, int yInput, String name, 
+			GameController controller, GameView view) {
+		super(xInput, yInput, name, controller, view);
 	}
 
 	@Override

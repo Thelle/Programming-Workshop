@@ -9,7 +9,7 @@ public class ConsoleView {
 	 * Prints a single string to the console using system.out.println().
 	 * @param outputString - the string to be printed
 	 */
-	public static void print (String outputString){
+	public void print (String outputString){
 		System.out.println(outputString);
 	}
 

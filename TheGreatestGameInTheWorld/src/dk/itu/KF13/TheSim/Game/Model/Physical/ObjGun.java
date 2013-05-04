@@ -26,7 +26,7 @@ public class ObjGun extends MasterGameObject {
 	}
 	
 	public boolean putInBackpack(Backpack backpack){
-		GameView.print("You are dead");
+		view.print("You are dead");
 		GameRunner.stopGame();
 		return false;
 	}	

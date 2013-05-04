@@ -10,7 +10,7 @@ public class LocITUTest {
 	LocITU instance;
 	@Before
 	public void testSetup(){
-		instance = new LocITU(0, 0,"blob");
+		instance = new LocITU(0, 0,"blob", null, null);
 	}
 
 	@Test

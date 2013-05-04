@@ -119,9 +119,9 @@ public class HumanPlayer implements Player {
 	 */
 	public void lookInBackpack(){
 		List<GameObject> objectsInBackpack = this.returnContentOfBackpack();
-		GameView.print("Objects in backpack:");
+		view.print("Objects in backpack:");
 		for(int i = 0; i < objectsInBackpack.size();i++){
-			GameView.print(objectsInBackpack.get(i).getDescription());
+			view.print(objectsInBackpack.get(i).getDescription());
 		}
 	}
 	/**
@@ -151,11 +151,11 @@ public class HumanPlayer implements Player {
 			objectName = objectName.replaceFirst("a ", "");
 			if(input.equalsIgnoreCase("use "+objectName)){
 				use(objectsInBackpack.get(i));
-				GameView.print("You used "+objectName);
+				view.print("You used "+objectName);
 				return;
 			}
 		}
-		GameView.print("No such item in backpack");
+		view.print("No such item in backpack");
 	}
 
 	/**
@@ -173,13 +173,13 @@ public class HumanPlayer implements Player {
 			if(input.equalsIgnoreCase(objectName)){
 				boolean boStatus = take(objectsAtLocation.get(i));
 				if(boStatus){
-					GameView.print("You have taken the object");
+					view.print("You have taken the object");
 				} else{
-					GameView.print("There was no room in your backpack or you can't take the item");
+					view.print("There was no room in your backpack or you can't take the item");
 				}
 				return;
 			}
 		}
-		GameView.print("No such item");
+		view.print("No such item");
 	}
 }

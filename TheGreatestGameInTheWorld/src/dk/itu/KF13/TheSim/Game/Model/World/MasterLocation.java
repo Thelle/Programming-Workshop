@@ -3,6 +3,7 @@ package dk.itu.KF13.TheSim.Game.Model.World;
 import java.util.ArrayList;
 import java.util.List;
 
+import dk.itu.KF13.TheSim.Game.Controller.GameController;
 import dk.itu.KF13.TheSim.Game.Model.GameRunner;
 import dk.itu.KF13.TheSim.Game.Model.Physical.GameObject;
 import dk.itu.KF13.TheSim.Game.View.GameView;
@@ -13,6 +14,8 @@ public abstract class MasterLocation implements Location {
 	private String name;
 	private Location[][] tempMap;
 	protected List<GameObject> objectsAtLocation = new ArrayList<GameObject>();
+	protected GameController controller;
+	protected GameView view;
 	
 	/**
 	 * Constructor of the abstract class MasterLocation.
@@ -21,7 +24,8 @@ public abstract class MasterLocation implements Location {
 	 * @param yInput - the y-coordinate of the location
 	 * @param locationName - the name of the location
 	 */
-	public MasterLocation (int xInput, int yInput, String locationName){
+	public MasterLocation (int xInput, int yInput, String locationName, 
+			GameController gameController, GameView gameView){
 		xPos = xInput;
 		yPos = yInput;
 		name = locationName;
@@ -97,7 +101,7 @@ public abstract class MasterLocation implements Location {
 	 */
 	public void playerHasArrived(){
 		String description = this.getDescription();
-		GameView.print(description);
+		view.print(description);
 		this.locationSpecificAction();
 		printExits();
 		
@@ -109,9 +113,9 @@ public abstract class MasterLocation implements Location {
 	public void printExits(){
 		for (Direction dir : Direction.values()){
 			if (getExits(dir) == null){
-				GameView.print(dir + ": nothing");
+				view.print(dir + ": nothing");
 			} else {
-				GameView.print(dir + ": " +  getExits(dir).getName());
+				view.print(dir + ": " +  getExits(dir).getName());
 			}
 		}
 	}

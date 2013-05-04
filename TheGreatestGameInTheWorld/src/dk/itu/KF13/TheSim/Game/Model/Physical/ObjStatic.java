@@ -27,7 +27,7 @@ public class ObjStatic extends MasterGameObject {
 	 */
 	@Override
 	public int use() {
-		GameView.print("You can't use me!");
+		view.print("You can't use me!");
 		return 2;
 	}
 

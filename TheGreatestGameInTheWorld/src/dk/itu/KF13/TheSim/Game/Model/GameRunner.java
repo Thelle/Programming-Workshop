@@ -16,6 +16,7 @@ import dk.itu.KF13.TheSim.Game.View.GameView;
  */
 public class GameRunner {
 	private GameController controller;
+	private GameView view;
 	public static WorldCopenhagen copenhagen;	
 	private Location[][] worldLocations;
 	private HumanPlayer player;
@@ -35,6 +36,7 @@ public class GameRunner {
 	 * @param gameView
 	 */
 	public void setGameView(GameView gameView){
+		view = gameView;
 	}
 	
 	/**
@@ -50,7 +52,7 @@ public class GameRunner {
 	 */
 	private void createWorld(){
 		//Creates the world
-		copenhagen = new WorldCopenhagen();
+		copenhagen = new WorldCopenhagen(controller, view);
 		//Populates the world with locations
 		worldLocations = copenhagen.getLocations();		
 	}
@@ -92,13 +94,13 @@ public class GameRunner {
 	private boolean checkAlcoholLevel(){
 		int alcoholLevel = player.getAlcoholLevel();
 		if(alcoholLevel <= 0){
-			GameView.print("You're too sober and fall asleep - GAME OVER");
+			view.print("You're too sober and fall asleep - GAME OVER");
 			return false;
 		} else if(alcoholLevel > 20){
-			GameView.print("You're too drunk and fall asleep - GAME OVER");
+			view.print("You're too drunk and fall asleep - GAME OVER");
 			return false;
 		} else{
-			GameView.print("Alcohollevel: "+alcoholLevel+" / 20");
+			view.print("Alcohollevel: "+alcoholLevel+" / 20");
 			return true;
 		}
 	}
@@ -120,11 +122,11 @@ public class GameRunner {
 		BlackJack blackJack = new BlackJack();
 		if(player.getLocation() instanceof LocBrewery){
 			if(player.lookForSpecificItem("a masterbrew") >= 2){
-				GameView.print("You will now play blackjack");
+				view.print("You will now play blackjack");
 				blackJack.playBlackJack(player);
 				blackJack = null;
 			} else{
-				GameView.print("You need two beers to play");
+				view.print("You need two beers to play");
 			}
 		}
 	}
@@ -151,7 +153,7 @@ public class GameRunner {
 	public void movePlayer(Direction direction){
 		boolean hasMoved = player.move(direction);
 		if (!hasMoved){
-			GameView.print("You can't move this way");
+			view.print("You can't move this way");
 		}
 	}
 }

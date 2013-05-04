@@ -16,6 +16,7 @@ public class GameController {
 	
 	private GameRunner runner;
 	private HumanPlayer player;
+	private GameView view;
 	
 	public void setGameRunner(GameRunner gameRunner){
 		this.runner = gameRunner;
@@ -27,6 +28,7 @@ public class GameController {
 	}
 	
 	public void setGameView (GameView gameView){
+		view = gameView;
 	}
 	/**
 	 * Takes written user input and runs the method according to command.
@@ -36,7 +38,7 @@ public class GameController {
 	public boolean getCommand(){
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
-		GameView.print("What do you want to do?");
+		view.print("What do you want to do?");
 		String input = sc.nextLine();
 		input = input.toLowerCase();
 		
@@ -64,7 +66,7 @@ public class GameController {
 			return true;
 		}
 		else {
-			GameView.print("I did not understand the input.");
+			view.print("I did not understand the input.");
 			return true;
 		}
 	}	
@@ -80,7 +82,7 @@ public class GameController {
 		case "go south": runner.movePlayer(Direction.SOUTH);break;
 		case "go west": runner.movePlayer(Direction.WEST);break;
 		case "go east": runner.movePlayer(Direction.EAST);break;
-		default:GameView.print("I did not understand the direction.");break;
+		default:view.print("I did not understand the direction.");break;
 		}
 	}
 	

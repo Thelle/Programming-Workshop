@@ -29,34 +29,34 @@ public class BlackJack {
         
     	switch (playRound("Player")){
         	case 0:
-        		GameView.print("You chose to hold. Let's see how the dealer plays.");
+        		view.print("You chose to hold. Let's see how the dealer plays.");
         		break;
         	case 1:
-        		GameView.print("You got more than 21 points. You lost. \nYou played: " + playedCards);
+        		view.print("You got more than 21 points. You lost. \nYou played: " + playedCards);
         		player.removeBeersFromBackpack(2);
         		break;
         	case 2:
-        		GameView.print("Great! You got exactly 21 points. Let's see how the dealer plays.");
+        		view.print("Great! You got exactly 21 points. Let's see how the dealer plays.");
         		break;
         }    	
         playerPoints = pointsPlayed;
         playedCardsPlayer=playedCards;
-        GameView.print("You played: " + playedCardsPlayer);
+        view.print("You played: " + playedCardsPlayer);
         
         resetGlobalVariables();
         playRound("Dealer");
         
         dealerPoints = pointsPlayed;
         playedCardsDealer = playedCards.replace(playedCardsPlayer,"");
-        GameView.print("Dealer played: " + playedCardsDealer);
+        view.print("Dealer played: " + playedCardsDealer);
         
                 
         if(playerPoints > dealerPoints || dealerPoints > 21){
-        	GameView.print("Congratulations. You won with " + playerPoints + " points against the dealer's " + dealerPoints + " points.");
+        	view.print("Congratulations. You won with " + playerPoints + " points against the dealer's " + dealerPoints + " points.");
         	player.addBeersToBackpack(2);
         }
         else {
-        	GameView.print("Loser! You lost with with " + playerPoints + " points against the dealer's " + dealerPoints + " points.");
+        	view.print("Loser! You lost with with " + playerPoints + " points against the dealer's " + dealerPoints + " points.");
         	player.removeBeersFromBackpack(2);
         }
     }
