@@ -27,7 +27,7 @@ public interface Player extends Localizable {
 	 * input with the descriptions of the items at the location.
 	 * @param input - the written user input
 	 */
-	void takeObject(String input);
+	boolean takeObject(String input);
 	
 	/**
 	 * @return Returns a list with all the objects in the players backpack

@@ -33,7 +33,7 @@ public class ObjBottle extends MasterGameObject {
 	/**
 	 * use changes the alcohol level of the player according to the type of bottle.
 	 * <li> masterbrew: alcohol is increased
-	 * <li> water: alcohol is decreased	 * 
+	 * <li> water: alcohol is decreased	
 	 */
 	public int use() {
 		switch(typeOfBottle){

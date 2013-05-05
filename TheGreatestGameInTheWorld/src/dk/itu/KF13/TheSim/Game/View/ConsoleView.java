@@ -1,6 +1,6 @@
 package dk.itu.KF13.TheSim.Game.View;
 /**
- * ConsoleView is ersponsoble for printing text to the console
+ * ConsoleView is responsible for printing text to the console
  * @author Simon
  *
  */

@@ -2,6 +2,7 @@ package dk.itu.KF13.TheSim.Game.Model.Minigames.BlackJack;
 import java.util.Random;
 
 
+import dk.itu.KF13.TheSim.Game.Controller.IGameController;
 import dk.itu.KF13.TheSim.Game.Model.Physical.Class.HumanPlayer;
 import dk.itu.KF13.TheSim.Game.View.GameView;
 
@@ -10,19 +11,18 @@ import dk.itu.KF13.TheSim.Game.View.GameView;
  * @author Simon & Thelle
  */
 public class BlackJack {
-    String playedCards ="";
-    String playedCardsPlayer ="";
-    String playedCardsDealer ="";
-    int pointsPlayed;
-    int playerPoints;
-    int dealerPoints;
-    int numberOfAces = 0;
-    int numberOfAcesWorth11 = 0;
+    private String playedCards ="";
+    private String playedCardsPlayer ="";
+    private String playedCardsDealer ="";
+    private int pointsPlayed;
+    private int playerPoints;
+    private int dealerPoints;
+    private int numberOfAcesWorth11 = 0;
     
     private BlackJackController controller;
     
-    public BlackJack(){
-    	controller = new BlackJackController();
+    public BlackJack(IGameController gameController){
+    	controller = new BlackJackController(gameController);
     }
     
     /**
@@ -109,7 +109,6 @@ public class BlackJack {
      */
     private void resetGlobalVariables(){
         pointsPlayed = 0;
-        numberOfAces = 0;
         numberOfAcesWorth11 = 0;
     }
     
@@ -270,7 +269,6 @@ public class BlackJack {
         }
         else if (cardNumber == 1){
             cardPoints = 11;
-            numberOfAces++;
             numberOfAcesWorth11++;
         }
         pointsPlayed = pointsPlayed + cardPoints;

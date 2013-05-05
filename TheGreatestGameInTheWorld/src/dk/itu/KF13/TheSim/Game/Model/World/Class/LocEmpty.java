@@ -40,8 +40,18 @@ public class LocEmpty extends MasterLocation {
 	 */
 	private ObjBottle placeRandomBottle(){
 		Random rand = new Random();
+		int randomNumber = rand.nextInt(15); //returns a number between 0 and 14
+		ObjBottle obj = createBottle(randomNumber);
+		return obj;
+	}
+	
+	/**
+	 * createBottle creates a bottle based on the random number it is given
+	 * @param randomNumber - a number between 0 and 14
+	 * @return - a bottle type or null
+	 */
+	private ObjBottle createBottle(int randomNumber){
 		ObjBottle obj;
-		int randomNumber = rand.nextInt(15);
 		if (randomNumber < 5){
 			obj = new ObjBottle(true, BottleType.MASTERBREW);
 		}else if (randomNumber >= 5 && randomNumber < 10){

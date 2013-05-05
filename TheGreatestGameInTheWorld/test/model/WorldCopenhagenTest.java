@@ -1,4 +1,4 @@
-package dk.itu.KF13.TheSim.Game.Model.World.Test;
+package model;
 
 import static org.junit.Assert.*;
 

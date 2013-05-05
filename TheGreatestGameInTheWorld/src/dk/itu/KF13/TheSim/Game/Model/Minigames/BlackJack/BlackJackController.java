@@ -2,6 +2,8 @@ package dk.itu.KF13.TheSim.Game.Model.Minigames.BlackJack;
 
 import java.util.Scanner;
 
+import dk.itu.KF13.TheSim.Game.Controller.GameController;
+import dk.itu.KF13.TheSim.Game.Controller.IGameController;
 import dk.itu.KF13.TheSim.Game.View.GameView;
 /**
  * The BlackJackController class is used to take input from the user
@@ -10,27 +12,53 @@ import dk.itu.KF13.TheSim.Game.View.GameView;
  *
  */
 public class BlackJackController {
+	
+	private IGameController controller;
+	
+	public BlackJackController (IGameController gameController){
+		controller = gameController;
+	}
+	
 	/**
 	 * getYesNo reads the user input and makes sure it's a y or an n.
 	 * If the user enters anything else, s/he is asked to redo it.
 	 * @return 'y' or 'n'
 	 */
 	public String getYesNo(){
-		@SuppressWarnings("resource")
-		Scanner sc = new Scanner(System.in);
-		boolean doLoop = true;
+		boolean stopLoop = false;
 		String input;
 		do{
-			input = sc.next();
-			if (input.equalsIgnoreCase("y") || input.equalsIgnoreCase("n") ){
-				doLoop = false;
+			input = getStringInput();
+			if (testUserInput(input)){
+				stopLoop = true;
 			} else {
-				GameView.printnl("I did not understand that. Write Y or N");
+				GameView.printnl("I did not understand that. Write y or n");
 			}
-		}while(doLoop);
+		}while(!stopLoop);
 		return input;
 	}
 	
+	/**
+	 * testUserInput tests the user input to see if it is a 'y' or 'n'
+	 * @param input - the input given by the user
+	 * @return True if the input is 'y' or 'n'. False otherwise
+	 */
+	private boolean testUserInput(String input){
+		if (input.equalsIgnoreCase("y") || input.equalsIgnoreCase("n") ){
+			return true;
+		} else {
+			return false;
+		}
+	}
+	/**
+	 * getStringInput calls the method getStringInput from {@link GameController}
+	 * and returns the users input.
+	 * @return Returns user input.
+	 */
+	private String getStringInput(){
+		String input = controller.getStringInput();
+		return input;
+	}
 	
 	
 

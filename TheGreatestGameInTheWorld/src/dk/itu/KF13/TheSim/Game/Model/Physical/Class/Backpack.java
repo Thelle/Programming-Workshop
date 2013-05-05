@@ -64,13 +64,13 @@ public class Backpack {
 	 * @return then number of beers in the backpack
 	 */
 	public int numberOfSpecificItemsInBackpack(String descriptionOfItem){
-		int numberOfBeers = 0;
+		int numberOfItems = 0;
 		for(int i = 0; i < content.size();i++){
 			String description = content.get(i).getDescription();
 			if(description.equalsIgnoreCase(descriptionOfItem)){
-				numberOfBeers++;
+				numberOfItems++;
 			}
 		}
-		return numberOfBeers;
+		return numberOfItems;
 	}
 }

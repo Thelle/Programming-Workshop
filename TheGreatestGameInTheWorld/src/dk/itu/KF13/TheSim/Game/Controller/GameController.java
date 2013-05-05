@@ -12,7 +12,7 @@ import dk.itu.KF13.TheSim.Game.View.GameView;
  * @author Simon & Thelle
  *
  */
-public class GameController {
+public class GameController implements IGameController {
 	
 	private GameRunner runner;
 	private HumanPlayer player;
@@ -25,8 +25,6 @@ public class GameController {
 		this.player = player;
 	}
 	
-	public void setGameView (GameView gameView){
-	}
 	/**
 	 * Takes written user input and runs the method according to command.
 	 * @return true if the player doesn't choose to stop the game

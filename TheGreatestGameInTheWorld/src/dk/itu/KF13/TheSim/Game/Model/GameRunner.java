@@ -1,6 +1,7 @@
 package dk.itu.KF13.TheSim.Game.Model;
 
 import dk.itu.KF13.TheSim.Game.Controller.GameController;
+import dk.itu.KF13.TheSim.Game.Controller.IGameController;
 import dk.itu.KF13.TheSim.Game.Model.Minigames.BlackJack.BlackJack;
 import dk.itu.KF13.TheSim.Game.Model.Physical.Class.HumanPlayer;
 import dk.itu.KF13.TheSim.Game.Model.World.Class.LocBrewery;
@@ -15,7 +16,7 @@ import dk.itu.KF13.TheSim.Game.View.GameView;
  * @author Simon
  */
 public class GameRunner {
-	private GameController controller;
+	private IGameController controller;
 	public static WorldCopenhagen copenhagen;	
 	private Location[][] worldLocations;
 	private HumanPlayer player;
@@ -26,7 +27,7 @@ public class GameRunner {
 	 * setter for the private attribute controller
 	 * @param gameController
 	 */
-	public void setGameController(GameController gameController){
+	public void setGameController(IGameController gameController){
 		controller = gameController;
 	}
 	
@@ -118,7 +119,7 @@ public class GameRunner {
 	 * Starts the game if both is true.
 	 */
 	public void blackjackConditionsCheck(){
-		BlackJack blackJack = new BlackJack();
+		BlackJack blackJack = new BlackJack(controller);
 		if(player.getLocation() instanceof LocBrewery){
 			if(player.lookForSpecificItem("a masterbrew") >= 2){
 				blackJack.playBlackJack(player);

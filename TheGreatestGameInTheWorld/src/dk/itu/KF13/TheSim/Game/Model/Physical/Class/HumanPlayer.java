@@ -2,6 +2,7 @@ package dk.itu.KF13.TheSim.Game.Model.Physical.Class;
 
 import java.util.List;
 
+import dk.itu.KF13.TheSim.Game.Model.Physical.AbstractClass.MasterGameObject;
 import dk.itu.KF13.TheSim.Game.Model.Physical.Class.ObjBottle.BottleType;
 import dk.itu.KF13.TheSim.Game.Model.Physical.Interface.GameObject;
 import dk.itu.KF13.TheSim.Game.Model.Physical.Interface.Player;
@@ -59,22 +60,38 @@ public class HumanPlayer implements Player {
 		}		
 	}
 	
-	public void takeObject(String input){
+	public boolean takeObject(String input){
+		//Get objects from location
 		Location playerLocation = getLocation();
 		List<GameObject> objectsAtLocation = playerLocation.getObjects();
+		
 		for(int i = 0; i < objectsAtLocation.size();i++){
-			String objectName = objectsAtLocation.get(i).getDescription();
-			objectName = objectName.replaceFirst("a ", "");
-			objectName = "take "+ objectName;
-			if(input.equalsIgnoreCase(objectName)){
+			//Search string is found
+			String searchString = getSearchString(objectsAtLocation.get(i));
+			//Searchstring is tested
+			if(input.equalsIgnoreCase(searchString)){
 				takeObject(objectsAtLocation.get(i));				
-				return;
-			} else {
-				GameView.print("No such item at this location");
-			}
-		}		
-	}
+				return true;
+			} 
+		}
+		GameView.print("No such item at this location");
+		return false;
 
+	}
+	
+	/**
+	 * getSearchString takes the description of the object and returns
+	 * the search  string that is used to compared to the player command.
+	 * @param gameObject - the object that is to be changed
+	 * @return Returns the string which is used to find the object
+	 */
+	private String getSearchString(GameObject gameObject){
+		String objectDescription = gameObject.getDescription();
+		objectDescription = objectDescription.replaceFirst("a ", "");
+		objectDescription = "take "+ objectDescription;
+		return objectDescription;
+		
+	}
 	public int getAlcoholLevel() {
 		return alcoholLevel;
 	}
