@@ -20,5 +20,18 @@ public class GameView {
 		}
 	}
 	
+	/**
+	 * print takes the input from the model and sends it to the correct output device
+	 * based on the value of the constant ouputDevice.
+	 * An empty line is added underneath the written line
+	 * @param outputString - one single string that has to be printed
+	 */
+	public static void printnl (String outputString){
+		switch (outputDevice){
+		case 1: ConsoleView.printnl(outputString); break; // send output to console as text
+		case 2: break; // send output to JFrame as text. Not implemented
+		}
+	}
+	
 	
 }
