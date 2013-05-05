@@ -1,8 +1,10 @@
-package dk.itu.KF13.TheSim.Game.Model.World;
+package dk.itu.KF13.TheSim.Game.Model.World.Test;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import dk.itu.KF13.TheSim.Game.Model.World.Class.WorldCopenhagen;
 
 public class WorldCopenhagenTest {
 
@@ -12,7 +14,7 @@ public class WorldCopenhagenTest {
 	 */
 	@Test
 	public void testGetLocations() {
-		WorldCopenhagen instance = new WorldCopenhagen(null, null);
+		WorldCopenhagen instance = new WorldCopenhagen();
 		
 		assertNotNull(instance.getLocations());
 	}

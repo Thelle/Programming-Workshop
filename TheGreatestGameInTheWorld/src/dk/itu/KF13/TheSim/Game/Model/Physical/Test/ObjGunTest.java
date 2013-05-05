@@ -1,8 +1,11 @@
-package dk.itu.KF13.TheSim.Game.Model.Physical;
+package dk.itu.KF13.TheSim.Game.Model.Physical.Test;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import dk.itu.KF13.TheSim.Game.Model.Physical.Class.Backpack;
+import dk.itu.KF13.TheSim.Game.Model.Physical.Class.ObjGun;
 
 public class ObjGunTest {
 

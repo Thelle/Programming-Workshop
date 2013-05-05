@@ -1,13 +1,14 @@
-package dk.itu.KF13.TheSim.Game.Model.Physical;
+package dk.itu.KF13.TheSim.Game.Model.Physical.Class;
 
+import dk.itu.KF13.TheSim.Game.Model.Physical.AbstractClass.MasterGameObject;
 import dk.itu.KF13.TheSim.Game.View.GameView;
 
-public class ObjStatic extends MasterGameObject {
+public class ObjNonMovable extends MasterGameObject {
 	
 	public enum ObjectType {STATUE, BARREL}; 
 	private ObjectType typeOfObject;
 	
-	public ObjStatic(boolean canBeTaken, ObjectType objectType) {
+	public ObjNonMovable(boolean canBeTaken, ObjectType objectType) {
 		super(canBeTaken);
 		typeOfObject = objectType;
 	}
@@ -22,12 +23,12 @@ public class ObjStatic extends MasterGameObject {
 	}
 	
 	/**
-	 * An object of type ObjStatic can't be used right now
+	 * An object of type ObjStatic can't be used 
 	 * @return 
 	 */
 	@Override
 	public int use() {
-		view.print("You can't use me!");
+		GameView.print("You can't use me!");
 		return 2;
 	}
 

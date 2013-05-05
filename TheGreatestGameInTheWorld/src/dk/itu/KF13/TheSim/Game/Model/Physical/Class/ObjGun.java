@@ -1,6 +1,7 @@
-package dk.itu.KF13.TheSim.Game.Model.Physical;
+package dk.itu.KF13.TheSim.Game.Model.Physical.Class;
 
 import dk.itu.KF13.TheSim.Game.Model.GameRunner;
+import dk.itu.KF13.TheSim.Game.Model.Physical.AbstractClass.MasterGameObject;
 import dk.itu.KF13.TheSim.Game.View.GameView;
 
 public class ObjGun extends MasterGameObject {
@@ -9,24 +10,25 @@ public class ObjGun extends MasterGameObject {
 		super(canBeTaken);
 	}
 
-	@Override
 	public String getDescription() {
 		return "a gun";
 	}
 	
 	/**
-	 * use is not used with the gun. 
-	 * The player will die before he can use it.
-	 * @return 
+	 * The player can't use the gun.
+	 * He will be dead before being able to use it.
 	 */
-	@Override
+	
 	public int use() {
 		return 0;
 
 	}
-	
+	/**
+	 * When the user tries to take the gun, he will die and the game will end
+	 */
+	@Override
 	public boolean putInBackpack(Backpack backpack){
-		view.print("You are dead");
+		GameView.print("You are dead");
 		GameRunner.stopGame();
 		return false;
 	}	

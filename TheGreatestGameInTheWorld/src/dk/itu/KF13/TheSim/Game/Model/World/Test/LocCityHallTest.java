@@ -1,16 +1,18 @@
-package dk.itu.KF13.TheSim.Game.Model.World;
+package dk.itu.KF13.TheSim.Game.Model.World.Test;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
-public class LocITUTest {
+import dk.itu.KF13.TheSim.Game.Model.World.Class.LocCityHall;
 
-	LocITU instance;
+public class LocCityHallTest {
+
+	LocCityHall instance;
 	@Before
 	public void testSetup(){
-		instance = new LocITU(0, 0,"blob", null, null);
+		instance = new LocCityHall(0, 0,"blob");
 	}
 
 	@Test

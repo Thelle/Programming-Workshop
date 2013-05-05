@@ -1,4 +1,7 @@
-package dk.itu.KF13.TheSim.Game.Model.Physical;
+package dk.itu.KF13.TheSim.Game.Model.Physical.Class;
+
+import dk.itu.KF13.TheSim.Game.Model.Physical.AbstractClass.MasterGameObject;
+
 /**
  * ObjBottle is the class of the bottles in the world.
  * Two bottletypes are possible: Water and Masterbrew
@@ -28,9 +31,9 @@ public class ObjBottle extends MasterGameObject {
 	}
 
 	/**
-	 * use changes the alcohol level of the player according to the type of bottle
-	 * type masterbrew: alcohol is increased
-	 * type water: alcohol is decreased
+	 * use changes the alcohol level of the player according to the type of bottle.
+	 * <li> masterbrew: alcohol is increased
+	 * <li> water: alcohol is decreased	 * 
 	 */
 	public int use() {
 		switch(typeOfBottle){

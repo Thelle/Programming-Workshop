@@ -1,11 +1,12 @@
-package dk.itu.KF13.TheSim.Game.Model.World;
+package dk.itu.KF13.TheSim.Game.Model.World.AbstractClass;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import dk.itu.KF13.TheSim.Game.Controller.GameController;
 import dk.itu.KF13.TheSim.Game.Model.GameRunner;
-import dk.itu.KF13.TheSim.Game.Model.Physical.GameObject;
+import dk.itu.KF13.TheSim.Game.Model.Physical.Interface.GameObject;
+import dk.itu.KF13.TheSim.Game.Model.World.Class.WorldCopenhagen;
+import dk.itu.KF13.TheSim.Game.Model.World.Interface.Location;
 import dk.itu.KF13.TheSim.Game.View.GameView;
 
 public abstract class MasterLocation implements Location {
@@ -14,8 +15,6 @@ public abstract class MasterLocation implements Location {
 	private String name;
 	private Location[][] tempMap;
 	protected List<GameObject> objectsAtLocation = new ArrayList<GameObject>();
-	protected GameController controller;
-	protected GameView view;
 	
 	/**
 	 * Constructor of the abstract class MasterLocation.
@@ -24,20 +23,12 @@ public abstract class MasterLocation implements Location {
 	 * @param yInput - the y-coordinate of the location
 	 * @param locationName - the name of the location
 	 */
-	public MasterLocation (int xInput, int yInput, String locationName, 
-			GameController gameController, GameView gameView){
+	public MasterLocation (int xInput, int yInput, String locationName){
 		xPos = xInput;
 		yPos = yInput;
 		name = locationName;
 	}
 	
-	/**
-	 * getExits returns the location in the direction specified relative to
-	 * the location from where the method is called
-	 * @param direction - the direction of the location to be returned.
-	 * @return null if there is no location in the specified direction.
-	 * returns the location otherwise.
-	 */
 	public Location getExits(Direction direction) {
 		int newXPos, newYPos;
 		getMap();
@@ -95,53 +86,34 @@ public abstract class MasterLocation implements Location {
 		}
 	}
 	
-	/**
-	 * playerHasArrived prints the description of the current location,
-	 * runs the specific action for the location and prints out the exits from the location
-	 */
 	public void playerHasArrived(){
 		String description = this.getDescription();
-		view.print(description);
+		GameView.print(description);
 		this.locationSpecificAction();
 		printExits();
 		
 	}
 	
-	/**
-	 * Pints out the names of the locations at the exits of the current location
-	 */
+	
 	public void printExits(){
 		for (Direction dir : Direction.values()){
 			if (getExits(dir) == null){
-				view.print(dir + ": nothing");
+				GameView.print(dir + ": nothing");
 			} else {
-				view.print(dir + ": " +  getExits(dir).getName());
+				GameView.print(dir + ": " +  getExits(dir).getName());
 			}
 		}
 	}
 	
-	/**
-	 * placeObject adds the given object to the list of objects at the location
-	 * @param object an object extending the interface GameObject
-	 */
 	public boolean placeObject(GameObject object){
 		objectsAtLocation.add(object);
 		return true;
 	}
 	
-	/**
-	 * removeObject removes the first occurrence of the given object from list of objects at the location
-	 * @param object an object extending the interface GameObject
-	 */
 	public void removeObject(GameObject object){
 		objectsAtLocation.remove(object);
 	}
 	
-	/**
-	 * getObjectDescriptions loops through all the objects at the location and 
-	 * returns a string with the description of all the objects
-	 * @return a string with the description of all objects at the location
-	 */
 	public String getObjectDescriptions(){
 		String returnString = "";
 		if (objectsAtLocation.isEmpty()){
@@ -154,29 +126,15 @@ public abstract class MasterLocation implements Location {
 		return returnString;
 	}
 	
-	/**
-	 * @return a list with all the objects at the location
-	 */
 	public List<GameObject> getObjects(){
 		return objectsAtLocation;
 	}
 	
-	/**
-	 * @return returns the name of the location as given when the location
-	 * was instantiated
-	 */
 	public String getName(){
 		return name;
 	}	
 	
-	/**
-	 * Runs specific actions tied to the location.
-	 * Not all location have location specific actions
-	 */
 	public abstract void locationSpecificAction();
 	
-	/**
-	 * returns the description of the location
-	 */
 	public abstract String getDescription();
 }

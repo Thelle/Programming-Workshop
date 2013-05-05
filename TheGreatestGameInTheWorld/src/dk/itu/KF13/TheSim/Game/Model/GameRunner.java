@@ -1,12 +1,12 @@
 package dk.itu.KF13.TheSim.Game.Model;
 
 import dk.itu.KF13.TheSim.Game.Controller.GameController;
-import dk.itu.KF13.TheSim.Game.Model.Minigames.BlackJack;
-import dk.itu.KF13.TheSim.Game.Model.Physical.HumanPlayer;
-import dk.itu.KF13.TheSim.Game.Model.World.LocBrewery;
-import dk.itu.KF13.TheSim.Game.Model.World.Location;
-import dk.itu.KF13.TheSim.Game.Model.World.WorldCopenhagen;
-import dk.itu.KF13.TheSim.Game.Model.World.Location.Direction;
+import dk.itu.KF13.TheSim.Game.Model.Minigames.BlackJack.BlackJack;
+import dk.itu.KF13.TheSim.Game.Model.Physical.Class.HumanPlayer;
+import dk.itu.KF13.TheSim.Game.Model.World.Class.LocBrewery;
+import dk.itu.KF13.TheSim.Game.Model.World.Class.WorldCopenhagen;
+import dk.itu.KF13.TheSim.Game.Model.World.Interface.Location;
+import dk.itu.KF13.TheSim.Game.Model.World.Interface.Location.Direction;
 import dk.itu.KF13.TheSim.Game.View.GameView;
 
 /**
@@ -16,7 +16,6 @@ import dk.itu.KF13.TheSim.Game.View.GameView;
  */
 public class GameRunner {
 	private GameController controller;
-	private GameView view;
 	public static WorldCopenhagen copenhagen;	
 	private Location[][] worldLocations;
 	private HumanPlayer player;
@@ -36,7 +35,6 @@ public class GameRunner {
 	 * @param gameView
 	 */
 	public void setGameView(GameView gameView){
-		view = gameView;
 	}
 	
 	/**
@@ -52,7 +50,7 @@ public class GameRunner {
 	 */
 	private void createWorld(){
 		//Creates the world
-		copenhagen = new WorldCopenhagen(controller, view);
+		copenhagen = new WorldCopenhagen();
 		//Populates the world with locations
 		worldLocations = copenhagen.getLocations();		
 	}
@@ -78,7 +76,8 @@ public class GameRunner {
 		boolean boContinue = true;
 		do {
 			if(checkAlcoholLevel()){
-				boContinue = controller.getCommand();		
+				boContinue = controller.getCommand();
+				GameView.print("");
 			} else{
 				boContinue = false;
 			}
@@ -94,13 +93,13 @@ public class GameRunner {
 	private boolean checkAlcoholLevel(){
 		int alcoholLevel = player.getAlcoholLevel();
 		if(alcoholLevel <= 0){
-			view.print("You're too sober and fall asleep - GAME OVER");
+			GameView.printnl("You're too sober and fall asleep - GAME OVER");
 			return false;
 		} else if(alcoholLevel > 20){
-			view.print("You're too drunk and fall asleep - GAME OVER");
+			GameView.printnl("You're too drunk and fall asleep - GAME OVER");
 			return false;
 		} else{
-			view.print("Alcohollevel: "+alcoholLevel+" / 20");
+			GameView.printnl("Alcohol level: "+alcoholLevel+" / 20");
 			return true;
 		}
 	}
@@ -122,11 +121,10 @@ public class GameRunner {
 		BlackJack blackJack = new BlackJack();
 		if(player.getLocation() instanceof LocBrewery){
 			if(player.lookForSpecificItem("a masterbrew") >= 2){
-				view.print("You will now play blackjack");
 				blackJack.playBlackJack(player);
 				blackJack = null;
 			} else{
-				view.print("You need two beers to play");
+				GameView.printnl("You need two beers to play");
 			}
 		}
 	}
@@ -153,7 +151,7 @@ public class GameRunner {
 	public void movePlayer(Direction direction){
 		boolean hasMoved = player.move(direction);
 		if (!hasMoved){
-			view.print("You can't move this way");
+			GameView.printnl("You can't move this way");
 		}
 	}
 }

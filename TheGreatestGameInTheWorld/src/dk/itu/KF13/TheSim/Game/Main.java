@@ -2,14 +2,11 @@ package dk.itu.KF13.TheSim.Game;
 
 import dk.itu.KF13.TheSim.Game.Controller.GameController;
 import dk.itu.KF13.TheSim.Game.Model.GameRunner;
-import dk.itu.KF13.TheSim.Game.View.GameView;
 
 public class Main {
 	/**
 	 * @param args
 	 */
-	
-	public GameController game;
 	
 	public static void main(String[] args) {
 		new Main().start();		
@@ -23,11 +20,9 @@ public class Main {
 		//Instances of model, view and control are instantiated
 		GameController controller = new GameController();
 		GameRunner runner = new GameRunner();
-		GameView view = new GameView();
 		
 		//Set attributes if runner
 		runner.setGameController(controller);
-		runner.setGameView(view);
 		
 		//Creates the game
 		runner.createGame();
@@ -35,7 +30,6 @@ public class Main {
 		//Set attributes of controller
 		controller.setGameRunner(runner);
 		controller.setPlayer(runner.getPlayer());
-		controller.setGameView(view);
 		
 		//Game is run
 		runner.runGame();
