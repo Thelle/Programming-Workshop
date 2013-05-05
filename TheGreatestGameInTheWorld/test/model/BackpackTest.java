@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dk.itu.KF13.TheSim.Game.Model.Physical.Class.Backpack;
-import dk.itu.KF13.TheSim.Game.Model.Physical.Class.HumanPlayer;
 import dk.itu.KF13.TheSim.Game.Model.Physical.Class.ObjBottle;
 import dk.itu.KF13.TheSim.Game.Model.Physical.Class.ObjBottle.BottleType;
 import dk.itu.KF13.TheSim.Game.Model.Physical.Interface.GameObject;

@@ -2,7 +2,6 @@ package dk.itu.KF13.TheSim.Game.Model.Physical.Class;
 
 import java.util.List;
 
-import dk.itu.KF13.TheSim.Game.Model.Physical.AbstractClass.MasterGameObject;
 import dk.itu.KF13.TheSim.Game.Model.Physical.Class.ObjBottle.BottleType;
 import dk.itu.KF13.TheSim.Game.Model.Physical.Interface.GameObject;
 import dk.itu.KF13.TheSim.Game.Model.Physical.Interface.Player;

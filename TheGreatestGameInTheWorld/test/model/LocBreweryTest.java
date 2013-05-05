@@ -9,13 +9,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dk.itu.KF13.TheSim.Game.Model.Physical.Class.ObjBottle;
-import dk.itu.KF13.TheSim.Game.Model.Physical.Class.ObjNonMovable;
 import dk.itu.KF13.TheSim.Game.Model.Physical.Class.ObjBottle.BottleType;
-import dk.itu.KF13.TheSim.Game.Model.Physical.Class.ObjNonMovable.ObjectType;
 import dk.itu.KF13.TheSim.Game.Model.Physical.Interface.GameObject;
 import dk.itu.KF13.TheSim.Game.Model.World.Class.LocBrewery;
-import dk.itu.KF13.TheSim.Game.Model.World.Class.WorldCopenhagen;
-import dk.itu.KF13.TheSim.Game.Model.World.Interface.Location.Direction;
 
 /*
  * We are using LocBrewery as a proxy for all the locations

@@ -1,6 +1,5 @@
 package dk.itu.KF13.TheSim.Game.Model;
 
-import dk.itu.KF13.TheSim.Game.Controller.GameController;
 import dk.itu.KF13.TheSim.Game.Controller.IGameController;
 import dk.itu.KF13.TheSim.Game.Model.Minigames.BlackJack.BlackJack;
 import dk.itu.KF13.TheSim.Game.Model.Physical.Class.HumanPlayer;
