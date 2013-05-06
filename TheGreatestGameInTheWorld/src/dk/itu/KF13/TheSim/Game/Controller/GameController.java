@@ -58,6 +58,10 @@ public class GameController implements IGameController {
 			runner.blackjackConditionsCheck();
 			return true;
 		}
+		else if(input.matches("help")){
+			this.printHelpText();
+			return true;
+		}
 		else {
 			GameView.print("I did not understand the input.");
 			return true;
@@ -87,6 +91,16 @@ public class GameController implements IGameController {
 		Scanner sc = new Scanner(System.in);
 		String input = sc.nextLine();
 		return input;
+	}
+	
+	public void printHelpText(){
+		String output ="'take [something]' - You take the object specified inside the []. \n" +
+				"'use [something]'  - You use the object specified inside the []. You have to have the object in your backpack. \n"+
+				"'go [north/east/south/west]' - You move in the given direction. \n"+
+				"'look in backpack' - You take a look in your backpack. \n"+
+				"'help' - This text will appear again.";
+		
+		GameView.printnl(output);
 	}
 	
 }

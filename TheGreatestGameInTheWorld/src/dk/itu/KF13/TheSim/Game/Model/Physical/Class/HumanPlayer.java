@@ -41,11 +41,15 @@ public class HumanPlayer implements Player {
 		else{
 			myLocation = requestedLocation;
 			this.changeAlcoholLevel(-1);
-			myLocation.playerHasArrived();
+			this.announceArrival();
 			return true;
 		}
 	}
 
+	public void announceArrival(){
+		myLocation.playerHasArrived();
+	}
+	
 	public boolean takeObject(GameObject object) {
 		boolean status;
 		status = object.putInBackpack(myBackpack);

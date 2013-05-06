@@ -12,5 +12,7 @@ public interface IGameController {
 	public abstract void setPlayer(HumanPlayer player);
 
 	public abstract void setGameRunner(GameRunner gameRunner);
+	
+	public abstract void printHelpText();
 
 }

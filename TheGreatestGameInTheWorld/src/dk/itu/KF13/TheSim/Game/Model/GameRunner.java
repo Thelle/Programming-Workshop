@@ -31,13 +31,6 @@ public class GameRunner {
 	}
 	
 	/**
-	 * Setter for the private attribute view.
-	 * @param gameView
-	 */
-	public void setGameView(GameView gameView){
-	}
-	
-	/**
 	 * createGame creates the world and the player
 	 */
 	public void createGame(){
@@ -73,15 +66,91 @@ public class GameRunner {
 	 * the game will also stop.
 	 */
 	public void runGame(){
-		boolean boContinue = true;
-		do {
-			if(checkAlcoholLevel()){
-				boContinue = controller.getCommand();
-				GameView.print("");
-			} else{
-				boContinue = false;
+		
+		if (doesPlayerWantToStart()){
+			controller.printHelpText();
+			player.announceArrival();
+			boolean boContinue = true;
+			do {
+				if(checkAlcoholLevel() && !playerHasTenBeers()){
+					boContinue = controller.getCommand();
+					GameView.print("");
+				} else{
+					boContinue = false;
+				}
+			}while(boContinue && !stopGame);
+		
+			if (playerHasTenBeers()){
+				GameView.print("Congratulations. You now have ten beers, and are ready to party. YOU WON!");
 			}
-		}while(boContinue && !stopGame);
+		} else {
+			GameView.print("Your loss..");
+		}
+	}
+	
+	private boolean doesPlayerWantToStart(){
+		printStartText();
+		boolean doLoop = true;
+		boolean status = false;
+		
+		do {
+			String input = controller.getStringInput();
+			switch (input.toLowerCase()){
+			case "yes": 
+				status = true; 
+				doLoop = false; 
+				GameView.printnl("Great! Before we start you should know the basic commands of the game:");
+				break;
+			case "no": 
+				status = !doesPlayerReallyWantToStop();
+				doLoop = false;
+				break;				
+			default: GameView.print("I did not understand that. Write yes or no"); doLoop = true;
+			}
+		} while(doLoop);
+		return status;		
+	}
+	
+	private boolean doesPlayerReallyWantToStop(){
+		int numberOfNo = 1;
+		boolean doLoop = true;
+		boolean annoyPlayer = true;
+		do {
+			if (numberOfNo <= 10){
+				GameView.print("Are you " + addReally(numberOfNo) + "sure");
+				numberOfNo++;
+				String input = controller.getStringInput();
+				switch (input.toLowerCase()){
+				case "yes":
+					annoyPlayer = true; doLoop = true; break;
+				case "no":
+					annoyPlayer = false; doLoop = false; break;					
+				}				
+			}else{
+				doLoop = false;
+			}
+		} while (doLoop);
+		
+		return annoyPlayer;
+	}
+	
+	private String addReally(int numberOfReally){
+		String output = "";
+		for (int i = 0; i < numberOfReally; i++){
+			output = output + "really ";
+		}
+		return output;
+	}
+	private void printStartText(){
+		GameView.printnl("Studying is hard. Especially at the ITU. You have to get up and be sober every day of the week. No time for fun.\n" +
+				"Except from friday that is. Friday is the best day of the week. At Fridays you can start the day with a film, and end it " +
+					"with beer. \nLots of nice cold beer. \n"+
+					"But not today. Today is a disatrous day. You just got a text from your favourite bartender from ScrollBar: \n'OMG!! No "+
+					"Beeerzz left. U hv 2 drink breezers 2night. LOL!!'. \nOk maybe not you favourite bartender, but at least you got a warning "+
+					"about what a disatrous evening this could have been. Now you just have to go out and get ten Masterbrews for tonight. As "+
+					"everyone knows, ten is the perfect number of beers for a quiet night.\n"+
+					"So, are you up for it? Are you ready to save your evening, or do you rather want to stay in your bed? \n" +
+					"Answer 'yes' or 'no'");
 	}
 	
 	/**
@@ -153,5 +222,12 @@ public class GameRunner {
 		if (!hasMoved){
 			GameView.printnl("You can't move this way");
 		}
+	}
+	/**
+	 * Check if the player has ten or more beers
+	 * @return true if player has ten or more beers
+	 */
+	private boolean playerHasTenBeers(){
+		return player.lookForSpecificItem("a masterbrew") >= 10;
 	}
 }
