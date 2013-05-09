@@ -75,7 +75,7 @@ public class BlackJack {
     		GameView.printnl("You chose to hold. Let's see how the dealer plays.");
     		return true;
     	case 1:
-    		GameView.printnl("You got more than 21 points. You lost. \nYou played: " + playedCards);
+    		GameView.printnl("You got more than 21 points. You lost.");
     		return false;
     	case 2:
     		GameView.printnl("Great! You got exactly 21 points. Let's see how the dealer plays.");

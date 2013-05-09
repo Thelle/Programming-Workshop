@@ -149,7 +149,7 @@ public class GameRunner {
 					"Beeerzz left. U hv 2 drink breezers 2night. LOL!!'. \nOk maybe not you favourite bartender, but at least you got a warning "+
 					"about what a disatrous evening this could have been. Now you just have to go out and get ten Masterbrews for tonight. As "+
 					"everyone knows, ten is the perfect number of beers for a quiet night.\n"+
-					"So, are you up for it? Are you ready to save your evening, or do you rather want to stay in your bed? \n" +
+					"So, are you up for saving your evening?\n" +
 					"Answer 'yes' or 'no'");
 	}
 	

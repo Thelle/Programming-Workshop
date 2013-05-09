@@ -119,6 +119,7 @@ public abstract class MasterLocation implements Location {
 		if (objectsAtLocation.isEmpty()){
 			return "No objects to be found at this location";
 		}else {
+			returnString = "Objects at location: \n";
 			for (int i = 0; i < objectsAtLocation.size(); i++){
 				returnString += objectsAtLocation.get(i).getDescription() + "\n";
 			}

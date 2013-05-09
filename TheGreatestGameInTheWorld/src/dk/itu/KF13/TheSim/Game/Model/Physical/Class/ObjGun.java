@@ -24,13 +24,16 @@ public class ObjGun extends MasterGameObject {
 
 	}
 	/**
-	 * When the user tries to take the gun, he will die and the game will end
+	 * When the user tries to take the gun, s/he will die and the game will end
 	 */
 	@Override
 	public boolean putInBackpack(Backpack backpack){
-		GameView.print("You are dead");
+		GameView.print("As you reach out for the gun, the five policemen stop beating the suspect and looks at you.\n"
+				+"- Are you sure, you want to take that? The biggest policeman asks, as he draws his own gun.\n"
+				+"You don't care, you are drunk, and nothing can stop you from taking the nice and shiny gun (it looks almost pink).\n"
+				+"As you grab the gun, you hear five shots... GAME OVER!!");
 		GameRunner.stopGame();
-		return false;
+		return true;
 	}	
 
 }
