@@ -9,10 +9,10 @@ import dk.itu.KF13.TheSim.Game.View.GameView;
 
 public class LocBrewery extends MasterLocation {
 
-	public LocBrewery(int xInput, int yInput, String name) {
-		super(xInput, yInput, name);
-		objectsAtLocation.add(new ObjBottle(true, BottleType.MASTERBREW));
-		objectsAtLocation.add(new ObjNonMovable(false, ObjectType.BARREL));
+	public LocBrewery(int xInput, int yInput, String name, GameView gameView) {
+		super(xInput, yInput, name, gameView);
+		getObjectsAtLocation().add(new ObjBottle(true, BottleType.MASTERBREW));
+		getObjectsAtLocation().add(new ObjNonMovable(false, ObjectType.BARREL));
 		
 	}
 
@@ -24,6 +24,6 @@ public class LocBrewery extends MasterLocation {
 	}
 
 	public void locationSpecificAction() {
-			GameView.print("You can play blackjack here");
+			getView().print("You can play blackjack here");
 	}
 }

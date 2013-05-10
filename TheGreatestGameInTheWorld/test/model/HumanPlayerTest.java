@@ -10,19 +10,20 @@ import dk.itu.KF13.TheSim.Game.Model.Physical.Class.ObjBottle;
 import dk.itu.KF13.TheSim.Game.Model.Physical.Class.ObjBottle.BottleType;
 import dk.itu.KF13.TheSim.Game.Model.World.Class.LocBrewery;
 import dk.itu.KF13.TheSim.Game.Model.World.Class.LocCityHall;
+import dk.itu.KF13.TheSim.Game.View.GameView;
 
 public class HumanPlayerTest {
 	
 	HumanPlayer player;
 	@Before
 	public void setUp() {
-		player = new HumanPlayer();
+		player = new HumanPlayer(new GameView());
 	}
 
 	@Test
 	public void testGetLocation() {
 		//Set up
-		LocBrewery brewery = new LocBrewery(1, 1, "Carlsberg");
+		LocBrewery brewery = new LocBrewery(1, 1, "Carlsberg", null);
 		player.setLocation(brewery);
 		
 		assertTrue(player.getLocation() == brewery);
@@ -30,7 +31,7 @@ public class HumanPlayerTest {
 
 	@Test
 	public void testSetLocation() {
-		LocBrewery brewery = new LocBrewery(1, 1, "Carlsberg");
+		LocBrewery brewery = new LocBrewery(1, 1, "Carlsberg", null);
 		assertTrue(player.setLocation(brewery));
 	}
 
@@ -43,7 +44,7 @@ public class HumanPlayerTest {
 	@Test
 	public void testTakeObjectGameObject_Takeable() {
 		//set up test
-		LocCityHall location = new LocCityHall(1, 1, "blah");
+		LocCityHall location = new LocCityHall(1, 1, "blah", null);
 		player.setLocation(location);
 		ObjBottle bottle1 = new ObjBottle(true, BottleType.WATER);
 		
@@ -55,7 +56,7 @@ public class HumanPlayerTest {
 	@Test
 	public void testTakeObjectGameObject_NonTakeable() {
 		//set up test
-		LocBrewery location = new LocBrewery(1, 1, "blah");
+		LocBrewery location = new LocBrewery(1, 1, "blah", null);
 		player.setLocation(location);
 		ObjBottle bottle1 = new ObjBottle(false, BottleType.WATER);
 		//Test
@@ -66,7 +67,7 @@ public class HumanPlayerTest {
 	@Test
 	public void testTakeObjectString() {
 		//set up test
-		LocCityHall location = new LocCityHall(1, 1, "blah");
+		LocCityHall location = new LocCityHall(1, 1, "blah", null);
 		player.setLocation(location);
 				
 		//Test

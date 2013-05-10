@@ -3,6 +3,7 @@ package dk.itu.KF13.TheSim.Game.Model.Physical.AbstractClass;
 import dk.itu.KF13.TheSim.Game.Model.Physical.Class.Backpack;
 import dk.itu.KF13.TheSim.Game.Model.Physical.Interface.GameObject;
 import dk.itu.KF13.TheSim.Game.Model.World.Interface.Location;
+import dk.itu.KF13.TheSim.Game.View.GameView;
 
 /**
  *  MasterGameObject is the abstract class for all gameobjects except the Backpack.
@@ -12,6 +13,12 @@ import dk.itu.KF13.TheSim.Game.Model.World.Interface.Location;
 public abstract class MasterGameObject implements GameObject {
 	private Location myLocation;
 	private boolean takeable;
+	private GameView view;
+	
+	public MasterGameObject(boolean canBeTaken, GameView gameView){
+		takeable = canBeTaken;
+		setView(gameView);
+	}
 	
 	public MasterGameObject(boolean canBeTaken){
 		takeable = canBeTaken;
@@ -47,5 +54,13 @@ public abstract class MasterGameObject implements GameObject {
 	public abstract String getDescription();
 	
 	public abstract int use();
+
+	public GameView getView() {
+		return view;
+	}
+
+	public void setView(GameView view) {
+		this.view = view;
+	}
 
 }

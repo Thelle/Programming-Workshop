@@ -14,7 +14,7 @@ public class WorldCopenhagenTest {
 	 */
 	@Test
 	public void testGetLocations() {
-		WorldCopenhagen instance = new WorldCopenhagen();
+		WorldCopenhagen instance = new WorldCopenhagen(null);
 		
 		assertNotNull(instance.getLocations());
 	}

@@ -20,9 +20,11 @@ public class BlackJack {
     private int numberOfAcesWorth11 = 0;
     
     private BlackJackController controller;
+    private GameView view;
     
-    public BlackJack(IGameController gameController){
-    	controller = new BlackJackController(gameController);
+    public BlackJack(IGameController gameController, GameView gameView){
+    	controller = new BlackJackController(gameController, gameView);
+    	view = gameView;
     }
     
     /**
@@ -55,10 +57,10 @@ public class BlackJack {
     	
     	//Beers are added / subtracted
     	if (playerDidWin){
-    		GameView.printnl("You win two beers");
+    		view.printnl("You win two beers");
     		player.addBeersToBackpack(2);
     	} else {
-    		GameView.printnl("You loose two beers");
+    		view.printnl("You loose two beers");
     		player.removeBeersFromBackpack(2);
     	}        
     }
@@ -72,13 +74,13 @@ public class BlackJack {
     	
     	switch (result){
     	case 0:
-    		GameView.printnl("You chose to hold. Let's see how the dealer plays.");
+    		view.printnl("You chose to hold. Let's see how the dealer plays.");
     		return true;
     	case 1:
-    		GameView.printnl("You got more than 21 points. You lost.");
+    		view.printnl("You got more than 21 points. You lost.");
     		return false;
     	case 2:
-    		GameView.printnl("Great! You got exactly 21 points. Let's see how the dealer plays.");
+    		view.printnl("Great! You got exactly 21 points. Let's see how the dealer plays.");
     		return true;
     	default: return true;
     	}    	
@@ -91,7 +93,7 @@ public class BlackJack {
     private void saveInfoAboutPlayersRound() {
     	playerPoints = pointsPlayed;
         playedCardsPlayer=playedCards;
-        GameView.printnl("You played: " + playedCardsPlayer);
+        view.printnl("You played: " + playedCardsPlayer);
     }
     
     /**
@@ -101,7 +103,7 @@ public class BlackJack {
     private void saveInfoAboutDealerRound() {
     	dealerPoints = pointsPlayed;
         playedCardsDealer = playedCards.replace(playedCardsPlayer,"");
-        GameView.printnl("Dealer played: " + playedCardsDealer);
+        view.printnl("Dealer played: " + playedCardsDealer);
     }
     
     /**
@@ -118,11 +120,11 @@ public class BlackJack {
      */
     private boolean playerDidWin(){
     	if(playerPoints > dealerPoints || dealerPoints > 21){
-        	GameView.printnl("Congratulations. You won with " + playerPoints + " points against the dealer's " + dealerPoints + " points.");
+        	view.printnl("Congratulations. You won with " + playerPoints + " points against the dealer's " + dealerPoints + " points.");
         	return true;
     	}
         else {
-        	GameView.printnl("Loser! You lost with with " + playerPoints + " points against the dealer's " + dealerPoints + " points.");
+        	view.printnl("Loser! You lost with with " + playerPoints + " points against the dealer's " + dealerPoints + " points.");
         	return false;
         }
     }
@@ -162,13 +164,13 @@ public class BlackJack {
 	 * @return True if the player wants to continue. False otherwise.
 	 */
 	private boolean doesPlayerWantToContinue(String drawnCard) {
-		 GameView.print("You have drawn this card: " + 
+		 view.print("You have drawn this card: " + 
 	            drawnCard + "\nYou currently have " + pointsPlayed + " points" + 
 	            "\nDo you want to continue (Y/N)?");
 		 String answer = controller.getYesNo();
 		 switch (answer){
-		 case "y": GameView.print(""); return true;
-		 case "n": GameView.print(""); return false;
+		 case "y": view.print(""); return true;
+		 case "n": view.print(""); return false;
 		 default: return false; //the method getYesNo only returns y or n
 		 }
 		

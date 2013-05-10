@@ -6,8 +6,8 @@ import dk.itu.KF13.TheSim.Game.View.GameView;
 
 public class ObjGun extends MasterGameObject {
 
-	public ObjGun(boolean canBeTaken) {
-		super(canBeTaken);
+	public ObjGun(boolean canBeTaken, GameView gameView) {
+		super(canBeTaken, gameView);
 	}
 
 	public String getDescription() {
@@ -28,7 +28,7 @@ public class ObjGun extends MasterGameObject {
 	 */
 	@Override
 	public boolean putInBackpack(Backpack backpack){
-		GameView.print("As you reach out for the gun, the five policemen stop beating the suspect and looks at you.\n"
+		getView().print("As you reach out for the gun, the five policemen stop beating the suspect and looks at you.\n"
 				+"- Are you sure, you want to take that? The biggest policeman asks, as he draws his own gun.\n"
 				+"You don't care, you are drunk, and nothing can stop you from taking the nice and shiny gun (it looks almost pink).\n"
 				+"As you grab the gun, you hear five shots... GAME OVER!!");

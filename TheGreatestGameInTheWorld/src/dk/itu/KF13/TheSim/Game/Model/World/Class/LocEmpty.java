@@ -9,8 +9,8 @@ import dk.itu.KF13.TheSim.Game.View.GameView;
 
 public class LocEmpty extends MasterLocation {
 
-	public LocEmpty(int xInput, int yInput, String name) {
-		super(xInput, yInput, name);
+	public LocEmpty(int xInput, int yInput, String name, GameView gameView) {
+		super(xInput, yInput, name, gameView);
 	}
 
 	@Override
@@ -28,7 +28,7 @@ public class LocEmpty extends MasterLocation {
 		ObjBottle obj = placeRandomBottle();
 		if ( obj != null){
 			this.placeObject(obj);
-			GameView.printnl("You suddently see " + obj.getDescription());
+			getView().printnl("You suddently see " + obj.getDescription());
 		}
 		
 	}

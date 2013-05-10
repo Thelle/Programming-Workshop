@@ -12,9 +12,11 @@ import dk.itu.KF13.TheSim.Game.View.GameView;
 public class BlackJackController {
 	
 	private IGameController controller;
+	private GameView view;
 	
-	public BlackJackController (IGameController gameController){
+	public BlackJackController (IGameController gameController, GameView gameView){
 		controller = gameController;
+		view = gameView;
 	}
 	
 	/**
@@ -30,7 +32,7 @@ public class BlackJackController {
 			if (testUserInput(input)){
 				stopLoop = true;
 			} else {
-				GameView.printnl("I did not understand that. Write y or n");
+				view.printnl("I did not understand that. Write y or n");
 			}
 		}while(!stopLoop);
 		return input;

@@ -14,7 +14,8 @@ public abstract class MasterLocation implements Location {
 	private int xPos, yPos;
 	private String name;
 	private Location[][] tempMap;
-	protected List<GameObject> objectsAtLocation = new ArrayList<GameObject>();
+	private GameView view;
+	private List<GameObject> objectsAtLocation = new ArrayList<GameObject>();
 	
 	/**
 	 * Constructor of the abstract class MasterLocation.
@@ -23,10 +24,11 @@ public abstract class MasterLocation implements Location {
 	 * @param yInput - the y-coordinate of the location
 	 * @param locationName - the name of the location
 	 */
-	public MasterLocation (int xInput, int yInput, String locationName){
+	public MasterLocation (int xInput, int yInput, String locationName, GameView gameView){
 		xPos = xInput;
 		yPos = yInput;
 		name = locationName;
+		setView(gameView);
 	}
 	
 	public Location getExits(Direction direction) {
@@ -88,7 +90,7 @@ public abstract class MasterLocation implements Location {
 	
 	public void playerHasArrived(){
 		String description = this.getDescription();
-		GameView.print(description);
+		getView().print(description);
 		this.locationSpecificAction();
 		printExits();
 		
@@ -98,37 +100,37 @@ public abstract class MasterLocation implements Location {
 	public void printExits(){
 		for (Direction dir : Direction.values()){
 			if (getExits(dir) == null){
-				GameView.print(dir + ": nothing");
+				getView().print(dir + ": nothing");
 			} else {
-				GameView.print(dir + ": " +  getExits(dir).getName());
+				getView().print(dir + ": " +  getExits(dir).getName());
 			}
 		}
 	}
 	
 	public boolean placeObject(GameObject object){
-		objectsAtLocation.add(object);
+		getObjectsAtLocation().add(object);
 		return true;
 	}
 	
 	public void removeObject(GameObject object){
-		objectsAtLocation.remove(object);
+		getObjectsAtLocation().remove(object);
 	}
 	
 	public String getObjectDescriptions(){
 		String returnString = "";
-		if (objectsAtLocation.isEmpty()){
+		if (getObjectsAtLocation().isEmpty()){
 			return "No objects to be found at this location";
 		}else {
 			returnString = "Objects at location: \n";
-			for (int i = 0; i < objectsAtLocation.size(); i++){
-				returnString += objectsAtLocation.get(i).getDescription() + "\n";
+			for (int i = 0; i < getObjectsAtLocation().size(); i++){
+				returnString += getObjectsAtLocation().get(i).getDescription() + "\n";
 			}
 		}
 		return returnString;
 	}
 	
 	public List<GameObject> getObjects(){
-		return objectsAtLocation;
+		return getObjectsAtLocation();
 	}
 	
 	public String getName(){
@@ -138,4 +140,20 @@ public abstract class MasterLocation implements Location {
 	public abstract void locationSpecificAction();
 	
 	public abstract String getDescription();
+
+	public List<GameObject> getObjectsAtLocation() {
+		return objectsAtLocation;
+	}
+
+	public void setObjectsAtLocation(List<GameObject> objectsAtLocation) {
+		this.objectsAtLocation = objectsAtLocation;
+	}
+
+	public GameView getView() {
+		return view;
+	}
+
+	public void setView(GameView view) {
+		this.view = view;
+	}
 }

@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import dk.itu.KF13.TheSim.Game.Model.Physical.Class.Backpack;
 import dk.itu.KF13.TheSim.Game.Model.Physical.Class.ObjGun;
+import dk.itu.KF13.TheSim.Game.View.GameView;
 
 public class ObjGunTest {
 	
@@ -14,7 +15,7 @@ public class ObjGunTest {
 	
 	@Before
 	public void setUp() {
-		instance = new ObjGun(true);
+		instance = new ObjGun(true, new GameView());
 	}
 
 	@Test
@@ -29,7 +30,7 @@ public class ObjGunTest {
 	public void testPutInBackpack() {
 		Backpack backpack = new Backpack();
 		boolean status = instance.putInBackpack(backpack);
-		assertFalse(status);
+		assertTrue(status);
 	}
 
 	@Test

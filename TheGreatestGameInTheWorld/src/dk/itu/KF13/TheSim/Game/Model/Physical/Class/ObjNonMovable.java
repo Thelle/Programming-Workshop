@@ -28,7 +28,7 @@ public class ObjNonMovable extends MasterGameObject {
 	 */
 	@Override
 	public int use() {
-		GameView.print("You can't use me!");
+		getView().print("You can't use me!");
 		return 2;
 	}
 

@@ -21,7 +21,7 @@ public class BlackJackControllerTest {
 	public void setUp() {
 		//Set up the mock object
 		controllerMock = EasyMock.createMock(IGameController.class);
-		instance = new BlackJackController(controllerMock);
+		instance = new BlackJackController(controllerMock, null);
 	}
 
 	@Test

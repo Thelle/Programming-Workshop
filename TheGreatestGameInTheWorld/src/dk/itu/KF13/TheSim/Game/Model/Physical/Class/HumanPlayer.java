@@ -18,10 +18,12 @@ public class HumanPlayer implements Player {
 	private Location myLocation;
 	private Backpack myBackpack;
 	private int alcoholLevel;
+	private GameView view;
 	
-	public HumanPlayer(){
+	public HumanPlayer(GameView gameView){
 		myBackpack = new Backpack();
 		alcoholLevel = 4;
+		view = gameView;
 	}
 	
 	public Location getLocation() {
@@ -55,10 +57,10 @@ public class HumanPlayer implements Player {
 		status = object.putInBackpack(myBackpack);
 		if (status){
 			myLocation.removeObject(object);
-			GameView.print("You have taken the object");
+			view.print("You have taken the object");
 			return true;
 		}else{
-			GameView.print("There was no room in your backpack or you can't take the item");
+			view.print("There was no room in your backpack or you can't take the item");
 			return false;
 		}		
 	}
@@ -77,7 +79,7 @@ public class HumanPlayer implements Player {
 				return true;
 			} 
 		}
-		GameView.print("No such item at this location");
+		view.print("No such item at this location");
 		return false;
 
 	}
@@ -109,7 +111,7 @@ public class HumanPlayer implements Player {
 		int diff = -object.use();
 		this.changeAlcoholLevel(diff);
 		myBackpack.removeFromBackpack(object);
-		GameView.print("You used "+ object.getDescription());
+		view.print("You used "+ object.getDescription());
 	}
 	
 	public void useObject(String input){
@@ -122,7 +124,7 @@ public class HumanPlayer implements Player {
 				return;
 			}
 		}
-		GameView.print("No such item in backpack");
+		view.print("No such item in backpack");
 	}
 
 	public List<GameObject> returnContentOfBackpack() {
@@ -166,9 +168,9 @@ public class HumanPlayer implements Player {
 	
 	public void lookInBackpack(){
 		List<GameObject> objectsInBackpack = this.returnContentOfBackpack();
-		GameView.print("Objects in backpack:");
+		view.print("Objects in backpack:");
 		for(int i = 0; i < objectsInBackpack.size();i++){
-			GameView.print(objectsInBackpack.get(i).getDescription());
+			view.print(objectsInBackpack.get(i).getDescription());
 		}
 	}
 	

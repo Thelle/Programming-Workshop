@@ -16,6 +16,7 @@ import dk.itu.KF13.TheSim.Game.View.GameView;
  */
 public class GameRunner {
 	private IGameController controller;
+	private GameView view;
 	public static WorldCopenhagen copenhagen;	
 	private Location[][] worldLocations;
 	private HumanPlayer player;
@@ -28,6 +29,10 @@ public class GameRunner {
 	 */
 	public void setGameController(IGameController gameController){
 		controller = gameController;
+	}
+	
+	public void setGameView(GameView gameView){
+		view = gameView;
 	}
 	
 	/**
@@ -43,7 +48,7 @@ public class GameRunner {
 	 */
 	private void createWorld(){
 		//Creates the world
-		copenhagen = new WorldCopenhagen();
+		copenhagen = new WorldCopenhagen(view);
 		//Populates the world with locations
 		worldLocations = copenhagen.getLocations();		
 	}
@@ -54,7 +59,7 @@ public class GameRunner {
 	 */
 	private void createPlayerCharacter(){
 		//Creates player
-		player = new HumanPlayer();
+		player = new HumanPlayer(view);
 		//Places player in the world
 		player.setLocation(worldLocations[1][0]); //The coordinates for ITU
 	}
@@ -74,17 +79,17 @@ public class GameRunner {
 			do {
 				if(checkAlcoholLevel() && !playerHasTenBeers()){
 					boContinue = controller.getCommand();
-					GameView.print("");
+					view.print("");
 				} else{
 					boContinue = false;
 				}
 			}while(boContinue && !stopGame);
 		
 			if (playerHasTenBeers()){
-				GameView.print("Congratulations. You now have ten beers, and are ready to party. YOU WON!");
+				view.print("Congratulations. You now have ten beers, and are ready to party. YOU WON!");
 			}
 		} else {
-			GameView.print("Your loss..");
+			view.print("Your loss..");
 		}
 	}
 	
@@ -99,13 +104,13 @@ public class GameRunner {
 			case "yes": 
 				status = true; 
 				doLoop = false; 
-				GameView.printnl("Great! Before we start you should know the basic commands of the game:");
+				view.printnl("Great! Before we start you should know the basic commands of the game:");
 				break;
 			case "no": 
 				status = !doesPlayerReallyWantToStop();
 				doLoop = false;
 				break;				
-			default: GameView.print("I did not understand that. Write yes or no"); doLoop = true;
+			default: view.print("I did not understand that. Write yes or no"); doLoop = true;
 			}
 		} while(doLoop);
 		return status;		
@@ -117,7 +122,7 @@ public class GameRunner {
 		boolean annoyPlayer = true;
 		do {
 			if (numberOfNo <= 10){
-				GameView.print("Are you " + addReally(numberOfNo) + "sure");
+				view.print("Are you " + addReally(numberOfNo) + "sure");
 				numberOfNo++;
 				String input = controller.getStringInput();
 				switch (input.toLowerCase()){
@@ -142,7 +147,7 @@ public class GameRunner {
 		return output;
 	}
 	private void printStartText(){
-		GameView.printnl("Studying is hard. Especially at the ITU. You have to get up and be sober every day of the week. No time for fun.\n" +
+		view.printnl("Studying is hard. Especially at the ITU. You have to get up and be sober every day of the week. No time for fun.\n" +
 				"Except from friday that is. Friday is the best day of the week. At Fridays you can start the day with a film, and end it " +
 					"with beer. \nLots of nice cold beer. \n"+
 					"But not today. Today is a disatrous day. You just got a text from your favourite bartender from ScrollBar: \n'OMG!! No "+
@@ -162,13 +167,13 @@ public class GameRunner {
 	private boolean checkAlcoholLevel(){
 		int alcoholLevel = player.getAlcoholLevel();
 		if(alcoholLevel <= 0){
-			GameView.printnl("You're too sober and fall asleep - GAME OVER");
+			view.printnl("You're too sober and fall asleep - GAME OVER");
 			return false;
 		} else if(alcoholLevel > 10){
-			GameView.printnl("You're too drunk and fall asleep - GAME OVER");
+			view.printnl("You're too drunk and fall asleep - GAME OVER");
 			return false;
 		} else{
-			GameView.printnl("Alcohol level: "+alcoholLevel+" / 10");
+			view.printnl("Alcohol level: "+alcoholLevel+" / 10");
 			return true;
 		}
 	}
@@ -187,13 +192,13 @@ public class GameRunner {
 	 * Starts the game if both is true.
 	 */
 	public void blackjackConditionsCheck(){
-		BlackJack blackJack = new BlackJack(controller);
+		BlackJack blackJack = new BlackJack(controller, view);
 		if(player.getLocation() instanceof LocBrewery){
 			if(player.lookForSpecificItem("a masterbrew") >= 2){
 				blackJack.playBlackJack(player);
 				blackJack = null;
 			} else{
-				GameView.printnl("You need two beers to play");
+				view.printnl("You need two beers to play");
 			}
 		}
 	}
@@ -220,7 +225,7 @@ public class GameRunner {
 	public void movePlayer(Direction direction){
 		boolean hasMoved = player.move(direction);
 		if (!hasMoved){
-			GameView.printnl("You can't move this way");
+			view.printnl("You can't move this way");
 		}
 	}
 	/**

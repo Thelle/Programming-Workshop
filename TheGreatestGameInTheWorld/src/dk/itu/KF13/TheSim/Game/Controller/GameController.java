@@ -16,9 +16,14 @@ public class GameController implements IGameController {
 	
 	private GameRunner runner;
 	private HumanPlayer player;
+	private GameView view;
 	
 	public void setGameRunner(GameRunner gameRunner){
 		this.runner = gameRunner;		
+	}
+	
+	public void setGameView(GameView gameView){
+		this.view = gameView;		
 	}
 	
 	public void setPlayer (HumanPlayer player){
@@ -31,7 +36,7 @@ public class GameController implements IGameController {
 	 * @return false if the player chooses to stop the game
 	 */
 	public boolean getCommand(){
-		GameView.print("What do you want to do?");
+		view.print("What do you want to do?");
 		String input = getStringInput();
 		input = input.toLowerCase();
 		
@@ -63,7 +68,7 @@ public class GameController implements IGameController {
 			return true;
 		}
 		else {
-			GameView.print("I did not understand the input.");
+			view.print("I did not understand the input.");
 			return true;
 		}
 	}	
@@ -79,7 +84,7 @@ public class GameController implements IGameController {
 		case "go south": runner.movePlayer(Direction.SOUTH);break;
 		case "go west": runner.movePlayer(Direction.WEST);break;
 		case "go east": runner.movePlayer(Direction.EAST);break;
-		default:GameView.print("I did not understand the direction.");break;
+		default:view.print("I did not understand the direction.");break;
 		}
 	}
 	
@@ -100,7 +105,7 @@ public class GameController implements IGameController {
 				"'look in backpack' - You take a look in your backpack. \n"+
 				"'help' - This text will appear again.";
 		
-		GameView.printnl(output);
+		view.printnl(output);
 	}
 	
 }

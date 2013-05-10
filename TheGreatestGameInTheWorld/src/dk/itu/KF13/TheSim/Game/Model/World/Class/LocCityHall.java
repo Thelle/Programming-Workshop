@@ -5,13 +5,14 @@ import dk.itu.KF13.TheSim.Game.Model.Physical.Class.ObjNonMovable;
 import dk.itu.KF13.TheSim.Game.Model.Physical.Class.ObjBottle.BottleType;
 import dk.itu.KF13.TheSim.Game.Model.Physical.Class.ObjNonMovable.ObjectType;
 import dk.itu.KF13.TheSim.Game.Model.World.AbstractClass.MasterLocation;
+import dk.itu.KF13.TheSim.Game.View.GameView;
 
 public class LocCityHall extends MasterLocation {
 
-	public LocCityHall(int xInput, int yInput, String name) {
-		super(xInput, yInput, name);
-		objectsAtLocation.add(new ObjBottle(true, BottleType.WATER));
-		objectsAtLocation.add(new ObjNonMovable(false, ObjectType.STATUE));
+	public LocCityHall(int xInput, int yInput, String name, GameView gameView) {
+		super(xInput, yInput, name, gameView);
+		getObjectsAtLocation().add(new ObjBottle(true, BottleType.WATER));
+		getObjectsAtLocation().add(new ObjNonMovable(false, ObjectType.STATUE));
 	}
 
 	@Override

@@ -21,7 +21,7 @@ public class LocBreweryTest {
 	LocBrewery instance;
 	@Before
 	public void setUp() {
-		instance = new LocBrewery(1, 1, "Carslberg");
+		instance = new LocBrewery(1, 1, "Carslberg", null);
 	}
 
 	@After
