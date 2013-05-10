@@ -156,7 +156,7 @@ public class GameRunner {
 	/**
 	 * checkAlcoholLevel checks the alcohol level of the player to see if
 	 * the player can continue
-	 * @return true if the alcohol level is between 0 (exclusive) and 20 (inclusive)
+	 * @return true if the alcohol level is between 0 (exclusive) and 10 (inclusive)
 	 * @return false if the level is zero or less or more than twenty
 	 */
 	private boolean checkAlcoholLevel(){
@@ -168,7 +168,7 @@ public class GameRunner {
 			GameView.printnl("You're too drunk and fall asleep - GAME OVER");
 			return false;
 		} else{
-			GameView.printnl("Alcohol level: "+alcoholLevel+" / 20");
+			GameView.printnl("Alcohol level: "+alcoholLevel+" / 10");
 			return true;
 		}
 	}
