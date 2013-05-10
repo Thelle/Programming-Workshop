@@ -164,7 +164,7 @@ public class GameRunner {
 		if(alcoholLevel <= 0){
 			GameView.printnl("You're too sober and fall asleep - GAME OVER");
 			return false;
-		} else if(alcoholLevel > 20){
+		} else if(alcoholLevel > 10){
 			GameView.printnl("You're too drunk and fall asleep - GAME OVER");
 			return false;
 		} else{
