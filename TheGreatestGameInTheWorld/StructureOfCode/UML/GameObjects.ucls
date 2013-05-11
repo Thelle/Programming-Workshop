@@ -147,99 +147,95 @@
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="18">    
+  <dependency id="18">    
+    <bendpoint x="62" y="353"/>    
+    <bendpoint x="66" y="616"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <generalization id="19">    
     <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="3"/>  
   </generalization>  
-  <dependency id="19">    
+  <dependency id="20">    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="8"/>  
   </dependency>  
-  <dependency id="20">    
+  <dependency id="21">    
     <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="11"/>  
   </dependency>  
-  <nesting id="21">    
+  <nesting id="22">    
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="9"/>  
   </nesting>  
-  <association id="22">    
+  <association id="23">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="23" name="typeOfBottle">        
+      <attribute id="24" name="typeOfBottle">        
         <position height="18" width="68" x="453" y="259"/>      
       </attribute>      
-      <multiplicity id="24" minimum="0" maximum="1">        
+      <multiplicity id="25" minimum="0" maximum="1">        
         <position height="16" width="23" x="526" y="260"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <nesting id="25">    
+  <nesting id="26">    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="10"/>  
   </nesting>  
-  <generalization id="26">    
+  <generalization id="27">    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="2"/>  
   </generalization>  
-  <association id="27">    
-    <bendpoint x="52" y="642"/>    
-    <bendpoint x="33" y="302"/>    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="28" name="content"/>      
-      <multiplicity id="29" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="30">    
+  <dependency id="28">    
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="12"/>  
   </dependency>  
-  <dependency id="31">    
+  <dependency id="29">    
     <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="7"/>  
   </dependency>  
-  <realization id="32">    
+  <realization id="30">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="1"/>  
   </realization>  
-  <association id="33">    
+  <association id="31">    
     <bendpoint x="30" y="748"/>    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="34" name="view">        
+      <attribute id="32" name="view">        
         <position height="18" width="32" x="167" y="816"/>      
       </attribute>      
-      <multiplicity id="35" minimum="0" maximum="1">        
+      <multiplicity id="33" minimum="0" maximum="1">        
         <position height="16" width="23" x="203" y="817"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="12" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="36">    
+  <dependency id="34">    
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="8"/>  
   </dependency>  
-  <generalization id="37">    
+  <generalization id="35">    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="3"/>  
   </generalization>  
-  <association id="38">    
+  <association id="36">    
     <bendpoint x="655" y="814"/>    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="39" name="typeOfObject">        
+      <attribute id="37" name="typeOfObject">        
         <position height="18" width="72" x="653" y="828"/>      
       </attribute>      
-      <multiplicity id="40" minimum="0" maximum="1">        
+      <multiplicity id="38" minimum="0" maximum="1">        
         <position height="16" width="23" x="727" y="830"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="41">    
+  <dependency id="39">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="7"/>  
   </dependency>  
