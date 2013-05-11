@@ -23,7 +23,7 @@ public class HumanPlayerTest {
 	@Test
 	public void testGetLocation() {
 		//Set up
-		LocBrewery brewery = new LocBrewery(1, 1, "Carlsberg", null);
+		LocBrewery brewery = new LocBrewery(1, 1, "Carlsberg", null, null);
 		player.setLocation(brewery);
 		
 		assertTrue(player.getLocation() == brewery);
@@ -31,7 +31,7 @@ public class HumanPlayerTest {
 
 	@Test
 	public void testSetLocation() {
-		LocBrewery brewery = new LocBrewery(1, 1, "Carlsberg", null);
+		LocBrewery brewery = new LocBrewery(1, 1, "Carlsberg", null, null);
 		assertTrue(player.setLocation(brewery));
 	}
 
@@ -44,7 +44,7 @@ public class HumanPlayerTest {
 	@Test
 	public void testTakeObjectGameObject_Takeable() {
 		//set up test
-		LocCityHall location = new LocCityHall(1, 1, "blah", null);
+		LocCityHall location = new LocCityHall(1, 1, "blah", null, null);
 		player.setLocation(location);
 		ObjBottle bottle1 = new ObjBottle(true, BottleType.WATER);
 		
@@ -56,7 +56,7 @@ public class HumanPlayerTest {
 	@Test
 	public void testTakeObjectGameObject_NonTakeable() {
 		//set up test
-		LocBrewery location = new LocBrewery(1, 1, "blah", null);
+		LocBrewery location = new LocBrewery(1, 1, "blah", null, null);
 		player.setLocation(location);
 		ObjBottle bottle1 = new ObjBottle(false, BottleType.WATER);
 		//Test
@@ -67,7 +67,7 @@ public class HumanPlayerTest {
 	@Test
 	public void testTakeObjectString() {
 		//set up test
-		LocCityHall location = new LocCityHall(1, 1, "blah", null);
+		LocCityHall location = new LocCityHall(1, 1, "blah", null, null);
 		player.setLocation(location);
 				
 		//Test

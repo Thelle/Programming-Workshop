@@ -9,8 +9,8 @@ import dk.itu.KF13.TheSim.Game.View.GameView;
 
 public class LocBrewery extends MasterLocation {
 
-	public LocBrewery(int xInput, int yInput, String name, GameView gameView) {
-		super(xInput, yInput, name, gameView);
+	public LocBrewery(int xInput, int yInput, String name, GameView gameView, WorldCopenhagen copenhagen) {
+		super(xInput, yInput, name, gameView, copenhagen);
 		getObjectsAtLocation().add(new ObjBottle(true, BottleType.MASTERBREW));
 		getObjectsAtLocation().add(new ObjNonMovable(false, ObjectType.BARREL));
 		

@@ -5,8 +5,8 @@ import dk.itu.KF13.TheSim.Game.View.GameView;
 
 public class LocITU extends MasterLocation {
 
-	public LocITU(int xInput, int yInput, String name, GameView gameView) {
-		super(xInput, yInput, name, gameView);
+	public LocITU(int xInput, int yInput, String name, GameView gameView, WorldCopenhagen copenhagen) {
+		super(xInput, yInput, name, gameView, copenhagen);
 	}
 
 	@Override

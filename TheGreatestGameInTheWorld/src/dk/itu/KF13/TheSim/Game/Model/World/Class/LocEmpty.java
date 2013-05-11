@@ -9,8 +9,8 @@ import dk.itu.KF13.TheSim.Game.View.GameView;
 
 public class LocEmpty extends MasterLocation {
 
-	public LocEmpty(int xInput, int yInput, String name, GameView gameView) {
-		super(xInput, yInput, name, gameView);
+	public LocEmpty(int xInput, int yInput, String name, GameView gameView, WorldCopenhagen copenhagen) {
+		super(xInput, yInput, name, gameView, copenhagen);
 	}
 
 	@Override

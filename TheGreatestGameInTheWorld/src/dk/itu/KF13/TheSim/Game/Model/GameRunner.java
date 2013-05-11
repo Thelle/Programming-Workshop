@@ -17,7 +17,7 @@ import dk.itu.KF13.TheSim.Game.View.GameView;
 public class GameRunner {
 	private IGameController controller;
 	private GameView view;
-	public static WorldCopenhagen copenhagen;	
+	private WorldCopenhagen copenhagen;	
 	private Location[][] worldLocations;
 	private HumanPlayer player;
 	
@@ -214,7 +214,7 @@ public class GameRunner {
 	 * getPlayer returns the world object stored in the attribute copenhagen 
 	 * @return a pointer to the created WorldCopenhagen object
 	 */
-	public static WorldCopenhagen getWorld(){
+	public WorldCopenhagen getWorld(){
 		return copenhagen;
 	}
 	

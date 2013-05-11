@@ -6,8 +6,8 @@ import dk.itu.KF13.TheSim.Game.View.GameView;
 
 public class LocPoliceStation extends MasterLocation {
 
-	public LocPoliceStation(int xInput, int yInput, String name, GameView gameView) {
-		super(xInput, yInput, name, gameView);
+	public LocPoliceStation(int xInput, int yInput, String name, GameView gameView, WorldCopenhagen copenhagen) {
+		super(xInput, yInput, name, gameView, copenhagen);
 		getObjectsAtLocation().add(new ObjGun(true, gameView));
 	}
 

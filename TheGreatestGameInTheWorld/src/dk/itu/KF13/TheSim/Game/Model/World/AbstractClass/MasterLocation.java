@@ -3,7 +3,6 @@ package dk.itu.KF13.TheSim.Game.Model.World.AbstractClass;
 import java.util.ArrayList;
 import java.util.List;
 
-import dk.itu.KF13.TheSim.Game.Model.GameRunner;
 import dk.itu.KF13.TheSim.Game.Model.Physical.Interface.GameObject;
 import dk.itu.KF13.TheSim.Game.Model.World.Class.WorldCopenhagen;
 import dk.itu.KF13.TheSim.Game.Model.World.Interface.Location;
@@ -16,6 +15,7 @@ public abstract class MasterLocation implements Location {
 	private Location[][] tempMap;
 	private GameView view;
 	private List<GameObject> objectsAtLocation = new ArrayList<GameObject>();
+	private WorldCopenhagen copenhagen;
 	
 	/**
 	 * Constructor of the abstract class MasterLocation.
@@ -24,11 +24,13 @@ public abstract class MasterLocation implements Location {
 	 * @param yInput - the y-coordinate of the location
 	 * @param locationName - the name of the location
 	 */
-	public MasterLocation (int xInput, int yInput, String locationName, GameView gameView){
+	public MasterLocation (int xInput, int yInput, String locationName, 
+			GameView gameView, WorldCopenhagen world){
 		xPos = xInput;
 		yPos = yInput;
 		name = locationName;
 		setView(gameView);
+		setCopenhagen(world);
 	}
 	
 	public Location getExits(Direction direction) {
@@ -65,7 +67,6 @@ public abstract class MasterLocation implements Location {
 	 * getMap creates a pointer to the world map and saves it in the attribute tempMap
 	 */
 	private void getMap(){
-		WorldCopenhagen copenhagen = GameRunner.getWorld();
 		tempMap = copenhagen.getLocations();
 	}
 	
@@ -155,5 +156,13 @@ public abstract class MasterLocation implements Location {
 
 	public void setView(GameView view) {
 		this.view = view;
+	}
+
+	public WorldCopenhagen getCopenhagen() {
+		return copenhagen;
+	}
+
+	public void setCopenhagen(WorldCopenhagen copenhagen) {
+		this.copenhagen = copenhagen;
 	}
 }
