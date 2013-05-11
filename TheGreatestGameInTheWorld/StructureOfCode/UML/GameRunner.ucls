@@ -15,7 +15,7 @@
     project="TheGreatestGameInTheWorld" 
     file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Controller/IGameController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="564" y="162"/>    
+    <position height="-1" width="-1" x="559" y="214"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false"/>      
@@ -87,63 +87,97 @@
       <operations public="false" package="false" protected="false" private="false"/>    
     </display>  
   </class>  
-  <association id="9">    
+  <class id="9" language="java" name="dk.itu.KF13.TheSim.Game.Controller.GameController" 
+    project="TheGreatestGameInTheWorld" 
+    file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Controller/GameController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="549" y="97"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="dk.itu.KF13.TheSim.Game.Model.Physical.Class.ObjGun" 
+    project="TheGreatestGameInTheWorld" 
+    file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Model/Physical/Class/ObjGun.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="522" y="502"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <association id="11">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="10" name="worldLocations">        
+      <attribute id="12" name="worldLocations">        
         <position height="18" width="83" x="90" y="221"/>      
       </attribute>      
-      <multiplicity id="11" minimum="0" maximum="2147483647"/>    
+      <multiplicity id="13" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="12">    
+  <association id="14">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="13" name="view"/>      
-      <multiplicity id="14" minimum="0" maximum="1"/>    
+      <attribute id="15" name="view"/>      
+      <multiplicity id="16" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="15">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="1"/>  
-  </dependency>  
-  <dependency id="16">    
+  <association id="17">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="18" name="runner">        
+        <position height="18" width="40" x="421" y="140"/>      
+      </attribute>      
+      <multiplicity id="19" minimum="0" maximum="1">        
+        <position height="16" width="23" x="440" y="166"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="20">    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="6"/>  
   </dependency>  
-  <association id="17">    
+  <association id="21">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="18" name="player">        
+      <attribute id="22" name="player">        
         <position height="18" width="38" x="499" y="343"/>      
       </attribute>      
-      <multiplicity id="19" minimum="0" maximum="1">        
+      <multiplicity id="23" minimum="0" maximum="1">        
         <position height="16" width="23" x="540" y="344"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="20">    
+  <dependency id="24">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="25">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="21" name="copenhagen"/>      
-      <multiplicity id="22" minimum="0" maximum="1"/>    
+      <attribute id="26" name="copenhagen"/>      
+      <multiplicity id="27" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="23">    
+  <dependency id="28">    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="7"/>  
   </dependency>  
-  <association id="24">    
+  <association id="29">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="25" name="controller">        
-        <position height="18" width="53" x="451" y="153"/>      
+      <attribute id="30" name="controller">        
+        <position height="18" width="53" x="446" y="205"/>      
       </attribute>      
-      <multiplicity id="26" minimum="0" maximum="1">        
-        <position height="16" width="23" x="461" y="172"/>      
+      <multiplicity id="31" minimum="0" maximum="1">        
+        <position height="16" width="23" x="456" y="224"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
