@@ -58,7 +58,7 @@
     project="TheGreatestGameInTheWorld" 
     file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Controller/BlackJackController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="538" y="151"/>    
+    <position height="-1" width="-1" x="552" y="156"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
