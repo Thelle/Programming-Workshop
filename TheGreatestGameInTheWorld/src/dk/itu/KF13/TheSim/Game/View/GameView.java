@@ -6,7 +6,7 @@ package dk.itu.KF13.TheSim.Game.View;
  *
  */
 public class GameView {
-	private ConsoleView printDevice;
+	private final ConsoleView printDevice;
 	
 	public GameView(){
 		printDevice = new ConsoleView();
