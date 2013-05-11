@@ -5,7 +5,7 @@
     project="TheGreatestGameInTheWorld" 
     file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Model/Physical/Interface/Player.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="279" y="348"/>    
+    <position height="-1" width="-1" x="133" y="321"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -16,7 +16,7 @@
     project="TheGreatestGameInTheWorld" 
     file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Model/Physical/Class/HumanPlayer.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="277" y="764"/>    
+    <position height="-1" width="-1" x="477" y="341"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -27,19 +27,19 @@
     project="TheGreatestGameInTheWorld" 
     file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Model/Physical/Interface/Localizable.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="278" y="114"/>    
+    <position height="-1" width="-1" x="132" y="87"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="false" package="false" protected="false" private="false"/>      
-      <operations public="false" package="false" protected="false" private="false"/>    
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </interface>  
   <class id="4" language="java" name="dk.itu.KF13.TheSim.Game.Model.Physical.Class.Backpack" 
     project="TheGreatestGameInTheWorld" 
     file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Model/Physical/Class/Backpack.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="710" y="766"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+    <position height="-1" width="-1" x="715" y="329"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false"/>      
       <operations public="false" package="false" protected="false" private="false"/>    
@@ -49,128 +49,99 @@
     project="TheGreatestGameInTheWorld" 
     file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Model/World/Interface/Location.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="638" y="516"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+    <position height="-1" width="-1" x="469" y="82"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false"/>      
       <operations public="false" package="false" protected="false" private="false"/>    
     </display>  
   </interface>  
-  <enumeration id="6" language="java" name="dk.itu.KF13.TheSim.Game.Model.Physical.Class.ObjBottle.BottleType" 
+  <class id="6" language="java" name="dk.itu.KF13.TheSim.Game.Model.Physical.Class.ObjBottle" 
     project="TheGreatestGameInTheWorld" 
     file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Model/Physical/Class/ObjBottle.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="922" y="661"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="false" package="false" protected="false" private="false"/>      
-      <operations public="false" package="false" protected="false" private="false"/>    
-    </display>  
-  </enumeration>  
-  <class id="7" language="java" name="dk.itu.KF13.TheSim.Game.Model.Physical.Class.ObjBottle" 
-    project="TheGreatestGameInTheWorld" 
-    file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Model/Physical/Class/ObjBottle.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="928" y="539"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+    <position height="-1" width="-1" x="684" y="183"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false"/>      
       <operations public="false" package="false" protected="false" private="false"/>    
     </display>  
   </class>  
-  <interface id="8" language="java" name="dk.itu.KF13.TheSim.Game.Model.Physical.Interface.GameObject" 
+  <interface id="7" language="java" name="dk.itu.KF13.TheSim.Game.Model.Physical.Interface.GameObject" 
     project="TheGreatestGameInTheWorld" 
     file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Model/Physical/Interface/GameObject.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="631" y="354"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+    <position height="-1" width="-1" x="136" y="537"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false"/>      
       <operations public="false" package="false" protected="false" private="false"/>    
     </display>  
   </interface>  
-  <class id="9" language="java" name="dk.itu.KF13.TheSim.Game.View.GameView" project="TheGreatestGameInTheWorld" 
+  <class id="8" language="java" name="dk.itu.KF13.TheSim.Game.View.GameView" project="TheGreatestGameInTheWorld" 
     file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/View/GameView.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="654" y="934"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+    <position height="-1" width="-1" x="711" y="403"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false"/>      
       <operations public="false" package="false" protected="false" private="false"/>    
     </display>  
   </class>  
-  <dependency id="10">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="8"/>  
-  </dependency>  
-  <nesting id="11">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="6"/>  
-  </nesting>  
-  <generalization id="12">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <association id="13">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="14" name="typeOfBottle"/>      
-      <multiplicity id="15" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="16">    
+  <association id="9">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="17" name="myBackpack"/>      
-      <multiplicity id="18" minimum="0" maximum="1"/>    
+      <attribute id="10" name="myBackpack">        
+        <position height="18" width="69" x="606" y="310"/>      
+      </attribute>      
+      <multiplicity id="11" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="19">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="5"/>  
-  </dependency>  
-  <realization id="20">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="1"/>  
-  </realization>  
-  <dependency id="21">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="7"/>  
-  </dependency>  
-  <generalization id="22">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <association id="23">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="24" name="view"/>      
-      <multiplicity id="25" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="26">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="8"/>  
-  </dependency>  
-  <dependency id="27">    
+  <dependency id="12">    
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="6"/>  
   </dependency>  
-  <association id="28">    
+  <dependency id="13">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <association id="14">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="29" name="myLocation">        
-        <position height="18" width="63" x="593" y="555"/>      
+      <attribute id="15" name="view"/>      
+      <multiplicity id="16" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="17">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <realization id="18">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
+  <association id="19">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="20" name="myLocation">        
+        <position height="18" width="63" x="477" y="103"/>      
       </attribute>      
-      <multiplicity id="30" minimum="0" maximum="1">        
-        <position height="16" width="23" x="662" y="555"/>      
+      <multiplicity id="21" minimum="0" maximum="1">        
+        <position height="16" width="23" x="544" y="103"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <dependency id="22">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <generalization id="23">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     accessors="true" visibility="true">    
     <attributes public="false" package="false" protected="false" private="false"/>    
