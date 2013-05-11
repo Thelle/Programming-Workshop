@@ -9,8 +9,8 @@ import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
+import dk.itu.KF13.TheSim.Game.Controller.BlackJackController;
 import dk.itu.KF13.TheSim.Game.Controller.IGameController;
-import dk.itu.KF13.TheSim.Game.Model.Minigames.BlackJack.BlackJackController;
 
 public class BlackJackControllerTest {
 

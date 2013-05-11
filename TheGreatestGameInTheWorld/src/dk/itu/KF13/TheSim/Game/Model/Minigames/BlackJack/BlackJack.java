@@ -2,6 +2,7 @@ package dk.itu.KF13.TheSim.Game.Model.Minigames.BlackJack;
 import java.util.Random;
 
 
+import dk.itu.KF13.TheSim.Game.Controller.BlackJackController;
 import dk.itu.KF13.TheSim.Game.Controller.IGameController;
 import dk.itu.KF13.TheSim.Game.Model.Physical.Class.HumanPlayer;
 import dk.itu.KF13.TheSim.Game.View.GameView;

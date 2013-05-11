@@ -12,10 +12,10 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="dk.itu.KF13.TheSim.Game.Model.Minigames.BlackJack.BlackJackController" 
+  <class id="2" language="java" name="dk.itu.KF13.TheSim.Game.Controller.BlackJackController" 
     project="TheGreatestGameInTheWorld" 
-    file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Model/Minigames/BlackJack/BlackJackController.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+    file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Controller/BlackJackController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="692" y="260"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
