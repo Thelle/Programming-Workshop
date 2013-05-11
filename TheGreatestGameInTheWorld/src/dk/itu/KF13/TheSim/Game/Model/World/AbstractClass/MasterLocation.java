@@ -142,27 +142,27 @@ public abstract class MasterLocation implements Location {
 	
 	public abstract String getDescription();
 
-	public List<GameObject> getObjectsAtLocation() {
+	protected List<GameObject> getObjectsAtLocation() {
 		return objectsAtLocation;
 	}
 
-	public void setObjectsAtLocation(List<GameObject> objectsAtLocation) {
+	protected void setObjectsAtLocation(List<GameObject> objectsAtLocation) {
 		this.objectsAtLocation = objectsAtLocation;
 	}
 
-	public GameView getView() {
+	protected GameView getView() {
 		return view;
 	}
 
-	public void setView(GameView view) {
+	protected void setView(GameView view) {
 		this.view = view;
 	}
 
-	public WorldCopenhagen getCopenhagen() {
+	protected WorldCopenhagen getCopenhagen() {
 		return copenhagen;
 	}
 
-	public void setCopenhagen(WorldCopenhagen copenhagen) {
+	protected void setCopenhagen(WorldCopenhagen copenhagen) {
 		this.copenhagen = copenhagen;
 	}
 }

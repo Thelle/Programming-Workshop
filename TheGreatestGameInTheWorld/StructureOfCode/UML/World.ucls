@@ -17,7 +17,7 @@
     file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Model/World/Interface/Location.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="554" y="238"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false"/>      
       <operations public="false" package="false" protected="false" private="false"/>    
@@ -37,52 +37,52 @@
   <class id="4" language="java" name="dk.itu.KF13.TheSim.Game.View.GameView" project="TheGreatestGameInTheWorld" 
     file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/View/GameView.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="177" y="424"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+    <position height="-1" width="-1" x="178" y="364"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false"/>      
       <operations public="false" package="false" protected="false" private="false"/>    
     </display>  
   </class>  
-  <association id="5">    
-    <bendpoint x="372" y="350"/>    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="6" name="worldLocations">        
-        <position height="18" width="85" x="462" y="293"/>      
-      </attribute>      
-      <multiplicity id="7" minimum="0" maximum="2147483647">        
-        <position height="16" width="21" x="553" y="293"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="8">    
+  <realization id="5">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="3"/>  
+  </realization>  
+  <dependency id="6">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="7">    
     <bendpoint x="557" y="91"/>    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="2"/>  
   </dependency>  
-  <association id="9">    
+  <association id="8">    
     <bendpoint x="363" y="171"/>    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="10" name="locationMap">        
-        <position height="18" width="67" x="407" y="171"/>      
+      <attribute id="9" name="locationMap">        
+        <position height="18" width="67" x="459" y="186"/>      
       </attribute>      
-      <multiplicity id="11" minimum="0" maximum="2147483647">        
-        <position height="16" width="21" x="476" y="172"/>      
+      <multiplicity id="10" minimum="0" maximum="2147483647">        
+        <position height="16" width="21" x="528" y="187"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="12">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="4"/>  
-  </dependency>  
-  <realization id="13">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="3"/>  
-  </realization>  
+  <association id="11">    
+    <bendpoint x="372" y="350"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="12" name="worldLocations">        
+        <position height="18" width="85" x="506" y="276"/>      
+      </attribute>      
+      <multiplicity id="13" minimum="0" maximum="2147483647">        
+        <position height="16" width="21" x="597" y="276"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     accessors="true" visibility="true">    
     <attributes public="false" package="false" protected="false" private="false"/>    
