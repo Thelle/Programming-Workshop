@@ -68,23 +68,6 @@ public class BlackJack {
     	}        
     }
     
-    private void printRules(){
-    	view.printnl("I will just go over the rules before we start: \n"
-    				+"The goal of the game is to get as close to 21 points without getting more. \n" +
-    				"At the same time you also have to have more points than the dealer unless you want to lose.\n" +
-    				"Each turn you draw a card and chose to continue or hold.\n" +
-    				"If you get more than 21 points you lose automatically.\n" +
-    				"If you choose to hold the delaer will play.\n" +
-    				"The one who gets closest to 21 points without getting more points win.\n" +
-    				"The dealer wins on a tie.\n" +
-    				"The card values 2 to 9 is worth their printed values. \n" +
-    				"10 and all the royals are worth 10 points.\n" +
-    				"The ace is a special card. It counts as 11 points as long as that doesn't give you more than 21 points.\n" +
-    				"If you get more than 21 points with an ace, the value of the ace is changed to 1 point.\n" +
-    				"That was all the rules. Let's begin!");
-    	
-    }
-    
     /**
      * addPoints adds points according to the value of the drawn card. 
      * @param drawnCard - The card that has been drawn
@@ -208,8 +191,8 @@ public class BlackJack {
             return true;
         }
     }
-   
-	/**
+    
+    /**
      * playerDidWin tests if the player won or lost
      * @return true if the player did win. False if not
      */
@@ -223,7 +206,7 @@ public class BlackJack {
         	return false;
         }
     }
-    
+   
 	/**
 	 * playOneTurn draws a card for the player
 	 * @return Returns the card drawn
@@ -238,7 +221,7 @@ public class BlackJack {
             return drawnCard;
     }
     
-    /**
+	/**
      * playPlayerRound plays the human players black jack round
      * @return false if player got more than 21 points. Returns true otherwise.     * 
      */
@@ -287,6 +270,23 @@ public class BlackJack {
 	
 	    return outcomeOfTurn;
 	}
+    
+    private void printRules(){
+    	view.printnl("I will just go over the rules before we start: \n"
+    				+"The goal of the game is to get as close to 21 points without getting more. \n" +
+    				"At the same time you also have to have more points than the dealer unless you want to lose.\n" +
+    				"Each turn you draw a card and chose to continue or hold.\n" +
+    				"If you get more than 21 points you lose automatically.\n" +
+    				"If you choose to hold the delaer will play.\n" +
+    				"The one who gets closest to 21 points without getting more points win.\n" +
+    				"The dealer wins on a tie.\n" +
+    				"The card values 2 to 9 is worth their printed values. \n" +
+    				"10 and all the royals are worth 10 points.\n" +
+    				"The ace is a special card. It counts as 11 points as long as that doesn't give you more than 21 points.\n" +
+    				"If you get more than 21 points with an ace, the value of the ace is changed to 1 point.\n" +
+    				"That was all the rules. Let's begin!");
+    	
+    }
     
     /**
      * Resets the variables where points for each playerround are stored
