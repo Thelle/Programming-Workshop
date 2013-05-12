@@ -36,12 +36,6 @@ public class HumanPlayerTest {
 	}
 
 	@Test
-	public void testMove() {
-		assertTrue(true);
-		//Tested by moving around on the map
-	}
-
-	@Test
 	public void testTakeObjectGameObject_Takeable() {
 		//set up test
 		LocCityHall location = new LocCityHall(1, 1, "blah", null, null);

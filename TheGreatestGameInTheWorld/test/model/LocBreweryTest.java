@@ -24,20 +24,9 @@ public class LocBreweryTest {
 		instance = new LocBrewery(1, 1, "Carslberg", null, null);
 	}
 
-	@After
-	public void tearDown() {
-	}
-
 	@Test
 	public void testGetDescription() {
 		assertNotNull(instance.getDescription());
-	}
-
-	@Test
-	public void testGetExits() {
-		//This has been tested be going around the world and making sure that all
-		//exits are returned correctly
-		assertTrue(true);
 	}
 
 	@Test
@@ -67,11 +56,6 @@ public class LocBreweryTest {
 		String output = instance.getObjectDescriptions();
 		boolean status = output.equalsIgnoreCase("No objects to be found at this location");
 		assertFalse(status);
-	}
-
-	@Test
-	public void testGetObjects() {
-		instance.getObjects();
 	}
 
 	@Test

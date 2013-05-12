@@ -235,7 +235,8 @@ public class BlackJack {
         if (playerType.equals("Player")){
             maxNumber = 21; //Player may continue until s/he has more than 21 points
         }
-               
+        
+        //Changes the amount of points if the player has an ace worth 11
         if (pointsPlayed > 21 && numberOfAcesWorth11 > 0){
             pointsPlayed = pointsPlayed-10;
             numberOfAcesWorth11--;
