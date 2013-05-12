@@ -4,7 +4,11 @@ import dk.itu.KF13.TheSim.Game.Controller.GameController;
 import dk.itu.KF13.TheSim.Game.Controller.IGameController;
 import dk.itu.KF13.TheSim.Game.Model.GameRunner;
 import dk.itu.KF13.TheSim.Game.View.GameView;
-
+/**
+ * The main class of the program. It is from here the game is started.
+ * @author Simon
+ *
+ */
 public class Main {
 	/**
 	 * @param args

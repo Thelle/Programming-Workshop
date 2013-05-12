@@ -6,7 +6,12 @@ import dk.itu.KF13.TheSim.Game.Model.Physical.Class.ObjBottle;
 import dk.itu.KF13.TheSim.Game.Model.Physical.Class.ObjBottle.BottleType;
 import dk.itu.KF13.TheSim.Game.Model.World.AbstractClass.MasterLocation;
 import dk.itu.KF13.TheSim.Game.View.GameView;
-
+/**
+ * LocEmpty is the class used for all the empty locations in the game world.
+ * When the player arrives at this location, there is a chance that either a beer or a bottle of water appears.
+ * @author Simon
+ *
+ */
 public class LocEmpty extends MasterLocation {
 
 	public LocEmpty(int xInput, int yInput, String name, GameView gameView, WorldCopenhagen copenhagen) {

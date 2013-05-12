@@ -3,7 +3,12 @@ package dk.itu.KF13.TheSim.Game.Model.World.Class;
 import dk.itu.KF13.TheSim.Game.Model.Physical.Class.ObjGun;
 import dk.itu.KF13.TheSim.Game.Model.World.AbstractClass.MasterLocation;
 import dk.itu.KF13.TheSim.Game.View.GameView;
-
+/**
+ * LocPoliceStation is only used as the place where the gun is.
+ * Nothing else happens here.
+ * @author Simon
+ *
+ */
 public class LocPoliceStation extends MasterLocation {
 
 	public LocPoliceStation(int xInput, int yInput, String name, GameView gameView, WorldCopenhagen copenhagen) {

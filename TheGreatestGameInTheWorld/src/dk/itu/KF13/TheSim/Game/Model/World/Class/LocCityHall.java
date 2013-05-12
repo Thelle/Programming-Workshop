@@ -6,7 +6,11 @@ import dk.itu.KF13.TheSim.Game.Model.Physical.Class.ObjNonMovable;
 import dk.itu.KF13.TheSim.Game.Model.Physical.Class.ObjNonMovable.ObjectType;
 import dk.itu.KF13.TheSim.Game.Model.World.AbstractClass.MasterLocation;
 import dk.itu.KF13.TheSim.Game.View.GameView;
-
+/**
+ * Nothing happens at LocCityHall in this version.
+ * @author Simon
+ *
+ */
 public class LocCityHall extends MasterLocation {
 
 	public LocCityHall(int xInput, int yInput, String name, GameView gameView, WorldCopenhagen copenhagen) {

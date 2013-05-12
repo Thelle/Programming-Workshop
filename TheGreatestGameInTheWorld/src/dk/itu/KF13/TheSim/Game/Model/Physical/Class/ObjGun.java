@@ -3,7 +3,12 @@ package dk.itu.KF13.TheSim.Game.Model.Physical.Class;
 import dk.itu.KF13.TheSim.Game.Model.GameRunner;
 import dk.itu.KF13.TheSim.Game.Model.Physical.AbstractClass.MasterGameObject;
 import dk.itu.KF13.TheSim.Game.View.GameView;
-
+/**
+ * ObjGun is a subclass of MasterGameObject. 
+ * This class has the ability to stop the game if the player chooses to pick it up.
+ * @author Simon
+ *
+ */
 public class ObjGun extends MasterGameObject {
 
 	public ObjGun(boolean canBeTaken, GameView gameView) {

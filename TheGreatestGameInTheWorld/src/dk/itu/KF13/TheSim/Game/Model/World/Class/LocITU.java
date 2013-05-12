@@ -2,7 +2,11 @@ package dk.itu.KF13.TheSim.Game.Model.World.Class;
 
 import dk.itu.KF13.TheSim.Game.Model.World.AbstractClass.MasterLocation;
 import dk.itu.KF13.TheSim.Game.View.GameView;
-
+/**
+ * LocITU is the starting position for the player. Nothing else happens here.
+ * @author Simon
+ *
+ */
 public class LocITU extends MasterLocation {
 
 	public LocITU(int xInput, int yInput, String name, GameView gameView, WorldCopenhagen copenhagen) {

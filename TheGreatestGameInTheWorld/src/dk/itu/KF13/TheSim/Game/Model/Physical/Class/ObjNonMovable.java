@@ -1,7 +1,11 @@
 package dk.itu.KF13.TheSim.Game.Model.Physical.Class;
 
 import dk.itu.KF13.TheSim.Game.Model.Physical.AbstractClass.MasterGameObject;
-
+/**
+ * ObjNonMovable is the class for all objects in the game which are just used as decorations.
+ * @author Simon
+ *
+ */
 public class ObjNonMovable extends MasterGameObject {
 	
 	public enum ObjectType {STATUE, BARREL}; 

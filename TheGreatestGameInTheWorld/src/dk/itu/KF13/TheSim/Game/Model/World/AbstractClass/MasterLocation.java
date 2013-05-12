@@ -7,7 +7,12 @@ import dk.itu.KF13.TheSim.Game.Model.Physical.Interface.GameObject;
 import dk.itu.KF13.TheSim.Game.Model.World.Class.WorldCopenhagen;
 import dk.itu.KF13.TheSim.Game.Model.World.Interface.Location;
 import dk.itu.KF13.TheSim.Game.View.GameView;
-
+/**
+ * MasterLocation is the abstract superclass for all the locations in the game.
+ * It implements most of the methods from the interface Location.
+ * @author Simon
+ *
+ */
 public abstract class MasterLocation implements Location {
 	
 	private int xPos, yPos;
