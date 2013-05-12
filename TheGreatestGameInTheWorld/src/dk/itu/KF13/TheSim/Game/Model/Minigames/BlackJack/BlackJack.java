@@ -33,6 +33,9 @@ public class BlackJack {
     public void playBlackJack(HumanPlayer player){
         boolean playerDidWin;
     	
+        //The rules of the game are printed
+        printRules();
+        
     	// Human round is played
     	boolean continueGame = playPlayerRound();
     	
@@ -63,6 +66,23 @@ public class BlackJack {
     		view.printnl("You loose two beers");
     		player.removeBeersFromBackpack(2);
     	}        
+    }
+    
+    private void printRules(){
+    	view.printnl("I will just go over the rules before we start: \n"
+    				+"The goal of the game is to get as close to 21 points without getting more. \n" +
+    				"At the same time you also have to have more points than the dealer unless you want to lose.\n" +
+    				"Each turn you draw a card and chose to continue or hold.\n" +
+    				"If you get more than 21 points you lose automatically.\n" +
+    				"If you choose to hold the delaer will play.\n" +
+    				"The one who gets closest to 21 points without getting more points win.\n" +
+    				"The dealer wins on a tie.\n" +
+    				"The card values 2 to 9 is worth their printed values. \n" +
+    				"10 and all the royals are worth 10 points.\n" +
+    				"The ace is a special card. It counts as 11 points as long as that doesn't give you more than 21 points.\n" +
+    				"If you get more than 21 points with an ace, the value of the ace is changed to 1 point.\n" +
+    				"That was all the rules. Let's begin!");
+    	
     }
     
     /**
