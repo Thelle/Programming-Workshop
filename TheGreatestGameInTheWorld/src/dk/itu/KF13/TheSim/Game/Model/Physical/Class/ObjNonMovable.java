@@ -1,7 +1,6 @@
 package dk.itu.KF13.TheSim.Game.Model.Physical.Class;
 
 import dk.itu.KF13.TheSim.Game.Model.Physical.AbstractClass.MasterGameObject;
-import dk.itu.KF13.TheSim.Game.View.GameView;
 
 public class ObjNonMovable extends MasterGameObject {
 	
