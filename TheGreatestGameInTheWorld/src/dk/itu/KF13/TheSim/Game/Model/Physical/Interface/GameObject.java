@@ -16,8 +16,6 @@ public interface GameObject extends Localizable {
 	 */
 	String getDescription();
 	
-	boolean setLocation(Location location);
-	
 	Location getLocation();
 	
 	/**
@@ -27,6 +25,8 @@ public interface GameObject extends Localizable {
 	 * @return false if the object is not placed in the backpack
 	 */
 	boolean putInBackpack(Backpack backpack);
+	
+	boolean setLocation(Location location);
 	
 	/**
 	 * Executes the items specific use method. 

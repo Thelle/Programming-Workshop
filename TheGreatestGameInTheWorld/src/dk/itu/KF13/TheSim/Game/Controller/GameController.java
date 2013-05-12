@@ -18,18 +18,6 @@ public class GameController implements IGameController {
 	private HumanPlayer player;
 	private GameView view;
 	
-	public void setGameRunner(GameRunner gameRunner){
-		this.runner = gameRunner;		
-	}
-	
-	public void setGameView(GameView gameView){
-		this.view = gameView;		
-	}
-	
-	public void setPlayer (HumanPlayer player){
-		this.player = player;
-	}
-	
 	/**
 	 * Takes written user input and runs the method according to command.
 	 * @return true if the player doesn't choose to stop the game
@@ -71,21 +59,6 @@ public class GameController implements IGameController {
 			view.print("I did not understand the input.");
 			return true;
 		}
-	}	
-	
-	/**
-	 * testMovement parse the user input and calls the movePlayer method 
-	 * to move the player in the correct direction
-	 * @param input - the written user input
-	 */
-	private void testMovement(String input){
-		switch (input){
-		case "go north": runner.movePlayer(Direction.NORTH);break;
-		case "go south": runner.movePlayer(Direction.SOUTH);break;
-		case "go west": runner.movePlayer(Direction.WEST);break;
-		case "go east": runner.movePlayer(Direction.EAST);break;
-		default:view.print("I did not understand the direction.");break;
-		}
 	}
 	
 	/**
@@ -106,6 +79,33 @@ public class GameController implements IGameController {
 				"'help' - This text will appear again.";
 		
 		view.printnl(output);
+	}
+	
+	public void setGameRunner(GameRunner gameRunner){
+		this.runner = gameRunner;		
+	}	
+	
+	public void setGameView(GameView gameView){
+		this.view = gameView;		
+	}
+	
+	public void setPlayer (HumanPlayer player){
+		this.player = player;
+	}
+	
+	/**
+	 * testMovement parse the user input and calls the movePlayer method 
+	 * to move the player in the correct direction
+	 * @param input - the written user input
+	 */
+	private void testMovement(String input){
+		switch (input){
+		case "go north": runner.movePlayer(Direction.NORTH);break;
+		case "go south": runner.movePlayer(Direction.SOUTH);break;
+		case "go west": runner.movePlayer(Direction.WEST);break;
+		case "go east": runner.movePlayer(Direction.EAST);break;
+		default:view.print("I did not understand the direction.");break;
+		}
 	}
 	
 }

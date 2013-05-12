@@ -37,6 +37,15 @@ public class BlackJackController {
 	}
 	
 	/**
+	 * getStringInput calls the method getStringInput from {@link GameController}
+	 * and returns the users input.
+	 * @return Returns user input.
+	 */
+	private String getStringInput(){
+		String input = controller.getStringInput();
+		return input;
+	}
+	/**
 	 * testUserInput tests the user input to see if it is a 'y' or 'n'
 	 * @param input - the input given by the user
 	 * @return True if the input is 'y' or 'n'. False otherwise
@@ -47,15 +56,6 @@ public class BlackJackController {
 		} else {
 			return false;
 		}
-	}
-	/**
-	 * getStringInput calls the method getStringInput from {@link GameController}
-	 * and returns the users input.
-	 * @return Returns user input.
-	 */
-	private String getStringInput(){
-		String input = controller.getStringInput();
-		return input;
 	}
 	
 	

@@ -1,7 +1,6 @@
 package dk.itu.KF13.TheSim.Game.Model.Minigames.BlackJack;
 import java.util.Random;
 
-
 import dk.itu.KF13.TheSim.Game.Controller.BlackJackController;
 import dk.itu.KF13.TheSim.Game.Controller.IGameController;
 import dk.itu.KF13.TheSim.Game.Model.Physical.Class.HumanPlayer;
@@ -67,153 +66,41 @@ public class BlackJack {
     }
     
     /**
-     * playPlayerRound plays the human players black jack round
-     * @return false if player got more than 21 points. Returns true otherwise.     * 
+     * addPoints adds points according to the value of the drawn card. 
+     * @param drawnCard - The card that has been drawn
      */
-    private boolean playPlayerRound(){
-    	int result = playRound("Player");
-    	
-    	switch (result){
-    	case 0:
-    		view.printnl("You chose to hold. Let's see how the dealer plays.");
-    		return true;
-    	case 1:
-    		view.printnl("You got more than 21 points. You lost.");
-    		return false;
-    	case 2:
-    		view.printnl("Great! You got exactly 21 points. Let's see how the dealer plays.");
-    		return true;
-    	default: return true;
-    	}    	
-    }
-    
-    /**
-     * saveInfoAboutPlayersRound saves the info about the player's played round 
-     * and tells the player which cards where played.
-     */
-    private void saveInfoAboutPlayersRound() {
-    	playerPoints = pointsPlayed;
-        playedCardsPlayer=playedCards;
-        view.printnl("You played: " + playedCardsPlayer);
-    }
-    
-    /**
-     * saveInfoAboutDealerRound saves the info about the dealer's played round 
-     * and tells the player which cards where played.
-     */
-    private void saveInfoAboutDealerRound() {
-    	dealerPoints = pointsPlayed;
-        playedCardsDealer = playedCards.replace(playedCardsPlayer,"");
-        view.printnl("Dealer played: " + playedCardsDealer);
-    }
-    
-    /**
-     * Resets the variables where points for each playerround are stored
-     */
-    private void resetGlobalVariables(){
-        pointsPlayed = 0;
-        numberOfAcesWorth11 = 0;
-    }
-    
-    /**
-     * playerDidWin tests if the player won or lost
-     * @return true if the player did win. False if not
-     */
-    private boolean playerDidWin(){
-    	if(playerPoints > dealerPoints || dealerPoints > 21){
-        	view.printnl("Congratulations. You won with " + playerPoints + " points against the dealer's " + dealerPoints + " points.");
-        	return true;
-    	}
-        else {
-        	view.printnl("Loser! You lost with with " + playerPoints + " points against the dealer's " + dealerPoints + " points.");
-        	return false;
+    private void addPoints(String drawnCard){
+        String numbersOnly = drawnCard.replaceAll("[()]","");
+        numbersOnly = numbersOnly.replaceFirst("[a-zA-Z]* ","");
+        int cardNumber = Integer.parseInt(numbersOnly);
+        int cardPoints = 0;
+        if (cardNumber >1 && cardNumber <10) {
+            cardPoints = cardNumber;
         }
+        else if (cardNumber >9){
+            cardPoints = 10;
+        }
+        else if (cardNumber == 1){
+            cardPoints = 11;
+            numberOfAcesWorth11++;
+        }
+        pointsPlayed = pointsPlayed + cardPoints;
     }
     
     /**
-	 * playRound until the player/dealer holds, has exactly 21 points or has more than 21 points
-	 * @param playerType the type of player. Only accepts "Dealer" and "Player"
-	 * @return 0 if playertype chooses to hold. 
-	 * 		   1 if playertype gets more than 21 points. 
-	 * 		   2 if playertype gets exactly 21 points
-	 */
-	
-	private int playRound(String playerType){
-	    boolean boContinue = true;
-	    int outcomeOfTurn;
-	    String drawnCard;
-	    do{ //A card is drawn until the player holds, or total points played is equal to or higher than 21
-	        drawnCard = playOneTurn();
-	        outcomeOfTurn = turnOutcome(playerType);
-	        if (outcomeOfTurn == 0 && playerType.equalsIgnoreCase("Player")){
-	        	boContinue = doesPlayerWantToContinue(drawnCard);
-	        }
-	        else if(outcomeOfTurn == 0 && playerType.equalsIgnoreCase("Dealer")){
-	        	boContinue = true;
-	        }
-	        else{
-	        	boContinue = false;
-	        }
-	   } while (boContinue);
-	
-	    return outcomeOfTurn;
-	}
-   
-	/**
-	 * doesPlayerWantToContinue asks the player if he wants to continue
-	 * @param drawnCard - the card that has just been drawn.
-	 * @return True if the player wants to continue. False otherwise.
-	 */
-	private boolean doesPlayerWantToContinue(String drawnCard) {
-		 view.print("You have drawn this card: " + 
-	            drawnCard + "\nYou currently have " + pointsPlayed + " points" + 
-	            "\nDo you want to continue (Y/N)?");
-		 String answer = controller.getYesNo();
-		 switch (answer){
-		 case "y": view.print(""); return true;
-		 case "n": view.print(""); return false;
-		 default: return false; //the method getYesNo only returns y or n
-		 }
-		
-	}
-    
-	/**
-	 * playOneTurn draws a card for the player
-	 * @return Returns the card drawn
-	 */
-    private String playOneTurn(){
-        String drawnCard;
-        do{ //A unique card is drawn
-                drawnCard = drawCard();
-            } while (isAlreadyDrawn(drawnCard) == true);
-            playedCards = playedCards + drawnCard;
-            addPoints(drawnCard);
-            return drawnCard;
-    }
-    
-    /**
-     * turnOutcome changes the result from the method checkPoints into an integer
-     * and returns this.
-     * @param playerType - the type of player
-     * @return Returns 
-     * <li> 0 if the player has less than number where s/he should stop
-     * <li> 1 if the player has more than 21 points
-     * <li> 2 if the player has exactly 21 points
-     * <li> 3 if player has between the number where s/he should stop and 21
+     * changeSuitNumberIntoText changes the suit number of the card 
+     * into text describing the suit
+     * @param suitNumber 
+     * @return returns the name of the suit.
      */
-    private int turnOutcome(String playerType){
-        switch (checkPoints(playerType)){
-            case "More than 21":
-                return 1;
-            case "Exactly 21":
-                return 2;
-            case "Less than max":
-            	return 0;
-            case "Between max and 21":
-            	return 3;
-            default: return 99;
-         }
-        
+    private String changeSuitNumberIntoText(int suitNumber){
+    	switch (suitNumber){
+    	case 1: return "Hearts";
+    	case 2: return "Spades";
+    	case 3: return "Diamonds";
+    	case 4: return "Clubs";
+    	default: return null;
+    	}
     }
     
     /**
@@ -257,26 +144,22 @@ public class BlackJack {
     }
     
     /**
-     * addPoints adds points according to the value of the drawn card. 
-     * @param drawnCard - The card that has been drawn
-     */
-    private void addPoints(String drawnCard){
-        String numbersOnly = drawnCard.replaceAll("[()]","");
-        numbersOnly = numbersOnly.replaceFirst("[a-zA-Z]* ","");
-        int cardNumber = Integer.parseInt(numbersOnly);
-        int cardPoints = 0;
-        if (cardNumber >1 && cardNumber <10) {
-            cardPoints = cardNumber;
-        }
-        else if (cardNumber >9){
-            cardPoints = 10;
-        }
-        else if (cardNumber == 1){
-            cardPoints = 11;
-            numberOfAcesWorth11++;
-        }
-        pointsPlayed = pointsPlayed + cardPoints;
-    }
+	 * doesPlayerWantToContinue asks the player if he wants to continue
+	 * @param drawnCard - the card that has just been drawn.
+	 * @return True if the player wants to continue. False otherwise.
+	 */
+	private boolean doesPlayerWantToContinue(String drawnCard) {
+		 view.print("You have drawn this card: " + 
+	            drawnCard + "\nYou currently have " + pointsPlayed + " points" + 
+	            "\nDo you want to continue (Y/N)?");
+		 String answer = controller.getYesNo();
+		 switch (answer){
+		 case "y": view.print(""); return true;
+		 case "n": view.print(""); return false;
+		 default: return false; //the method getYesNo only returns y or n
+		 }
+		
+	}
     
     /**
      * drawCard draws a random card and returns the suit and value of that.
@@ -292,22 +175,6 @@ public class BlackJack {
     }
     
     /**
-     * changeSuitNumberIntoText changes the suit number of the card 
-     * into text describing the suit
-     * @param suitNumber 
-     * @return returns the name of the suit.
-     */
-    private String changeSuitNumberIntoText(int suitNumber){
-    	switch (suitNumber){
-    	case 1: return "Hearts";
-    	case 2: return "Spades";
-    	case 3: return "Diamonds";
-    	case 4: return "Clubs";
-    	default: return null;
-    	}
-    }
-    
-    /**
      * isAlreadyDrawn tests if the card has already been drawn
      * @param drawnCard
      * @return True if the card has been drawn. False otherwise.
@@ -320,5 +187,137 @@ public class BlackJack {
         else{
             return true;
         }
+    }
+   
+	/**
+     * playerDidWin tests if the player won or lost
+     * @return true if the player did win. False if not
+     */
+    private boolean playerDidWin(){
+    	if(playerPoints > dealerPoints || dealerPoints > 21){
+        	view.printnl("Congratulations. You won with " + playerPoints + " points against the dealer's " + dealerPoints + " points.");
+        	return true;
+    	}
+        else {
+        	view.printnl("Loser! You lost with with " + playerPoints + " points against the dealer's " + dealerPoints + " points.");
+        	return false;
+        }
+    }
+    
+	/**
+	 * playOneTurn draws a card for the player
+	 * @return Returns the card drawn
+	 */
+    private String playOneTurn(){
+        String drawnCard;
+        do{ //A unique card is drawn
+                drawnCard = drawCard();
+            } while (isAlreadyDrawn(drawnCard) == true);
+            playedCards = playedCards + drawnCard;
+            addPoints(drawnCard);
+            return drawnCard;
+    }
+    
+    /**
+     * playPlayerRound plays the human players black jack round
+     * @return false if player got more than 21 points. Returns true otherwise.     * 
+     */
+    private boolean playPlayerRound(){
+    	int result = playRound("Player");
+    	
+    	switch (result){
+    	case 0:
+    		view.printnl("You chose to hold. Let's see how the dealer plays.");
+    		return true;
+    	case 1:
+    		view.printnl("You got more than 21 points. You lost.");
+    		return false;
+    	case 2:
+    		view.printnl("Great! You got exactly 21 points. Let's see how the dealer plays.");
+    		return true;
+    	default: return true;
+    	}    	
+    }
+    
+    /**
+	 * playRound until the player/dealer holds, has exactly 21 points or has more than 21 points
+	 * @param playerType the type of player. Only accepts "Dealer" and "Player"
+	 * @return 0 if playertype chooses to hold. 
+	 * 		   1 if playertype gets more than 21 points. 
+	 * 		   2 if playertype gets exactly 21 points
+	 */
+	
+	private int playRound(String playerType){
+	    boolean boContinue = true;
+	    int outcomeOfTurn;
+	    String drawnCard;
+	    do{ //A card is drawn until the player holds, or total points played is equal to or higher than 21
+	        drawnCard = playOneTurn();
+	        outcomeOfTurn = turnOutcome(playerType);
+	        if (outcomeOfTurn == 0 && playerType.equalsIgnoreCase("Player")){
+	        	boContinue = doesPlayerWantToContinue(drawnCard);
+	        }
+	        else if(outcomeOfTurn == 0 && playerType.equalsIgnoreCase("Dealer")){
+	        	boContinue = true;
+	        }
+	        else{
+	        	boContinue = false;
+	        }
+	   } while (boContinue);
+	
+	    return outcomeOfTurn;
+	}
+    
+    /**
+     * Resets the variables where points for each playerround are stored
+     */
+    private void resetGlobalVariables(){
+        pointsPlayed = 0;
+        numberOfAcesWorth11 = 0;
+    }
+    
+    /**
+     * saveInfoAboutDealerRound saves the info about the dealer's played round 
+     * and tells the player which cards where played.
+     */
+    private void saveInfoAboutDealerRound() {
+    	dealerPoints = pointsPlayed;
+        playedCardsDealer = playedCards.replace(playedCardsPlayer,"");
+        view.printnl("Dealer played: " + playedCardsDealer);
+    }
+    
+    /**
+     * saveInfoAboutPlayersRound saves the info about the player's played round 
+     * and tells the player which cards where played.
+     */
+    private void saveInfoAboutPlayersRound() {
+    	playerPoints = pointsPlayed;
+        playedCardsPlayer=playedCards;
+        view.printnl("You played: " + playedCardsPlayer);
+    }
+    
+    /**
+     * turnOutcome changes the result from the method checkPoints into an integer
+     * and returns this.
+     * @param playerType - the type of player
+     * @return Returns 
+     * <li> 0 if the player has less than number where s/he should stop
+     * <li> 1 if the player has more than 21 points
+     * <li> 2 if the player has exactly 21 points
+     * <li> 3 if player has between the number where s/he should stop and 21
+     */
+    private int turnOutcome(String playerType){
+        switch (checkPoints(playerType)){
+            case "More than 21":
+                return 1;
+            case "Exactly 21":
+                return 2;
+            case "Less than max":
+            	return 0;
+            case "Between max and 21":
+            	return 3;
+            default: return 99;
+         }
+        
     }
 }

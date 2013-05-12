@@ -15,13 +15,35 @@ public abstract class MasterGameObject implements GameObject {
 	private boolean takeable;
 	private GameView view;
 	
+	public MasterGameObject(boolean canBeTaken){
+		takeable = canBeTaken;
+	}
+	
 	public MasterGameObject(boolean canBeTaken, GameView gameView){
 		takeable = canBeTaken;
 		setView(gameView);
 	}
 	
-	public MasterGameObject(boolean canBeTaken){
-		takeable = canBeTaken;
+	public boolean canBeTaken() {
+		return takeable;
+	}
+	
+	public abstract String getDescription();	
+
+	public Location getLocation() {
+		return myLocation;
+	}
+
+	public GameView getView() {
+		return view;
+	}
+
+	public boolean putInBackpack(Backpack backpack){
+		if (takeable){
+			return backpack.putInBackpack(this);
+		}else{
+			return false;
+		}
 	}
 	
 	public boolean setLocation(Location location) {
@@ -34,33 +56,11 @@ public abstract class MasterGameObject implements GameObject {
 			return false;
 		}
 	}
-	
-	public boolean putInBackpack(Backpack backpack){
-		if (takeable){
-			return backpack.putInBackpack(this);
-		}else{
-			return false;
-		}
-	}	
-
-	public boolean canBeTaken() {
-		return takeable;
-	}
-
-	public Location getLocation() {
-		return myLocation;
-	}
-
-	public abstract String getDescription();
-	
-	public abstract int use();
-
-	public GameView getView() {
-		return view;
-	}
 
 	public void setView(GameView view) {
 		this.view = view;
 	}
+
+	public abstract int use();
 
 }

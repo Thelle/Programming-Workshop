@@ -15,24 +15,37 @@ import dk.itu.KF13.TheSim.Game.View.GameView;
  * @author Simon
  */
 public class GameRunner {
+	/**
+	 * stopGame is called from other methods if the game has to be stopped 
+	 * if the player dies.
+	 */
+	static public void stopGame(){
+		stopGame=true;
+	}
 	private IGameController controller;
-	private GameView view;
-	private WorldCopenhagen copenhagen;	
+	private GameView view;	
+	private WorldCopenhagen copenhagen;
 	private Location[][] worldLocations;
+	
 	private HumanPlayer player;
 	
 	private static boolean stopGame = false;
 	
 	/**
-	 * setter for the private attribute controller
-	 * @param gameController
+	 * blackjackConditionsCheck checks if the player is in the right location and
+	 * has enough beers to play the game. 
+	 * Starts the game if both is true.
 	 */
-	public void setGameController(IGameController gameController){
-		controller = gameController;
-	}
-	
-	public void setGameView(GameView gameView){
-		view = gameView;
+	public void blackjackConditionsCheck(){
+		BlackJack blackJack = new BlackJack(controller, view);
+		if(player.getLocation() instanceof LocBrewery){
+			if(player.lookForSpecificItem("a masterbrew") >= 2){
+				blackJack.playBlackJack(player);
+				blackJack = null;
+			} else{
+				view.printnl("You need two beers to play");
+			}
+		}
 	}
 	
 	/**
@@ -44,24 +57,30 @@ public class GameRunner {
 	}
 	
 	/**
-	 * createWorld creates the game world and reads the locations in the world
+	 * getPlayer returns the player object stored in the attribute player 
+	 * @return a pointer to the created human player object
 	 */
-	private void createWorld(){
-		//Creates the world
-		copenhagen = new WorldCopenhagen(view);
-		//Populates the world with locations
-		worldLocations = copenhagen.getLocations();		
+	public HumanPlayer getPlayer(){
+		return player;
 	}
 	
 	/**
-	 * createPlayerCharacter creates the player character and 
-	 * sets the location of the player
+	 * getPlayer returns the world object stored in the attribute copenhagen 
+	 * @return a pointer to the created WorldCopenhagen object
 	 */
-	private void createPlayerCharacter(){
-		//Creates player
-		player = new HumanPlayer(view);
-		//Places player in the world
-		player.setLocation(worldLocations[1][0]); //The coordinates for ITU
+	public WorldCopenhagen getWorld(){
+		return copenhagen;
+	}
+	
+	/**
+	 * movePlayer moves the player character.
+	 * @param direction - the direction in which the player wants to move
+	 */
+	public void movePlayer(Direction direction){
+		boolean hasMoved = player.move(direction);
+		if (!hasMoved){
+			view.printnl("You can't move this way");
+		}
 	}
 	
 	/**
@@ -93,69 +112,23 @@ public class GameRunner {
 		}
 	}
 	
-	private boolean doesPlayerWantToStart(){
-		printStartText();
-		boolean doLoop = true;
-		boolean status = false;
-		
-		do {
-			String input = controller.getStringInput();
-			switch (input.toLowerCase()){
-			case "yes": 
-				status = true; 
-				doLoop = false; 
-				view.printnl("Great! Before we start you should know the basic commands of the game:");
-				break;
-			case "no": 
-				status = !doesPlayerReallyWantToStop();
-				doLoop = false;
-				break;				
-			default: view.print("I did not understand that. Write yes or no"); doLoop = true;
-			}
-		} while(doLoop);
-		return status;		
+	/**
+	 * setter for the private attribute controller
+	 * @param gameController
+	 */
+	public void setGameController(IGameController gameController){
+		controller = gameController;
 	}
 	
-	private boolean doesPlayerReallyWantToStop(){
-		int numberOfNo = 1;
-		boolean doLoop = true;
-		boolean annoyPlayer = true;
-		do {
-			if (numberOfNo <= 10){
-				view.print("Are you " + addReally(numberOfNo) + "sure");
-				numberOfNo++;
-				String input = controller.getStringInput();
-				switch (input.toLowerCase()){
-				case "yes":
-					annoyPlayer = true; doLoop = true; break;
-				case "no":
-					annoyPlayer = false; doLoop = false; break;					
-				}				
-			}else{
-				doLoop = false;
-			}
-		} while (doLoop);
-		
-		return annoyPlayer;
+	public void setGameView(GameView gameView){
+		view = gameView;
 	}
-	
 	private String addReally(int numberOfReally){
 		String output = "";
 		for (int i = 0; i < numberOfReally; i++){
 			output = output + "really ";
 		}
 		return output;
-	}
-	private void printStartText(){
-		view.printnl("Studying is hard. Especially at the ITU. You have to get up and be sober every day of the week. No time for fun.\n" +
-				"Except from friday that is. Friday is the best day of the week. At Fridays you can start the day with a film, and end it " +
-					"with beer. \nLots of nice cold beer. \n"+
-					"But not today. Today is a disatrous day. You just got a text from your favourite bartender from ScrollBar: \n'OMG!! No "+
-					"Beeerzz left. U hv 2 drink breezers 2night. LOL!!'. \nOk maybe not you favourite bartender, but at least you got a warning "+
-					"about what a disatrous evening this could have been. Now you just have to go out and get ten Masterbrews for tonight. As "+
-					"everyone knows, ten is the perfect number of beers for a quiet night.\n"+
-					"So, are you up for saving your evening?\n" +
-					"Answer 'yes' or 'no'");
 	}
 	
 	/**
@@ -179,60 +152,87 @@ public class GameRunner {
 	}
 	
 	/**
-	 * stopGame is called from other methods if the game has to be stopped 
-	 * if the player dies.
+	 * createPlayerCharacter creates the player character and 
+	 * sets the location of the player
 	 */
-	static public void stopGame(){
-		stopGame=true;
+	private void createPlayerCharacter(){
+		//Creates player
+		player = new HumanPlayer(view);
+		//Places player in the world
+		player.setLocation(worldLocations[1][0]); //The coordinates for ITU
 	}	
 	
 	/**
-	 * blackjackConditionsCheck checks if the player is in the right location and
-	 * has enough beers to play the game. 
-	 * Starts the game if both is true.
+	 * createWorld creates the game world and reads the locations in the world
 	 */
-	public void blackjackConditionsCheck(){
-		BlackJack blackJack = new BlackJack(controller, view);
-		if(player.getLocation() instanceof LocBrewery){
-			if(player.lookForSpecificItem("a masterbrew") >= 2){
-				blackJack.playBlackJack(player);
-				blackJack = null;
-			} else{
-				view.printnl("You need two beers to play");
+	private void createWorld(){
+		//Creates the world
+		copenhagen = new WorldCopenhagen(view);
+		//Populates the world with locations
+		worldLocations = copenhagen.getLocations();		
+	}
+	private boolean doesPlayerReallyWantToStop(){
+		int numberOfNo = 1;
+		boolean doLoop = true;
+		boolean annoyPlayer = true;
+		do {
+			if (numberOfNo <= 10){
+				view.print("Are you " + addReally(numberOfNo) + "sure");
+				numberOfNo++;
+				String input = controller.getStringInput();
+				switch (input.toLowerCase()){
+				case "yes":
+					annoyPlayer = true; doLoop = true; break;
+				case "no":
+					annoyPlayer = false; doLoop = false; break;					
+				}				
+			}else{
+				doLoop = false;
 			}
-		}
-	}
-	/**
-	 * getPlayer returns the player object stored in the attribute player 
-	 * @return a pointer to the created human player object
-	 */
-	public HumanPlayer getPlayer(){
-		return player;
+		} while (doLoop);
+		
+		return annoyPlayer;
 	}
 	
-	/**
-	 * getPlayer returns the world object stored in the attribute copenhagen 
-	 * @return a pointer to the created WorldCopenhagen object
-	 */
-	public WorldCopenhagen getWorld(){
-		return copenhagen;
+	private boolean doesPlayerWantToStart(){
+		printStartText();
+		boolean doLoop = true;
+		boolean status = false;
+		
+		do {
+			String input = controller.getStringInput();
+			switch (input.toLowerCase()){
+			case "yes": 
+				status = true; 
+				doLoop = false; 
+				view.printnl("Great! Before we start you should know the basic commands of the game:");
+				break;
+			case "no": 
+				status = !doesPlayerReallyWantToStop();
+				doLoop = false;
+				break;				
+			default: view.print("I did not understand that. Write yes or no"); doLoop = true;
+			}
+		} while(doLoop);
+		return status;		
 	}
 	
-	/**
-	 * movePlayer moves the player character.
-	 * @param direction - the direction in which the player wants to move
-	 */
-	public void movePlayer(Direction direction){
-		boolean hasMoved = player.move(direction);
-		if (!hasMoved){
-			view.printnl("You can't move this way");
-		}
-	}
 	/**
 	 * Check if the player has ten or more beers
 	 * @return true if player has ten or more beers
 	 */
 	private boolean playerHasTenBeers(){
 		return player.lookForSpecificItem("a masterbrew") >= 10;
+	}
+	private void printStartText(){
+		view.printnl("Studying is hard. Especially at the ITU. You have to get up and be sober every day of the week. No time for fun.\n" +
+				"Except from friday that is. Friday is the best day of the week. At Fridays you can start the day with a film, and end it " +
+					"with beer. \nLots of nice cold beer. \n"+
+					"But not today. Today is a disatrous day. You just got a text from your favourite bartender from ScrollBar: \n'OMG!! No "+
+					"Beeerzz left. U hv 2 drink breezers 2night. LOL!!'. \nOk maybe not you favourite bartender, but at least you got a warning "+
+					"about what a disatrous evening this could have been. Now you just have to go out and get ten Masterbrews for tonight. As "+
+					"everyone knows, ten is the perfect number of beers for a quiet night.\n"+
+					"So, are you up for saving your evening?\n" +
+					"Answer 'yes' or 'no'");
 	}
 }

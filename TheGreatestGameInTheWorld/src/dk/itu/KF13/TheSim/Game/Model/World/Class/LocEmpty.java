@@ -34,18 +34,6 @@ public class LocEmpty extends MasterLocation {
 	}
 	
 	/**
-	 * placeRandomBottle places a bottle of water, a bottle of beer or nothing.
-	 * There is 33% chance for each object type to appear.
-	 * @return Returns an bottle object or null.
-	 */
-	private ObjBottle placeRandomBottle(){
-		Random rand = new Random();
-		int randomNumber = rand.nextInt(15); //returns a number between 0 and 14
-		ObjBottle obj = createBottle(randomNumber);
-		return obj;
-	}
-	
-	/**
 	 * createBottle creates a bottle based on the random number it is given
 	 * @param randomNumber - a number between 0 and 14
 	 * @return - a bottle type or null
@@ -59,6 +47,18 @@ public class LocEmpty extends MasterLocation {
 		}else{
 			obj = null;
 		}
+		return obj;
+	}
+	
+	/**
+	 * placeRandomBottle places a bottle of water, a bottle of beer or nothing.
+	 * There is 33% chance for each object type to appear.
+	 * @return Returns an bottle object or null.
+	 */
+	private ObjBottle placeRandomBottle(){
+		Random rand = new Random();
+		int randomNumber = rand.nextInt(15); //returns a number between 0 and 14
+		ObjBottle obj = createBottle(randomNumber);
 		return obj;
 	}
 

@@ -15,15 +15,6 @@ public class ObjGun extends MasterGameObject {
 	}
 	
 	/**
-	 * The player can't use the gun.
-	 * He will be dead before being able to use it.
-	 */
-	
-	public int use() {
-		return 0;
-
-	}
-	/**
 	 * When the user tries to take the gun, s/he will die and the game will end
 	 */
 	@Override
@@ -34,6 +25,15 @@ public class ObjGun extends MasterGameObject {
 				+"As you grab the gun, you hear five shots... GAME OVER!!");
 		GameRunner.stopGame();
 		return true;
+	}
+	/**
+	 * The player can't use the gun.
+	 * He will be dead before being able to use it.
+	 */
+	
+	public int use() {
+		return 0;
+
 	}	
 
 }

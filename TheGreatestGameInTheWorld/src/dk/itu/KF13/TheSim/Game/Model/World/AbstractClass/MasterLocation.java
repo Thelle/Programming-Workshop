@@ -33,6 +33,8 @@ public abstract class MasterLocation implements Location {
 		setCopenhagen(world);
 	}
 	
+	public abstract String getDescription();
+	
 	public Location getExits(Direction direction) {
 		int newXPos, newYPos;
 		getMap();
@@ -44,7 +46,65 @@ public abstract class MasterLocation implements Location {
 		default: newXPos = -1; newYPos = -1;
 		}
 		return newLocation(newXPos, newYPos);				
+	}	
+	
+	public String getName(){
+		return name;
 	}
+	
+	public String getObjectDescriptions(){
+		String returnString = "";
+		if (getObjectsAtLocation().isEmpty()){
+			return "No objects to be found at this location";
+		}else {
+			returnString = "Objects at location: \n";
+			for (int i = 0; i < getObjectsAtLocation().size(); i++){
+				returnString += getObjectsAtLocation().get(i).getDescription() + "\n";
+			}
+		}
+		return returnString;
+	}
+	
+	public List<GameObject> getObjects(){
+		return getObjectsAtLocation();
+	}
+	
+	
+	public abstract void locationSpecificAction();
+	
+	public boolean placeObject(GameObject object){
+		getObjectsAtLocation().add(object);
+		return true;
+	}
+	
+	public void playerHasArrived(){
+		String description = this.getDescription();
+		getView().print(description);
+		this.locationSpecificAction();
+		printExits();
+		
+	}
+	
+	public void printExits(){
+		for (Direction dir : Direction.values()){
+			if (getExits(dir) == null){
+				getView().print(dir + ": nothing");
+			} else {
+				getView().print(dir + ": " +  getExits(dir).getName());
+			}
+		}
+	}
+	
+	public void removeObject(GameObject object){
+		getObjectsAtLocation().remove(object);
+	}
+	
+	/**
+	 * getMap creates a pointer to the world map and saves it in the attribute tempMap
+	 */
+	private void getMap(){
+		tempMap = copenhagen.getLocations();
+	}	
 	
 	/**
 	 * newLocation returns a pointer to location on the map specified
@@ -61,13 +121,6 @@ public abstract class MasterLocation implements Location {
 		else{
 			return tempMap[xPos][yPos];
 		}
-	}	
-	
-	/**
-	 * getMap creates a pointer to the world map and saves it in the attribute tempMap
-	 */
-	private void getMap(){
-		tempMap = copenhagen.getLocations();
 	}
 	
 	/**
@@ -88,81 +141,28 @@ public abstract class MasterLocation implements Location {
 			return true;
 		}
 	}
-	
-	public void playerHasArrived(){
-		String description = this.getDescription();
-		getView().print(description);
-		this.locationSpecificAction();
-		printExits();
-		
+
+	protected WorldCopenhagen getCopenhagen() {
+		return copenhagen;
 	}
-	
-	
-	public void printExits(){
-		for (Direction dir : Direction.values()){
-			if (getExits(dir) == null){
-				getView().print(dir + ": nothing");
-			} else {
-				getView().print(dir + ": " +  getExits(dir).getName());
-			}
-		}
-	}
-	
-	public boolean placeObject(GameObject object){
-		getObjectsAtLocation().add(object);
-		return true;
-	}
-	
-	public void removeObject(GameObject object){
-		getObjectsAtLocation().remove(object);
-	}
-	
-	public String getObjectDescriptions(){
-		String returnString = "";
-		if (getObjectsAtLocation().isEmpty()){
-			return "No objects to be found at this location";
-		}else {
-			returnString = "Objects at location: \n";
-			for (int i = 0; i < getObjectsAtLocation().size(); i++){
-				returnString += getObjectsAtLocation().get(i).getDescription() + "\n";
-			}
-		}
-		return returnString;
-	}
-	
-	public List<GameObject> getObjects(){
-		return getObjectsAtLocation();
-	}
-	
-	public String getName(){
-		return name;
-	}	
-	
-	public abstract void locationSpecificAction();
-	
-	public abstract String getDescription();
 
 	protected List<GameObject> getObjectsAtLocation() {
 		return objectsAtLocation;
-	}
-
-	protected void setObjectsAtLocation(List<GameObject> objectsAtLocation) {
-		this.objectsAtLocation = objectsAtLocation;
 	}
 
 	protected GameView getView() {
 		return view;
 	}
 
-	protected void setView(GameView view) {
-		this.view = view;
-	}
-
-	protected WorldCopenhagen getCopenhagen() {
-		return copenhagen;
-	}
-
 	protected void setCopenhagen(WorldCopenhagen copenhagen) {
 		this.copenhagen = copenhagen;
+	}
+
+	protected void setObjectsAtLocation(List<GameObject> objectsAtLocation) {
+		this.objectsAtLocation = objectsAtLocation;
+	}
+
+	protected void setView(GameView view) {
+		this.view = view;
 	}
 }

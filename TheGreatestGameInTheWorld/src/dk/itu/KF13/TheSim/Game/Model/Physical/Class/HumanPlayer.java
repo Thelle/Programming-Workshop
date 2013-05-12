@@ -26,15 +26,46 @@ public class HumanPlayer implements Player {
 		view = gameView;
 	}
 	
+	/**
+	 * addBeersToBackpack adds the given number of beers to the player's backpack.
+	 * This method does not take the beers from the location and can be called whenever new
+	 * beers should be added.
+	 * @param numberOfBeers - the number of beers to be added
+	 */
+	public void addBeersToBackpack(int numberOfBeers){
+		for ( int i = 0; i < numberOfBeers; i++){
+			ObjBottle beer = new ObjBottle(true, BottleType.MASTERBREW);
+			beer.putInBackpack(myBackpack);
+		}
+	}
+
+	public void announceArrival(){
+		myLocation.playerHasArrived();
+	}
+
+	public void changeAlcoholLevel(int diff) {
+		alcoholLevel = alcoholLevel + diff;
+	}
+
+	public int getAlcoholLevel() {
+		return alcoholLevel;
+	}
+	
 	public Location getLocation() {
 		return myLocation;
 	}
-
-	public boolean setLocation(Location location) {
-		myLocation = location;
-		return true;
+	
+	public int lookForSpecificItem(String descriptionOfItem){
+		return myBackpack.numberOfSpecificItemsInBackpack(descriptionOfItem);
 	}
-
+	
+	public void lookInBackpack(){
+		List<GameObject> objectsInBackpack = this.returnContentOfBackpack();
+		view.print("Objects in backpack:");
+		for(int i = 0; i < objectsInBackpack.size();i++){
+			view.print(objectsInBackpack.get(i).getDescription());
+		}
+	}
 	public boolean move(Direction direction) {
 		Location requestedLocation = myLocation.getExits(direction);
 		if (requestedLocation == null){
@@ -48,10 +79,37 @@ public class HumanPlayer implements Player {
 		}
 	}
 
-	public void announceArrival(){
-		myLocation.playerHasArrived();
+	/**
+	 * removeBeersFromBackpack removes the given number of beers from the player's backpack.
+	 * @param numberOfBeers - number of beers to be removed.
+	 */
+	public void removeBeersFromBackpack(int numberOfBeers){
+		List<GameObject> objectsInBackpack = this.returnContentOfBackpack();
+		int beersRemoved = 0;
+		for(int i = 0; i < objectsInBackpack.size() && beersRemoved < numberOfBeers;i++){
+			String description = objectsInBackpack.get(i).getDescription();
+			if(description.equalsIgnoreCase("a masterbrew")){
+				removeFromBackPack(objectsInBackpack.get(i));
+				beersRemoved++;
+				i--; //Subtracting one from i, because the size of the list 
+					//is one less after deleting an element
+			}
+		}
 	}
 	
+	public void removeFromBackPack(GameObject object) {
+		myBackpack.removeFromBackpack(object);
+	}
+	
+	public List<GameObject> returnContentOfBackpack() {
+		return myBackpack.getContent();
+	}
+
+	public boolean setLocation(Location location) {
+		myLocation = location;
+		return true;
+	}
+
 	public boolean takeObject(GameObject object) {
 		boolean status;
 		status = object.putInBackpack(myBackpack);
@@ -84,27 +142,6 @@ public class HumanPlayer implements Player {
 
 	}
 	
-	/**
-	 * getSearchString takes the description of the object and returns
-	 * the search  string that is used to compared to the player command.
-	 * @param gameObject - the object that is to be changed
-	 * @return Returns the string which is used to find the object
-	 */
-	private String getSearchString(GameObject gameObject){
-		String objectDescription = gameObject.getDescription();
-		objectDescription = objectDescription.replaceFirst("a ", "");
-		objectDescription = "take "+ objectDescription;
-		return objectDescription;
-		
-	}
-	public int getAlcoholLevel() {
-		return alcoholLevel;
-	}
-
-	public void changeAlcoholLevel(int diff) {
-		alcoholLevel = alcoholLevel + diff;
-	}
-	
 	public void useObject(GameObject object){
 		//The returned value is subtracted from the alcohol level because
 		//the use method returns the price of the action
@@ -126,55 +163,18 @@ public class HumanPlayer implements Player {
 		}
 		view.print("No such item in backpack");
 	}
-
-	public List<GameObject> returnContentOfBackpack() {
-		return myBackpack.getContent();
-	}
-
-	public void removeFromBackPack(GameObject object) {
-		myBackpack.removeFromBackpack(object);
-	}
 	
 	/**
-	 * addBeersToBackpack adds the given number of beers to the player's backpack.
-	 * This method does not take the beers from the location and can be called whenever new
-	 * beers should be added.
-	 * @param numberOfBeers - the number of beers to be added
+	 * getSearchString takes the description of the object and returns
+	 * the search  string that is used to compared to the player command.
+	 * @param gameObject - the object that is to be changed
+	 * @return Returns the string which is used to find the object
 	 */
-	public void addBeersToBackpack(int numberOfBeers){
-		for ( int i = 0; i < numberOfBeers; i++){
-			ObjBottle beer = new ObjBottle(true, BottleType.MASTERBREW);
-			beer.putInBackpack(myBackpack);
-		}
-	}
-	
-	/**
-	 * removeBeersFromBackpack removes the given number of beers from the player's backpack.
-	 * @param numberOfBeers - number of beers to be removed.
-	 */
-	public void removeBeersFromBackpack(int numberOfBeers){
-		List<GameObject> objectsInBackpack = this.returnContentOfBackpack();
-		int beersRemoved = 0;
-		for(int i = 0; i < objectsInBackpack.size() && beersRemoved < numberOfBeers;i++){
-			String description = objectsInBackpack.get(i).getDescription();
-			if(description.equalsIgnoreCase("a masterbrew")){
-				removeFromBackPack(objectsInBackpack.get(i));
-				beersRemoved++;
-				i--; //Subtracting one from i, because the size of the list 
-					//is one less after deleting an element
-			}
-		}
-	}
-	
-	public void lookInBackpack(){
-		List<GameObject> objectsInBackpack = this.returnContentOfBackpack();
-		view.print("Objects in backpack:");
-		for(int i = 0; i < objectsInBackpack.size();i++){
-			view.print(objectsInBackpack.get(i).getDescription());
-		}
-	}
-	
-	public int lookForSpecificItem(String descriptionOfItem){
-		return myBackpack.numberOfSpecificItemsInBackpack(descriptionOfItem);
+	private String getSearchString(GameObject gameObject){
+		String objectDescription = gameObject.getDescription();
+		objectDescription = objectDescription.replaceFirst("a ", "");
+		objectDescription = "take "+ objectDescription;
+		return objectDescription;
+		
 	}	
 }

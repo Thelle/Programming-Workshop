@@ -21,16 +21,19 @@ public class Backpack {
 	}
 	
 	/**
-	 * roomForMore tests if there is room for more objects in the backpack
-	 * @return true if there is room for more objects
-	 * @return false if there is no room for more objects
+	 * numberOfBeersInBackpack loops through the backpack and returns
+	 * the number of beers
+	 * @return then number of beers in the backpack
 	 */
-	public boolean roomForMore(){
-		if (content.size() < 30){
-			return true;
-		}else{
-			return false;
+	public int numberOfSpecificItemsInBackpack(String descriptionOfItem){
+		int numberOfItems = 0;
+		for(int i = 0; i < content.size();i++){
+			String description = content.get(i).getDescription();
+			if(description.equalsIgnoreCase(descriptionOfItem)){
+				numberOfItems++;
+			}
 		}
+		return numberOfItems;
 	}
 	
 	/**
@@ -59,18 +62,15 @@ public class Backpack {
 	}
 	
 	/**
-	 * numberOfBeersInBackpack loops through the backpack and returns
-	 * the number of beers
-	 * @return then number of beers in the backpack
+	 * roomForMore tests if there is room for more objects in the backpack
+	 * @return true if there is room for more objects
+	 * @return false if there is no room for more objects
 	 */
-	public int numberOfSpecificItemsInBackpack(String descriptionOfItem){
-		int numberOfItems = 0;
-		for(int i = 0; i < content.size();i++){
-			String description = content.get(i).getDescription();
-			if(description.equalsIgnoreCase(descriptionOfItem)){
-				numberOfItems++;
-			}
+	public boolean roomForMore(){
+		if (content.size() < 30){
+			return true;
+		}else{
+			return false;
 		}
-		return numberOfItems;
 	}
 }
