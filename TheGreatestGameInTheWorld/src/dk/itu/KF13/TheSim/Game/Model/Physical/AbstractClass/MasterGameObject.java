@@ -6,7 +6,7 @@ import dk.itu.KF13.TheSim.Game.Model.World.Interface.Location;
 import dk.itu.KF13.TheSim.Game.View.GameView;
 
 /**
- *  MasterGameObject is the abstract class for all gameobjects except the Backpack.
+ *  MasterGameObject is the abstract class for all game objects except the Backpack.
  *  @author Simon & Thelle
  *
  */
