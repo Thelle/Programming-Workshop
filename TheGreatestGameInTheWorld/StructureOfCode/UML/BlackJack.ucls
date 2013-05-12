@@ -2,8 +2,7 @@
 <class-diagram version="1.1.2" icons="true" automaticImage="JPEG" always-add-relationships="false" 
   generalizations="true" realizations="true" associations="true" dependencies="true" nesting-relationships="true">  
   <class id="1" language="java" name="dk.itu.KF13.TheSim.Game.Model.Minigames.BlackJack.BlackJack" 
-    project="TheGreatestGameInTheWorld" 
-    file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Model/Minigames/BlackJack/BlackJack.java" 
+    project="AGameOfBeers" file="/AGameOfBeers/src/dk/itu/KF13/TheSim/Game/Model/Minigames/BlackJack/BlackJack.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="137" y="302"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -12,9 +11,8 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="dk.itu.KF13.TheSim.Game.Controller.BlackJackController" 
-    project="TheGreatestGameInTheWorld" 
-    file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Controller/BlackJackController.java" binary="false" 
+  <class id="2" language="java" name="dk.itu.KF13.TheSim.Game.Controller.BlackJackController" project="AGameOfBeers" 
+    file="/AGameOfBeers/src/dk/itu/KF13/TheSim/Game/Controller/BlackJackController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="522" y="241"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -23,9 +21,8 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <interface id="3" language="java" name="dk.itu.KF13.TheSim.Game.Controller.IGameController" 
-    project="TheGreatestGameInTheWorld" 
-    file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Controller/IGameController.java" binary="false" 
+  <interface id="3" language="java" name="dk.itu.KF13.TheSim.Game.Controller.IGameController" project="AGameOfBeers" 
+    file="/AGameOfBeers/src/dk/itu/KF13/TheSim/Game/Controller/IGameController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="518" y="456"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" accessors="true" 
@@ -34,9 +31,8 @@
       <operations public="false" package="false" protected="false" private="false"/>    
     </display>  
   </interface>  
-  <class id="4" language="java" name="dk.itu.KF13.TheSim.Game.Model.Physical.Class.HumanPlayer" 
-    project="TheGreatestGameInTheWorld" 
-    file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Model/Physical/Class/HumanPlayer.java" binary="false" 
+  <class id="4" language="java" name="dk.itu.KF13.TheSim.Game.Model.Physical.Class.HumanPlayer" project="AGameOfBeers" 
+    file="/AGameOfBeers/src/dk/itu/KF13/TheSim/Game/Model/Physical/Class/HumanPlayer.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="420" y="354"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" accessors="true" 
@@ -45,9 +41,8 @@
       <operations public="false" package="false" protected="false" private="false"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="dk.itu.KF13.TheSim.Game.View.GameView" project="TheGreatestGameInTheWorld" 
-    file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/View/GameView.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
+  <class id="5" language="java" name="dk.itu.KF13.TheSim.Game.View.GameView" project="AGameOfBeers" 
+    file="/AGameOfBeers/src/dk/itu/KF13/TheSim/Game/View/GameView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="379" y="81"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" accessors="true" 
       visibility="true">      

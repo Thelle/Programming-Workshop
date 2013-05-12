@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.2" icons="true" automaticImage="JPEG" always-add-relationships="false" 
   generalizations="true" realizations="true" associations="true" dependencies="true" nesting-relationships="true">  
-  <class id="1" language="java" name="dk.itu.KF13.TheSim.Game.Model.GameRunner" project="TheGreatestGameInTheWorld" 
-    file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Model/GameRunner.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
+  <class id="1" language="java" name="dk.itu.KF13.TheSim.Game.Model.GameRunner" project="AGameOfBeers" 
+    file="/AGameOfBeers/src/dk/itu/KF13/TheSim/Game/Model/GameRunner.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="300" y="241"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -11,9 +10,8 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <interface id="2" language="java" name="dk.itu.KF13.TheSim.Game.Controller.IGameController" 
-    project="TheGreatestGameInTheWorld" 
-    file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Controller/IGameController.java" binary="false" 
+  <interface id="2" language="java" name="dk.itu.KF13.TheSim.Game.Controller.IGameController" project="AGameOfBeers" 
+    file="/AGameOfBeers/src/dk/itu/KF13/TheSim/Game/Controller/IGameController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="559" y="214"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" accessors="true" 
@@ -22,9 +20,8 @@
       <operations public="false" package="false" protected="false" private="false"/>    
     </display>  
   </interface>  
-  <class id="3" language="java" name="dk.itu.KF13.TheSim.Game.Model.Physical.Class.HumanPlayer" 
-    project="TheGreatestGameInTheWorld" 
-    file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Model/Physical/Class/HumanPlayer.java" binary="false" 
+  <class id="3" language="java" name="dk.itu.KF13.TheSim.Game.Model.Physical.Class.HumanPlayer" project="AGameOfBeers" 
+    file="/AGameOfBeers/src/dk/itu/KF13/TheSim/Game/Model/Physical/Class/HumanPlayer.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="551" y="383"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" accessors="true" 
@@ -33,9 +30,8 @@
       <operations public="false" package="false" protected="false" private="false"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="dk.itu.KF13.TheSim.Game.Model.World.Class.WorldCopenhagen" 
-    project="TheGreatestGameInTheWorld" 
-    file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Model/World/Class/WorldCopenhagen.java" binary="false" 
+  <class id="4" language="java" name="dk.itu.KF13.TheSim.Game.Model.World.Class.WorldCopenhagen" project="AGameOfBeers" 
+    file="/AGameOfBeers/src/dk/itu/KF13/TheSim/Game/Model/World/Class/WorldCopenhagen.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="292" y="517"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" accessors="true" 
@@ -44,9 +40,8 @@
       <operations public="false" package="false" protected="false" private="false"/>    
     </display>  
   </class>  
-  <interface id="5" language="java" name="dk.itu.KF13.TheSim.Game.Model.World.Interface.Location" 
-    project="TheGreatestGameInTheWorld" 
-    file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Model/World/Interface/Location.java" binary="false" 
+  <interface id="5" language="java" name="dk.itu.KF13.TheSim.Game.Model.World.Interface.Location" project="AGameOfBeers" 
+    file="/AGameOfBeers/src/dk/itu/KF13/TheSim/Game/Model/World/Interface/Location.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="61" y="251"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" accessors="true" 
@@ -55,9 +50,8 @@
       <operations public="false" package="false" protected="false" private="false"/>    
     </display>  
   </interface>  
-  <class id="6" language="java" name="dk.itu.KF13.TheSim.Game.Model.World.Class.LocBrewery" 
-    project="TheGreatestGameInTheWorld" 
-    file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Model/World/Class/LocBrewery.java" binary="false" 
+  <class id="6" language="java" name="dk.itu.KF13.TheSim.Game.Model.World.Class.LocBrewery" project="AGameOfBeers" 
+    file="/AGameOfBeers/src/dk/itu/KF13/TheSim/Game/Model/World/Class/LocBrewery.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="552" y="266"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" accessors="true" 
@@ -67,8 +61,7 @@
     </display>  
   </class>  
   <class id="7" language="java" name="dk.itu.KF13.TheSim.Game.Model.Minigames.BlackJack.BlackJack" 
-    project="TheGreatestGameInTheWorld" 
-    file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Model/Minigames/BlackJack/BlackJack.java" 
+    project="AGameOfBeers" file="/AGameOfBeers/src/dk/itu/KF13/TheSim/Game/Model/Minigames/BlackJack/BlackJack.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="73" y="376"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" accessors="true" 
@@ -77,9 +70,8 @@
       <operations public="false" package="false" protected="false" private="false"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="dk.itu.KF13.TheSim.Game.View.GameView" project="TheGreatestGameInTheWorld" 
-    file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/View/GameView.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
+  <class id="8" language="java" name="dk.itu.KF13.TheSim.Game.View.GameView" project="AGameOfBeers" 
+    file="/AGameOfBeers/src/dk/itu/KF13/TheSim/Game/View/GameView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="76" y="157"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -87,10 +79,8 @@
       <operations public="false" package="false" protected="false" private="false"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="dk.itu.KF13.TheSim.Game.Controller.GameController" 
-    project="TheGreatestGameInTheWorld" 
-    file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Controller/GameController.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
+  <class id="9" language="java" name="dk.itu.KF13.TheSim.Game.Controller.GameController" project="AGameOfBeers" 
+    file="/AGameOfBeers/src/dk/itu/KF13/TheSim/Game/Controller/GameController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="549" y="97"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -98,9 +88,8 @@
       <operations public="false" package="false" protected="false" private="false"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="dk.itu.KF13.TheSim.Game.Model.Physical.Class.ObjGun" 
-    project="TheGreatestGameInTheWorld" 
-    file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Model/Physical/Class/ObjGun.java" binary="false" 
+  <class id="10" language="java" name="dk.itu.KF13.TheSim.Game.Model.Physical.Class.ObjGun" project="AGameOfBeers" 
+    file="/AGameOfBeers/src/dk/itu/KF13/TheSim/Game/Model/Physical/Class/ObjGun.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="522" y="502"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 

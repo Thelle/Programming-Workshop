@@ -54,7 +54,7 @@ public class Backpack {
 	
 	/**
 	 * removeFromBackpack removes the given object from the backpack by using 
-	 * the {@link ArrayList.remove()} method from the class {@link ArrayList}.
+	 * the ArrayList.remove() method from the class ArrayList.
 	 * @param object - the object to be removed
 	 */
 	public void removeFromBackpack(GameObject object){

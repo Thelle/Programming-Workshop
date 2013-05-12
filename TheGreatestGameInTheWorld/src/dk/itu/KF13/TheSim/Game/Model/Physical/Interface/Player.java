@@ -13,8 +13,7 @@ public interface Player extends Localizable {
 	void changeAlcoholLevel(int diff);
 	
 	/**
-	 * Returns the energy level of the player
-	 * @return
+	 * @return Returns the energy level of the player
 	 */
 	int getAlcoholLevel();
 	

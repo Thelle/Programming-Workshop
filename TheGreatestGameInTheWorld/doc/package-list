@@ -1,4 +1,13 @@
+controller
+dk.itu.KF13.TheSim.Game
 dk.itu.KF13.TheSim.Game.Controller
-dk.itu.KF13.TheSim.Game.Minigames
-dk.itu.KF13.TheSim.Game.Physical
-dk.itu.KF13.TheSim.Game.World
+dk.itu.KF13.TheSim.Game.Model
+dk.itu.KF13.TheSim.Game.Model.Minigames.BlackJack
+dk.itu.KF13.TheSim.Game.Model.Physical.AbstractClass
+dk.itu.KF13.TheSim.Game.Model.Physical.Class
+dk.itu.KF13.TheSim.Game.Model.Physical.Interface
+dk.itu.KF13.TheSim.Game.Model.World.AbstractClass
+dk.itu.KF13.TheSim.Game.Model.World.Class
+dk.itu.KF13.TheSim.Game.Model.World.Interface
+dk.itu.KF13.TheSim.Game.View
+model

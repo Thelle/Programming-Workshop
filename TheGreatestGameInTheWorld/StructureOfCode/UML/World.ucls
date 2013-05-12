@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.2" icons="true" automaticImage="JPEG" always-add-relationships="false" 
   generalizations="true" realizations="true" associations="true" dependencies="true" nesting-relationships="true">  
-  <class id="1" language="java" name="dk.itu.KF13.TheSim.Game.Model.World.Class.WorldCopenhagen" 
-    project="TheGreatestGameInTheWorld" 
-    file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Model/World/Class/WorldCopenhagen.java" binary="false" 
+  <class id="1" language="java" name="dk.itu.KF13.TheSim.Game.Model.World.Class.WorldCopenhagen" project="AGameOfBeers" 
+    file="/AGameOfBeers/src/dk/itu/KF13/TheSim/Game/Model/World/Class/WorldCopenhagen.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="177" y="234"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -12,9 +11,8 @@
       <operations public="true" package="true" protected="true" private="false"/>    
     </display>  
   </class>  
-  <interface id="2" language="java" name="dk.itu.KF13.TheSim.Game.Model.World.Interface.Location" 
-    project="TheGreatestGameInTheWorld" 
-    file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Model/World/Interface/Location.java" binary="false" 
+  <interface id="2" language="java" name="dk.itu.KF13.TheSim.Game.Model.World.Interface.Location" project="AGameOfBeers" 
+    file="/AGameOfBeers/src/dk/itu/KF13/TheSim/Game/Model/World/Interface/Location.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="554" y="238"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" accessors="true" 
@@ -23,9 +21,8 @@
       <operations public="false" package="false" protected="false" private="false"/>    
     </display>  
   </interface>  
-  <interface id="3" language="java" name="dk.itu.KF13.TheSim.Game.Model.World.Interface.World" 
-    project="TheGreatestGameInTheWorld" 
-    file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/Model/World/Interface/World.java" binary="false" 
+  <interface id="3" language="java" name="dk.itu.KF13.TheSim.Game.Model.World.Interface.World" project="AGameOfBeers" 
+    file="/AGameOfBeers/src/dk/itu/KF13/TheSim/Game/Model/World/Interface/World.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="180" y="91"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -34,9 +31,8 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </interface>  
-  <class id="4" language="java" name="dk.itu.KF13.TheSim.Game.View.GameView" project="TheGreatestGameInTheWorld" 
-    file="/TheGreatestGameInTheWorld/src/dk/itu/KF13/TheSim/Game/View/GameView.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
+  <class id="4" language="java" name="dk.itu.KF13.TheSim.Game.View.GameView" project="AGameOfBeers" 
+    file="/AGameOfBeers/src/dk/itu/KF13/TheSim/Game/View/GameView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="178" y="364"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" accessors="true" 
       visibility="true">      

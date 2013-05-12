@@ -27,7 +27,7 @@ public class ObjNonMovable extends MasterGameObject {
 	
 	/**
 	 * An object of type ObjStatic can't be used 
-	 * @return 
+	 * @return The cost of trying to use the object. 
 	 */
 	@Override
 	public int use() {
