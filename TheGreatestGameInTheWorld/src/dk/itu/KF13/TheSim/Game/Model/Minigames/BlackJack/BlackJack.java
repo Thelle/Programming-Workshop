@@ -141,7 +141,7 @@ public class BlackJack {
             return "Less than max";
         }
         else{
-            //pointsPlayed is greater than maxNumber, but less than 21
+            //pointsPlayed is greater than or equal to maxNumber, but less than 21
         	return "Between max and 21";
         }
     }
