@@ -205,7 +205,8 @@ public class GameRunner {
 			case "yes": 
 				status = true; 
 				doLoop = false; 
-				view.printnl("Great! Before we start you should know the basic commands of the game:");
+				view.printnl("Great! Before we start you should know that you have an alcohol level. If that drops to zero og rises to more than ten, its game over.\n" +
+							 "Ah! I nearly forgot. The basic commands of the game are:");
 				break;
 			case "no": 
 				status = !doesPlayerReallyWantToStop();
