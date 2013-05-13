@@ -36,7 +36,8 @@ public class LocBrewery extends MasterLocation {
 						    + "- I thought so much when I saw you. But you know. My beer is not free. You have to fight for it.\n" 
 							+ "Oh no! Pictures of you and the big bearded man in a mud fight begins to appear. That's not a pretty sight.\n"
 						    + "- Why do you look so scared? It's not like we are going to fight in a pool of mud. Eventhough that would be quite funny. \n"
-							+ "  You are just going to \"fight\" me in a game of blackjack. If you want to play, just say so.\n"
+							+ "  You are just going to \"fight\" me in a game of blackjack. If you want to play, just say so. \n"
+						    + "  Just remember. You have to have to beers before we can begin.\n"
 						    + "(give the command 'play blackjack' to begin the game)\n");
 	}
 }
