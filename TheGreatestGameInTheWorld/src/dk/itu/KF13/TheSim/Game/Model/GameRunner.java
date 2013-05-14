@@ -230,9 +230,9 @@ public class GameRunner {
 				"Except from friday that is. Friday is the best day of the week. At Fridays you can start the day with a film, and end it " +
 					"with beer. \nLots of nice cold beer. \n"+
 					"But not today. Today is a disatrous day. You just got a text from your favourite bartender from ScrollBar: \n'OMG!! No "+
-					"Beeerzz left. U hv 2 drink breezers 2night. LOL!!'. \nOk maybe not you favourite bartender, but at least you got a warning "+
-					"about what a disatrous evening this could have been. Now you just have to go out and get ten Masterbrews for tonight. As "+
-					"everyone knows, ten is the perfect number of beers for a quiet night.\n"+
+					"Beeerzz left. U hv 2 drink breezers 2night. LOL!!'. " +
+					"\nOk maybe not you favourite bartender, but at least you got a warning about what a disatrous evening this could have been.\n" +
+					"Now you just have to go out and get ten Masterbrews for tonight. As everyone knows, ten is the perfect number of beers for a quiet night.\n"+
 					"So, are you up for saving your evening?\n" +
 					"Answer 'yes' or 'no'");
 	}
