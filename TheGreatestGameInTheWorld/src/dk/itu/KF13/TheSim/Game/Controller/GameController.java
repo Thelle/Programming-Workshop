@@ -76,7 +76,9 @@ public class GameController implements IGameController {
 				"'use [something]'  - You use the object specified inside the []. You have to have the object in your backpack. \n"+
 				"'go [north/east/south/west]' - You move in the given direction. \n"+
 				"'look in backpack' - You take a look in your backpack. \n"+
-				"'help' - This text will appear again.";
+				"'help' - This text will appear again." +
+				"When you use the take and use command you should just name the object. \n" +
+				"Example: \"take statue\" instead of \"take a statue\"";
 		
 		view.printnl(output);
 	}
